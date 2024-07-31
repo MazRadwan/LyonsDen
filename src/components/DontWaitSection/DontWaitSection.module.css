@@ -1,0 +1,46 @@
+.section {
+  background-color: #fffcf3;
+  padding: 4rem 0; /* Padding for the section */
+}
+
+.container {
+  color: #125b60;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  padding: 4rem 2rem; /* Padding for the content */
+  margin: 4rem auto; /* Margin for the content */
+  max-width: 800px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttons > button {
+  padding: 1rem 4rem;
+}

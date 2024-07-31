@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import TherapyStrip from "./components/TherapyStrip/TherapyStrip";
+import TherapyServices from "./components/TherapyServices/TherapyServices";
+import DontWaitSection from "./components/DontWaitSection/DontWaitSection";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Hero />
+      <TherapyStrip />
+      <TherapyServices />
+      <DontWaitSection />
+      <main>
+        {/* Placeholder for main content */}
+        <h2>Welcome to the site</h2>
+      </main>
     </div>
   );
 }

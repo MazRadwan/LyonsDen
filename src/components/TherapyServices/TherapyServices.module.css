@@ -1,0 +1,43 @@
+.services {
+  background-color: #0d4448;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-weight: 600; /* Semi-bold */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5rem 0; /* Increased padding for more space */
+}
+
+.serviceItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  height: 100%; /* Ensure the item takes full height */
+  margin: 0 1rem;
+  font-size: 1.5rem;
+}
+
+.divider {
+  width: 1px;
+  height: 200px; /* Increased height for more vertical space */
+  background-color: white;
+  margin: 0 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services {
+    flex-direction: column;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 2rem 0; /* Adjusted margin for space between items */
+  }
+  .serviceItem {
+    margin: 2rem 0;
+  }
+}

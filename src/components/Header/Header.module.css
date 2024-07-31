@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Jomolhari&display=swap");
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fffcf3; /* Updated background color */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it is above other content */
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #4b2f04;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.siteNameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.siteName {
+  font-family: "Jomolhari", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4b2f04;
+  text-align: center;
+}
+
+.separator {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #4b2f04;
+  margin: 0.2rem 0;
+}
+
+.siteSubName {
+  font-family: "Jomolhari", serif;
+  font-size: 1rem;
+  color: #4b2f04;
+  text-align: center;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  font-family: "Jomolhari", serif;
+  text-decoration: none;
+  color: #4b2f04;
+  margin: 0 1rem;
+}
+
+.appointmentButton {
+  font-family: "Inter", sans-serif;
+  background-color: #125b60;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+}
+
+.appointmentButton:hover {
+  background-color: #0a3d41;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navBar {
+    flex-direction: column;
+  }
+  .navLinks {
+    flex-direction: column;
+  }
+  .navLinks li {
+    margin: 0.5rem 0;
+  }
+}

@@ -1,0 +1,9 @@
+.strip {
+  background-color: #0d4448;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem; /* Increased font size */
+  font-weight: 600; /* Semi-bold */
+  text-align: center;
+  padding: 2rem 0; /* Increased padding for more space */
+}
