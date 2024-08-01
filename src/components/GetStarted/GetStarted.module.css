@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Inter:wght@400&display=swap");
+
+.getStarted {
+  display: flex;
+  min-height: 100vh;
+}
+
+.leftSection {
+  background-color: #0d4448;
+  color: white;
+  padding: 4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSection {
+  background-color: #cec7bc;
+  padding: 4rem;
+  flex: 1;
+}
+
+.smallHeader {
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.largeHeader {
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contactInfo {
+  margin-bottom: 2rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.contactHeader {
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 2rem 0;
+}
+
+.footer {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.formHeader {
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #0d4448;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input,
+.select,
+.textarea {
+  font-family: "Inter", sans-serif;
+  padding: 0.75rem;
+  border: 1px solid #0d4448;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitButton {
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  background-color: #8b572a;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #704621;
+}
+
+@media (max-width: 768px) {
+  .getStarted {
+    flex-direction: column;
+  }
+
+  .leftSection,
+  .rightSection {
+    padding: 2rem;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+  }
+}

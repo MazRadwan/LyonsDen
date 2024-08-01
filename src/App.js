@@ -12,6 +12,7 @@ import BioSection from "./components/BioSection/BioSection";
 import ProvidesSection from "./components/ProvidesSection/ProvidesSection";
 import OurApproach from "./components/OurApproach/OurApproach";
 import FaqSection from "./components/FaqSection/FaqSection";
+import GetStarted from "./components/GetStarted/GetStarted";
 import "./App.css";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <ProvidesSection />
       <OurApproach />
       <FaqSection />
+      <GetStarted />
       <main>
         {/* Placeholder for main content */}
         <h2>Welcome to the site</h2>
