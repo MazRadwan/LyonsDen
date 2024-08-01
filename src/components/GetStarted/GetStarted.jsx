@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./GetStarted.module.css";
+
 import { FaPhone, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
