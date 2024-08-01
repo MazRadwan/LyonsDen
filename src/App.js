@@ -13,6 +13,8 @@ import ProvidesSection from "./components/ProvidesSection/ProvidesSection";
 import OurApproach from "./components/OurApproach/OurApproach";
 import FaqSection from "./components/FaqSection/FaqSection";
 import GetStarted from "./components/GetStarted/GetStarted";
+import BottomHero from "./components/BottomHero/BottomHero";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
@@ -32,10 +34,9 @@ function App() {
       <OurApproach />
       <FaqSection />
       <GetStarted />
-      <main>
-        {/* Placeholder for main content */}
-        <h2>Welcome to the site</h2>
-      </main>
+      <BottomHero />
+      <Footer />
+      <main>{/* Placeholder for main content */}</main>
     </div>
   );
 }
