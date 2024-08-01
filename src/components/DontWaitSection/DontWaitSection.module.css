@@ -1,14 +1,14 @@
 .section {
   background-color: #fffcf3;
-  padding: 4rem 0; /* Padding for the section */
+  padding: 4rem 0;
 }
 
 .container {
   color: #125b60;
   font-family: "Inter", sans-serif;
   text-align: center;
-  padding: 4rem 2rem; /* Padding for the content */
-  margin: 4rem auto; /* Margin for the content */
+  padding: 4rem 2rem;
+  margin: 4rem auto;
   max-width: 800px;
 }
 
@@ -18,13 +18,14 @@
   margin-bottom: 1rem;
 }
 
-h2 {
+.h2 {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-p {
+.p,
+.highlight {
   font-size: 1rem;
   margin-bottom: 1.5rem;
 }
@@ -42,5 +43,29 @@ p {
 }
 
 .buttons > button {
-  padding: 1rem 4rem;
+  padding: 0.5rem 2rem;
+}
+
+.animated {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.animated.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add staggered delays for each animated element */
+.h2.visible {
+  transition-delay: 0.2s;
+}
+
+.p.visible {
+  transition-delay: 0.4s;
+}
+
+.highlight.visible {
+  transition-delay: 0.6s;
 }
