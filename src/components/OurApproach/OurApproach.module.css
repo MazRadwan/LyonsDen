@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink:wght@700&family=Inter:wght@400&display=swap");
+
+.section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1s ease-out;
+  transform: scale(0.9);
+}
+
+.animateHero .heroImage {
+  transform: scale(1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(0, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.animateModal {
+  opacity: 1;
+}
+
+.modalTitle {
+  font-family: "Reem Kufi Ink", sans-serif;
+  color: #0d4448;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modalHeader {
+  font-family: "Reem Kufi Ink", sans-serif;
+  color: #0d4448;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.foldingMenu {
+  margin-bottom: 1.5rem;
+}
+
+.menuItem {
+  margin-bottom: 1.5rem;
+}
+
+.menuButton {
+  font-family: "Reem Kufi Ink", sans-serif;
+  color: #0d4448;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #0d4448;
+}
+
+.arrowDown::after {
+  content: "▼";
+  font-size: 0.8rem;
+}
+
+.arrowUp::after {
+  content: "▲";
+  font-size: 0.8rem;
+}
+
+.menuContent {
+  font-family: "Inter", sans-serif;
+  color: #0d4448;
+  padding: 1rem 0;
+  line-height: 1.6;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    right: 5%;
+    left: 5%;
+    max-width: none;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap");
+
+.section {
+  background-color: #915905;
+  padding: 4rem 0;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.heading {
+  font-family: "Reem Kufi Ink", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.description {
+  font-family: "Inria Serif", serif;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  line-height: 1.5;
+  max-width: 50%;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Media query for extra small screens */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}

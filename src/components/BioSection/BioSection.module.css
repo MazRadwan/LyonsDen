@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Inter:wght@400;600&display=swap");
+
+.section {
+  background-color: #fffcf3;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.textContent {
+  flex: 1;
+  margin-right: 8rem;
+  max-width: 60%;
+}
+
+.sectionTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #0d4448;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.header {
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #0d4448;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.header.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subheader {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #0d4448;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.paragraph,
+.clientMessage {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #0d4448;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.clientMessage {
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.imageContainer {
+  flex: 0 0 40%;
+  position: relative;
+}
+
+.bioImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #624110;
+  color: white;
+  padding: 1.5rem;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.imageCaption p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 1rem;
+}
+
+@media (max-width: 968px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .textContent {
+    margin-right: 0;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .imageContainer {
+    width: 100%;
+  }
+}
