@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6037bd8a.css",
+    "main.js": "/static/js/main.2cb7b857.js",
+    "static/media/lyonsdenHero.jpeg": "/static/media/lyonsdenHero.9836948b9ebd4b7503af.jpeg",
+    "static/media/lyonsdenhero4.jpeg": "/static/media/lyonsdenhero4.03c72810b5437b41acb7.jpeg",
+    "static/media/lyonsdencard3.jpeg": "/static/media/lyonsdencard3.1f5874cd256abbb3719f.jpeg",
+    "static/media/lyonsdencard2.jpeg": "/static/media/lyonsdencard2.23e584dbe55201f3603e.jpeg",
+    "static/media/lyonsdencard1.jpeg": "/static/media/lyonsdencard1.a0fb067df61984d7342d.jpeg",
+    "static/media/lyonsdenbio-pic.jpeg": "/static/media/lyonsdenbio-pic.b3eb221aef7267f3174e.jpeg",
+    "static/media/lyonsdenhero5.jpeg": "/static/media/lyonsdenhero5.ee33d3192158cfa4be93.jpeg",
+    "static/media/lyonsdenhero2a.jpeg": "/static/media/lyonsdenhero2a.f251c16dacdbf9f4099c.jpeg",
+    "static/media/lyonsdenlogo.png": "/static/media/lyonsdenlogo.ffa6293a646b0c40a97a.png",
+    "index.html": "/index.html",
+    "main.6037bd8a.css.map": "/static/css/main.6037bd8a.css.map",
+    "main.2cb7b857.js.map": "/static/js/main.2cb7b857.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6037bd8a.css",
+    "static/js/main.2cb7b857.js"
+  ]
+}
