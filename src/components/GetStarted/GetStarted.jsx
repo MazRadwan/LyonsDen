@@ -12,10 +12,10 @@ const GetStarted = () => {
         <h3 className={styles.smallHeader}>A LYON'S DEN THERAPY</h3>
         <h2 className={styles.largeHeader}>How To Get Started</h2>
         <p className={styles.description}>
-          Get started with Vita Psychology Centre! We offer free consultations
-          to answer your questions and ensure we are a good fit. If you're ready
-          to get started, you can also book an appointment using the buttons
-          below, call us, or send us a message.
+          Get started with A Lyon's Den Therapy! We offer free consultations to
+          answer your questions and ensure we are a good fit. If you're ready to
+          get started, you can also book an appointment using the buttons below,
+          call us, or send us a message.
         </p>
         <div className={styles.buttonContainer}>
           <Button>BOOK AN APPOINTMENT</Button>
