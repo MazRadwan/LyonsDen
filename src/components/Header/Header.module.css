@@ -1,3 +1,4 @@
+/* Import font */
 @import url("https://fonts.googleapis.com/css2?family=Jomolhari&display=swap");
 
 .navBar {
@@ -52,6 +53,13 @@
   text-align: center;
 }
 
+.desktopNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
 .navLinks {
   display: flex;
   list-style: none;
@@ -75,10 +83,15 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in;
+  margin-left: 1rem;
 }
 
 .appointmentButton:hover {
   background-color: #0a3d41;
+}
+
+.mobileNav {
+  display: none;
 }
 
 .hamburger {
@@ -96,36 +109,45 @@
 }
 
 @media (max-width: 768px) {
-  .navBar {
-    flex-wrap: wrap;
+  .desktopNav {
+    display: none;
   }
 
-  .navContainer {
+  .mobileNav {
     display: none;
-    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fffcf3;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
   }
 
-  .navContainer.open {
+  .mobileNav.open {
     display: flex;
   }
 
-  .navLinks {
+  .mobileNav .navLinks {
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
 
-  .navLinks li {
+  .mobileNav .navLink {
     margin: 0.5rem 0;
   }
 
-  .appointmentButton {
+  .mobileNav .appointmentButton {
     margin-top: 1rem;
+    margin-left: 0;
   }
 
   .hamburger {
     display: flex;
+  }
+
+  .navBar .appointmentButton {
+    display: none;
   }
 }
