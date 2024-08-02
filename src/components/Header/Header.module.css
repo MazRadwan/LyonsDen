@@ -5,10 +5,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #fffcf3; /* Updated background color */
+  background-color: #fffcf3;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Ensure it is above other content */
+  z-index: 1000;
 }
 
 .logoContainer {
@@ -81,15 +81,51 @@
   background-color: #0a3d41;
 }
 
-/* Responsive Design */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #4b2f04;
+  margin: 2px 0;
+  transition: 0.4s;
+}
+
 @media (max-width: 768px) {
   .navBar {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
+
+  .navContainer {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navContainer.open {
+    display: flex;
+  }
+
   .navLinks {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
+
   .navLinks li {
     margin: 0.5rem 0;
+  }
+
+  .appointmentButton {
+    margin-top: 1rem;
+  }
+
+  .hamburger {
+    display: flex;
   }
 }
