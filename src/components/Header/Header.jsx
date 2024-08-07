@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
 import Button from "../Button/Button";
-import logo from "../../assets/lyonsdenlogo.png";
+import logo from "../../assets/lyonsdenlogo2.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./DontWaitSection.module.css";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
-import lionLogo from "../../assets/lyonsdenlogo.png";
+import lionLogo from "../../assets/lyonsdenlogo2.png";
 
 const DontWaitSection = () => {
   const h2Ref = useRef(null);

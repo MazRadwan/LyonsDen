@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./AreasSupport.module.css";
-import icon from "../../assets/lyonsdenlogo.png";
+import icon from "../../assets/lyonsdenlogo2.png";
 
 const supportAreas = [
   {
