@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <nav className={styles.navBar}>
       <a href="/" className={styles.logoContainer}>
-        <img src={logo} alt="A Lyon's Den Therapy" className={styles.logo} />
+        <img src={logo} alt="A Lyons Den Therapy" className={styles.logo} />
         <div className={styles.siteNameContainer}>
           <span className={styles.siteName}>A LYON'S DEN</span>
           <hr className={styles.separator} />
