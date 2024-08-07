@@ -11,7 +11,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: transform 1s ease-out;
+  transition: transform 0.5s ease-out;
   transform: scale(0.9);
 }
 
@@ -38,7 +38,7 @@
   border-radius: 8px;
   max-width: 500px;
   opacity: 0;
-  transition: opacity 1s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .animateModal {
