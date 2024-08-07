@@ -23,13 +23,14 @@ const Footer = () => {
           <div className={styles.linkColumn}>
             <h3 className={styles.linkHeader}>GET STARTED</h3>
             <a href="#" className={styles.link}>
-              Book an appointment
-            </a>
-            <a href="#" className={styles.link}>
               Book a Free Consultation
             </a>
             <a href="#" className={styles.link}>
-              (212) 555-1212
+              Book an appointment
+            </a>
+
+            <a href="#" className={styles.link}>
+              (716) 998-7316
             </a>
             <a href="#" className={styles.link}>
               Contact Form
@@ -39,7 +40,7 @@ const Footer = () => {
           <div className={styles.linkColumn}>
             <h3 className={styles.linkHeader}>QUICK LINKS</h3>
             <a href="#" className={styles.link}>
-              About Us
+              About Adam
             </a>
             <a href="#" className={styles.link}>
               Therapy Services
@@ -47,11 +48,11 @@ const Footer = () => {
           </div>
 
           <div className={styles.linkColumn}>
-            <h3 className={styles.linkHeader}>VISIT US</h3>
+            <h3 className={styles.linkHeader}>SERVICING</h3>
             <p className={styles.address}>
-              55 5th Ave., Suite 401
+              New York, New Jersey
               <br />
-              New York, NY 10029
+              and Connecticut Area
             </p>
           </div>
         </div>

@@ -12,45 +12,41 @@ const GetStarted = () => {
         <h3 className={styles.smallHeader}>A LYON'S DEN THERAPY</h3>
         <h2 className={styles.largeHeader}>How To Get Started</h2>
         <p className={styles.description}>
-          Get started with A Lyon's Den Therapy! We offer free consultations to
+          Get started with A Lyon's Den Therapy! I offer free consultations to
           answer your questions and ensure we are a good fit. If you're ready to
           get started, you can also book an appointment using the buttons below,
           call us, or send us a message.
         </p>
         <div className={styles.buttonContainer}>
-          <Button>BOOK AN APPOINTMENT</Button>
           <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
+          <Button>BOOK AN APPOINTMENT</Button>
         </div>
         <div className={styles.contactInfo}>
           <div className={styles.contactItem}>
             <FaPhone className={styles.icon} />
             <div>
               <h4 className={styles.contactHeader}>CALL US</h4>
-              <p>(212) 555-1234</p>
+              <p>(716) 998-7316</p>
             </div>
           </div>
           <div className={styles.contactItem}>
             <FaMapMarkerAlt className={styles.icon} />
             <div>
-              <h4 className={styles.contactHeader}>VISIT US</h4>
-              <p>
-                555 5th Ave, Suite 401
-                <br />
-                New York, NY 10029
-              </p>
+              <h4 className={styles.contactHeader}>SERVICING</h4>
+              <p>New York, New Jersey and Connecticut Area</p>
             </div>
           </div>
           <div className={styles.contactItem}>
             <FaEnvelope className={styles.icon} />
             <div>
               <h4 className={styles.contactHeader}>EMAIL US</h4>
-              <p>info@alyonsden.com</p>
+              <p>adam@alyonsdentherapy.com</p>
             </div>
           </div>
         </div>
         <div className={styles.divider}></div>
         <p className={styles.footer}>
-          IN-PERSON AND ONLINE THERAPY SESSIONS ACROSS NEW YORK CITY
+          ONLINE THERAPY SESSIONS ACROSS NEW YORK, NEW JERSEY AND CONNECTICUT
         </p>
       </div>
       <div className={styles.rightSection}>

@@ -49,14 +49,14 @@ const GettingStarted = () => {
               in New York City and surrounding areas.
             </p>
             <div className={styles.buttonContainer}>
-              <Button onClick={() => console.log("Book appointment clicked")}>
-                BOOK AN APPOINTMENT
-              </Button>
               <ConsultationButton
                 onClick={() => console.log("Free consultation clicked")}
               >
                 BOOK A FREE CONSULTATION
               </ConsultationButton>
+              <Button onClick={() => console.log("Book appointment clicked")}>
+                BOOK AN APPOINTMENT
+              </Button>
             </div>
           </div>
         </div>

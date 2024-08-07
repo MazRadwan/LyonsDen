@@ -39,19 +39,19 @@ const OurApproach = () => {
 
   const menuItems = [
     {
-      title: "We learn about you",
+      title: "Your initial 15-minute consultation",
       content:
-        "Establishing a therapeutic relationship, we seek to deeply understand your history, experiences, and challenges. This understanding creates trust, empathy, and collaboration, which are essential for successful therapy.",
+        "All potential clients have a free consultation. This is your opportunity to share what you are struggling with and your goals for treatment, and ask any questions you need to determine if Adam is a good fit for you.",
     },
     {
-      title: "We formulate a plan",
+      title: "Beginning your therapy journey",
       content:
-        "Establishing a therapeutic relationship, we seek to deeply understand your history, experiences, and challenges. This understanding creates trust, empathy, and collaboration, which are essential for successful therapy.",
+        "After some initial paperwork, the first appointment is a 60-minute assessment. It focuses on developing a comprehensive assessment and clarifying your goals for treatment. From there, you and Adam will meet together 45 minutes a week for at least two months. ",
     },
     {
-      title: "We guide you forward",
+      title: "Reaching your goals",
       content:
-        "Establishing a therapeutic relationship, we seek to deeply understand your history, experiences, and challenges. This understanding creates trust, empathy, and collaboration, which are essential for successful therapy.",
+        "You can expect your treatment to last as long as you have goals you want to work on. For some, treatment can be several months, for others, treatment may last longer. Good Mental Health is a journey that takes lifelong attention, with treatment starting and pausing many times over the years.",
     },
   ];
 
@@ -64,8 +64,8 @@ const OurApproach = () => {
         <div className={styles.overlay}></div>
       </div>
       <div ref={modalRef} className={styles.modal}>
-        <h3 className={styles.modalTitle}>OUR APPROACH</h3>
-        <h2 className={styles.modalHeader}>How Our Therapy Works</h2>
+        <h3 className={styles.modalTitle}>MY APPROACH</h3>
+        <h2 className={styles.modalHeader}>What You Can Expect</h2>
         <div className={styles.foldingMenu}>
           {menuItems.map((item, index) => (
             <div key={index} className={styles.menuItem}>
@@ -87,8 +87,8 @@ const OurApproach = () => {
           ))}
         </div>
         <div className={styles.buttonContainer}>
-          <Button>BOOK AN APPOINTMENT</Button>
           <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
+          <Button>BOOK AN APPOINTMENT</Button>
         </div>
       </div>
     </section>

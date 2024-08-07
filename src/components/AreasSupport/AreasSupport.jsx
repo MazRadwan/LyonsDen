@@ -4,34 +4,34 @@ import icon from "../../assets/lyonsdenlogo.png";
 
 const supportAreas = [
   {
-    title: "INTERGENERATIONAL CONFLICT",
+    title: "ANXIETY",
     description:
-      "Solutions to help you navigate cultures with conflicting values without losing yourself.",
+      "Discover strategies to manage and reduce anxiety, finding relief from persistent worry and stress.",
   },
   {
-    title: "ANXIETY & PANIC",
+    title: "DEPRESSION",
     description:
-      "Learn effective coping strategies to ease worry or panic, helping you regain control and find peace.",
+      "Explore ways to address feelings of sadness and hopelessness with supportive, effective techniques.",
   },
   {
-    title: "DEPRESSION & LOW MOOD",
+    title: "THERAPY FOR TEENS",
     description:
-      "Compassionate support to help you break the cycle of sadness and hopelessness & rediscover your joy.",
+      "Tailored therapy designed to support adolecents through the unique challenges of their teenage years.",
   },
   {
-    title: "TRAUMA & PTSD",
+    title: "STRESS & LIFE TRANSITIONS",
     description:
-      "Process and heal the physiological & emotional symptoms from traumatic experiences.",
+      "Gain guidance for managing life's changes and stressors with practical, solution focused support.",
   },
   {
-    title: "RELATIONSHIP & INTERPERSONAL CHALLENGES",
+    title: "ADHD & NEURODIVERGENCE",
     description:
-      "Improve communication patterns, resolve conflict, rebuild trust, and foster deeper connections.",
+      "Receive specialized support for managing ADHD and other neurodivergent conditions, leveraging personal insights and strategies.",
   },
   {
-    title: "STRESS & OVERWHELM",
+    title: "TRAUMA, PTSD & C-PTSD",
     description:
-      "Identify sources of stress & burnout, learning skills to restore balance and vitality to your life.",
+      "Find healing from past traumatic experiences with compassionate, trauma-informed therapy.",
   },
 ];
 

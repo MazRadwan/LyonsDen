@@ -36,13 +36,13 @@ const MinuteSession = () => {
       >
         <div className={styles.overlay}></div>
         <div ref={modalRef} className={`${styles.modal} ${styles.hidden}`}>
-          <h2 className={styles.heading}>
-            Looking for a single 50-minute session?
-          </h2>
+          <h2 className={styles.heading}>Looking for short-term support?</h2>
           <p className={styles.description}>
-            When you're seeking support or a fresh perspective, we offer a
-            qualified listening ear to help you move forward with a difficult
-            decision or specific challenge.
+            I offer a six week program that might be just what you need. I can
+            help you address immediate concerns and develop practical strategies
+            moving forward. Whether you are dealing with a particular issue or
+            seeking guidance through a short-term transition, this program
+            provides targeted, effective suppport in a condensed timeframe.
           </p>
           <button className={styles.button}>CONTACT US</button>
         </div>

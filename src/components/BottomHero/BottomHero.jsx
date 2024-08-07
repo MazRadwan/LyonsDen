@@ -38,11 +38,11 @@ const BottomHero = () => {
         <div ref={contentRef} className={styles.content}>
           <h1 className={styles.header}>A LYON'S DEN THERAPY</h1>
           <p className={styles.subtext}>
-            Connect with your authentic self and rediscover the joy of living!
+            Make today the day you choose to invest in your well-being.
           </p>
           <div className={styles.buttonContainer}>
-            <Button>BOOK AN APPOINTMENT</Button>
             <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
+            <Button>BOOK AN APPOINTMENT</Button>
           </div>
         </div>
       </div>

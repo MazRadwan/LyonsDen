@@ -4,7 +4,7 @@ import styles from "./TherapyStrip.module.css";
 const TherapyStrip = () => {
   return (
     <div className={styles.strip}>
-      Therapy for individuals, couples, & children & teens in New York City Area
+      Therapy for Teens and Adults in the New York, New Jersey and Connecticut
     </div>
   );
 };

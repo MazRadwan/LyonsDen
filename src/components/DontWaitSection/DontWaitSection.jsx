@@ -48,20 +48,19 @@ const DontWaitSection = () => {
       <div className={styles.container}>
         <img src={lionLogo} alt="Logo" className={styles.logo} />
         <h2 ref={h2Ref} className={`${styles.h2} ${styles.animated}`}>
-          Don't wait until it's too hard.
+          Don't wait to get the help you need.
         </h2>
         <p ref={p1Ref} className={`${styles.p} ${styles.animated}`}>
-          Whether it's your relationship, your academics, your career, or how
-          your children are doing—when you put mental health care at the bottom
-          of your priority list, it can leave you and your family in a position
-          you never thought you'd have to face.
+          Who we are is shaped by our experiences, environment, and biology.
+          Sometimes, what once kept us safe and content no longer serves us, and
+          it's time to find a new way.
         </p>
         <p ref={p2Ref} className={`${styles.highlight} ${styles.animated}`}>
-          Get the care you need to bring more ease to your life today.
+          Set forth on a journey of self-discovery and empowerment.
         </p>
         <div className={styles.buttons}>
-          <Button>Book an Appointment</Button>
           <ConsultationButton>Book a Free Consultation</ConsultationButton>
+          <Button>Book an Appointment</Button>
         </div>
       </div>
     </div>

@@ -29,19 +29,19 @@ const ProvidesSection = () => {
 
   const boxes = [
     {
-      title: "COMPASSIONATE",
+      title: "PERSON-CENTERED",
       content:
-        "Compassion forms the cornerstone of our practice, allowing clients to explore their vulnerabilities openly, build deeper emotional connections, and fostering healing in a supportive environment.",
+        " I tailor each therapy session to fit your unique needs, recognizing that your personal experiences shape who you are. This means that my approach is always customized to align with your specific challenges, strengths, and goals. By deeply understanding your personal journey, I ensure that our work together is relevant and effective.",
+    },
+    {
+      title: "GROWTH-FOCUSED",
+      content:
+        "I believe that therapy is a powerful tool for personal development and transformation. By exploring and understanding your experiences, we uncover opportunities for growth and learning. Together, we’ll focus on developing new skills and perspectives that empower you to navigate lifes challenges with greater confidence and resilience.",
     },
     {
       title: "JUDGEMENT-FREE",
       content:
-        "A nonjudgmental approach creates a space where clients feel accepted and understood, facilitating honest self-exploration without fear of criticism in order to work towards positive change.",
-    },
-    {
-      title: "RESPECTFUL",
-      content:
-        "Respect is essential in our practice. It acknowledges the uniqueness of each individual's experience and history, creating an environment that encourages meaningful transformation & growth.",
+        "Creating a judgment-free space is essential to fostering trust and openness in therapy. I am committed to providing a supportive environment where you can express yourself freely without fear of criticism. This means approaching each session with empathy and understanding, ensuring that you feel safe to explore your thoughts and feelings.",
     },
   ];
 
