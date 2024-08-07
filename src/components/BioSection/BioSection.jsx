@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./BioSection.module.css";
-import Button from "../Button/Button";
+
 import bioImage from "../../assets/lyonsdenbio-pic1.jpg";
 
 const BioSection = () => {
