@@ -16,8 +16,21 @@ const Hero = () => {
       <div className={styles.heroContent}>
         <h1>Helping You Live Life To The Fullest</h1>
         <div className={styles.buttons}>
-          <ConsultationButton>Book a Free Consultation</ConsultationButton>
-          <Button>Book an Appointment</Button>
+          <ConsultationButton
+            href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.appointmentButton}
+          >
+            Book a Free Consultation
+          </ConsultationButton>
+          <Button
+            href="https://calendar.app.google/jGxgSzFJxnU2spgP7 "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book an Appointment
+          </Button>
         </div>
       </div>
       <img src={heroImage} alt="Hero" className={styles.heroImage} />

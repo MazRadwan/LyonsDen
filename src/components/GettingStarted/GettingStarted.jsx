@@ -50,11 +50,17 @@ const GettingStarted = () => {
             </p>
             <div className={styles.buttonContainer}>
               <ConsultationButton
-                onClick={() => console.log("Free consultation clicked")}
+                href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 BOOK A FREE CONSULTATION
               </ConsultationButton>
-              <Button onClick={() => console.log("Book appointment clicked")}>
+              <Button
+                href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 BOOK AN APPOINTMENT
               </Button>
             </div>

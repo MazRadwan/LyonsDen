@@ -6,7 +6,23 @@ const ConsultationButton = ({
   children,
   type = "button",
   className = "",
+  href,
+  target,
+  rel,
 }) => {
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={target}
+        rel={rel}
+        className={`${styles.button} ${className}`}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <button
       type={type}

@@ -17,13 +17,13 @@
   top: 0;
   left: 0;
   z-index: 1;
-  object-position: center; /* Default to center for all screens */
+  object-position: center;
 }
 
 /* Media query for small screens */
 @media (max-width: 768px) {
   .heroImage {
-    object-position: right; /* Adjust to ensure the person's face is centered */
+    object-position: center;
   }
 }
 
@@ -33,7 +33,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Darker mask */
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 2;
 }
 
@@ -42,24 +42,26 @@
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the left */
+  align-items: flex-start;
   justify-content: center;
   height: 100%;
   color: white;
   font-family: "IBM Plex Sans KR", sans-serif;
-  text-align: left; /* Align text to the left */
+  text-align: left;
   padding: 2rem;
   margin-left: 5%;
 }
 
 .heroContent h1 {
-  font-size: 3rem; /* Increase font size */
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  text-decoration: none;
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 1s ease-in;
 }

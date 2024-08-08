@@ -28,6 +28,14 @@ const MinuteSession = () => {
     };
   }, []);
 
+  const scrollToContact = (event) => {
+    event.preventDefault();
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className={styles.section}>
       <div
@@ -44,7 +52,9 @@ const MinuteSession = () => {
             seeking guidance through a short-term transition, this program
             provides targeted, effective suppport in a condensed timeframe.
           </p>
-          <button className={styles.button}>CONTACT US</button>
+          <button className={styles.button} onClick={scrollToContact}>
+            CONTACT US
+          </button>
         </div>
       </div>
     </section>

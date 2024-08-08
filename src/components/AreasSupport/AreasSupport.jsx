@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./AreasSupport.module.css";
 import icon from "../../assets/lyonsdenlogo2.png";
 
@@ -16,12 +17,12 @@ const supportAreas = [
   {
     title: "THERAPY FOR TEENS",
     description:
-      "Tailored therapy designed to support adolecents through the unique challenges of their teenage years.",
+      "Tailored therapy designed to support adolescents through the unique challenges of their teenage years.",
   },
   {
     title: "STRESS & LIFE TRANSITIONS",
     description:
-      "Gain guidance for managing life's changes and stressors with practical, solution focused support.",
+      "Gain guidance for managing life's changes and stressors with practical, solution-focused support.",
   },
   {
     title: "ADHD & NEURODIVERGENCE",
@@ -88,7 +89,9 @@ const AreasSupport = () => {
               <img src={icon} alt="Support icon" className={styles.icon} />
               <h2 className={styles.boxTitle}>{area.title}</h2>
               <p className={styles.boxDescription}>{area.description}</p>
-              <button className={styles.button}>Learn More</button>
+              <Link to="/services" className={styles.button}>
+                Learn More
+              </Link>
             </div>
           ))}
         </div>

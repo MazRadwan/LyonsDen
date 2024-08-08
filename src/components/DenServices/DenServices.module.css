@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink:wght@700&family=IBM+Plex+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Irina+Serif&display=swap");
+
+.denServices {
+  background-color: #915905;
+  color: white;
+  padding: 3rem 1rem;
+  text-align: left;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Reem Kufi Ink", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-family: "Irina Serif", serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./TherapyCard.module.css";
 
 const TherapyCard = ({ title, description, image }) => {
@@ -34,7 +35,9 @@ const TherapyCard = ({ title, description, image }) => {
       </div>
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
-        <button className={styles.button}>{description}</button>
+        <Link to="/services" className={styles.button}>
+          {description}
+        </Link>
       </div>
     </div>
   );

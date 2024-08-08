@@ -31,7 +31,7 @@ const OurTherapy = () => {
       <div className={styles.container}>
         <h2 className={styles.heading}>Services</h2>
         <p className={styles.description}>
-          Welcome to A. Lyons Den Therapy, where Adam Lyons provides dedicated
+          Welcome to A Lyons Den Therapy, where Adam Lyons provides dedicated
           virtual therapy services for teens and adults. With a compassionate
           and professional approach, Adam offers personalized support and
           guidance to help you navigate life's challenges and achieve meaningful
