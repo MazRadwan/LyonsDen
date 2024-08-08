@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import Button from "../Button/Button";
+import ConsultationButton from "../ConsultationButton/ConsultationButton";
 import logo from "../../assets/lyonsdenlogo2.png";
 
 const Header = () => {
@@ -41,12 +41,14 @@ const Header = () => {
         </div>
       </a>
       <div className={styles.desktopNav}>{navLinks}</div>
-      <Button className={styles.appointmentButton}>Book an Appointment</Button>
+      <ConsultationButton className={styles.appointmentButton}>
+        Book a Free Consultation
+      </ConsultationButton>
       <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ""}`}>
         {navLinks}
-        <Button className={styles.appointmentButton}>
-          Book an Appointment
-        </Button>
+        <ConsultationButton className={styles.appointmentButton}>
+          Book a Free Consultation
+        </ConsultationButton>
       </div>
       <div className={styles.hamburger} onClick={toggleMenu}>
         <span></span>

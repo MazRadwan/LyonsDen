@@ -26,7 +26,7 @@ const GetStarted = () => {
             <FaPhone className={styles.icon} />
             <div>
               <h4 className={styles.contactHeader}>CALL US</h4>
-              <p>(716) 998-7316</p>
+              <p>(646) 535-1262</p>
             </div>
           </div>
           <div className={styles.contactItem}>

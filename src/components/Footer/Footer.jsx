@@ -30,7 +30,7 @@ const Footer = () => {
             </a>
 
             <a href="#" className={styles.link}>
-              (716) 998-7316
+              (646) 535-1262
             </a>
             <a href="#" className={styles.link}>
               Contact Form
