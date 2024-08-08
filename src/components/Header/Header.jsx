@@ -71,7 +71,7 @@ const Header = () => {
       <Link to="/" className={styles.logoContainer}>
         <img src={logo} alt="A Lyons Den Therapy" className={styles.logo} />
         <div className={styles.siteNameContainer}>
-          <span className={styles.siteName}>A LYON'S DEN</span>
+          <span className={styles.siteName}>A LYONS DEN</span>
           <hr className={styles.separator} />
           <span className={styles.siteSubName}>THERAPY</span>
         </div>
