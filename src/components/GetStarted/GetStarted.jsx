@@ -31,6 +31,7 @@ const GetStarted = ({ id }) => {
           body: JSON.stringify(formData),
         }
       );
+      console.log(response); // Log the response for debugging
       setSubmitMessage("Message sent successfully!");
       setFormData({ name: "", email: "", phone: "", inquiry: "", message: "" });
     } catch (error) {
