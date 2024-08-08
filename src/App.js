@@ -1,43 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import TherapyStrip from "./components/TherapyStrip/TherapyStrip";
-import TherapyServices from "./components/TherapyServices/TherapyServices";
-import DontWaitSection from "./components/DontWaitSection/DontWaitSection";
-import OurTherapy from "./components/OurTherapy/OurTherapy";
-import MinuteSession from "./components/MinuteSession/MinuteSession";
-import AreasSupport from "./components/AreasSupport/AreasSupport";
-import GettingStarted from "./components/GettingStarted/GettingStarted";
-import BioSection from "./components/BioSection/BioSection";
-import ProvidesSection from "./components/ProvidesSection/ProvidesSection";
-import OurApproach from "./components/OurApproach/OurApproach";
-import FaqSection from "./components/FaqSection/FaqSection";
-import GetStarted from "./components/GetStarted/GetStarted";
-import BottomHero from "./components/BottomHero/BottomHero";
 import Footer from "./components/Footer/Footer";
+import HomePage from "./pages/HomePage";
 import "./App.css";
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === "") {
+      window.scrollTo(0, 0);
+    } else {
+      setTimeout(() => {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <TherapyStrip />
-      <TherapyServices />
-      <DontWaitSection />
-      <OurTherapy />
-      <MinuteSession />
-      <AreasSupport />
-      <GettingStarted />
-      <BioSection />
-      <ProvidesSection />
-      <OurApproach />
-      <FaqSection />
-      <GetStarted />
-      <BottomHero />
-      <Footer />
-      <main>{/* Placeholder for main content */}</main>
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/* Add more routes as needed */}
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

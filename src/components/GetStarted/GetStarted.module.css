@@ -57,6 +57,16 @@
   margin-bottom: 1rem;
 }
 
+.contactItem a {
+  color: white;
+  text-decoration: none;
+}
+
+.contactItem a:hover {
+  text-decoration: none;
+  color: #8b572a;
+}
+
 .icon {
   font-size: 1.5rem;
   margin-right: 1rem;
@@ -123,6 +133,17 @@
 
 .submitButton:hover {
   background-color: #704621;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 @media (max-width: 768px) {
