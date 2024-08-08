@@ -24,7 +24,7 @@ const GetStarted = ({ id }) => {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbyh1gfOXLrDHT7izQUfYJlbapRDl7-VisyOu95kruMibZqiCTZ0N1b2GLq7c03e2km0Fg/exec",
+        "https://script.google.com/macros/s/AKfycbykRg6K8fy3uTHqSqNvee5q03hn63NTFVjrKXKQ5JBMZ6MeccbleMoCVhsHe9MGVA6e/exec",
         {
           method: "POST",
           mode: "no-cors",
