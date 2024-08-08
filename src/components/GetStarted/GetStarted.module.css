@@ -45,6 +45,7 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .contactInfo {
