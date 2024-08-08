@@ -19,7 +19,7 @@ const therapyData = [
     image: image2,
   },
   {
-    title: "CORPORATE SERVICES",
+    title: "CLINICAL & ORGANIZATIONAL CONSULTING",
     description: "Learn More",
     image: image1,
   },
@@ -29,7 +29,7 @@ const OurTherapy = () => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Therapy Services</h2>
+        <h2 className={styles.heading}>Services</h2>
         <p className={styles.description}>
           Welcome to A. Lyons Den Therapy, where Adam Lyons provides dedicated
           virtual therapy services for teens and adults. With a compassionate

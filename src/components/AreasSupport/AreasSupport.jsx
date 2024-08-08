@@ -31,7 +31,7 @@ const supportAreas = [
   {
     title: "TRAUMA, PTSD & C-PTSD",
     description:
-      "Find healing from past traumatic experiences with compassionate, trauma-informed therapy.",
+      "Find healing from past traumatic experiences, and lessen the impact on your current life.",
   },
 ];
 
@@ -75,9 +75,8 @@ const AreasSupport = () => {
           Areas of Support
         </h1>
         <p ref={subtextRef} className={styles.subtext}>
-          Our team of psychologists and psychotherapists are trained to gently
-          guide you through the process of healing your relationship with
-          yourself and others.
+          Adam is trained to gently guide you through the process of healing
+          your relationship with yourself and others.
         </p>
         <div className={styles.grid}>
           {supportAreas.map((area, index) => (

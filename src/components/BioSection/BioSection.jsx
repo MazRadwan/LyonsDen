@@ -38,13 +38,12 @@ const BioSection = () => {
           <h4 className={styles.subheader}>Adam Lyons, LCSW</h4>
           <p className={styles.paragraph}>
             With over a decade of experience in therapy, I bring a compassionate
-            and dynamic approach to his practice. Experiences leading adventure,
-            team building and social/emotional learning programs, seeing
-            participants learn/grow, and step out of their comfort zone, is what
-            pushed me to become a therapist.Witnessing firsthand the
-            transformative power of stepping beyond comfort zones, I was
-            inspired to pursue therapy as a means to help people facilitate
-            personal growth and resilience.
+            and dynamic approach to my practice. Experiences leading adventure
+            and social/emotional learning programs, seeing participants
+            learn/grow, and step out of their comfort zone, is what pushed me to
+            become a therapist. Witnessing firsthand the transformative power of
+            stepping beyond comfort zones, I was inspired to pursue therapy as a
+            means to help people facilitate personal growth and resilience.
             <br />
             <br />
             My practice is rooted in a familial tradition of service &
@@ -63,7 +62,7 @@ const BioSection = () => {
             understanding of what it's like to struggle with these conditions.
             Navigating school, work, and life with these differences wasn't
             always easy, but it taught me a lot about resilience and finding
-            strategies that work.These experiences have been incredibly
+            strategies that work. These experiences have been incredibly
             motivating for me.
             <br />
             <br />
@@ -79,7 +78,7 @@ const BioSection = () => {
         <div className={styles.imageContainer}>
           <img src={bioImage} alt="Adam Lyons" className={styles.bioImage} />
           <div className={styles.imageCaption}>
-            <p>Adam Lyons , Certified Therapist</p>
+            <p>Adam Lyons , LSCW</p>
             <p>Founder, A Lyon's Den Therapy</p>
           </div>
         </div>
