@@ -4,16 +4,14 @@ import styles from "./TherapyStrip2.module.css";
 const TherapyStrip2 = () => {
   return (
     <div className={styles.strip}>
+      <div className={styles.stripItem}>VIRTUAL THERAPY SESSIONS</div>
+      <div className={styles.divider}></div>
       <div className={styles.stripItem}>
-        EXPLORE SELF-DISCOVERY AND PERSONAL GROWTH
+        FLEXIBLE HOURS FOR YOUR BUSY SCHEDULE
       </div>
       <div className={styles.divider}></div>
       <div className={styles.stripItem}>
-        GET TOOLS TO MANAGE ANXIETY AND STRESS
-      </div>
-      <div className={styles.divider}></div>
-      <div className={styles.stripItem}>
-        LEARN TO GROW AND MAINTAIN HEALTHY RELATIONSHIPS
+        SPECIALIZING IN ANXIETY, DEPRESSION & LIFE STRESSORS
       </div>
     </div>
   );

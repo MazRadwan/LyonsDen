@@ -39,8 +39,8 @@ const TherapyHero = () => {
       <div className={styles.heroContent}>
         <h1>THERAPY SERVICES</h1>
         <p>
-          Compassionate therapy to help you live in the present moment, <br />
-          free from the weight of the past or worries about the future.
+          Therapy for Teens and Adults in the New York, New Jersey and
+          Connecticut
         </p>
       </div>
     </div>
