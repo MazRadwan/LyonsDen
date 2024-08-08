@@ -11,7 +11,7 @@ const TherapyServices = () => {
       </div>
       <div className={styles.divider}></div>
       <div className={styles.serviceItem}>
-        TREATING ANXIETY, DEPRESSION AND ADHD NEURODIVERGENCE
+        SPECIALIZING IN ANXIETY, DEPRESSION & LIFE STRESSORS
       </div>
     </div>
   );

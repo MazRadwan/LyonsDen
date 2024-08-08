@@ -36,7 +36,7 @@ const BottomHero = () => {
       >
         <div className={styles.overlay}></div>
         <div ref={contentRef} className={styles.content}>
-          <h1 className={styles.header}>A LYON'S DEN THERAPY</h1>
+          <h1 className={styles.header}>A LYONS DEN THERAPY</h1>
           <p className={styles.subtext}>
             Make today the day you choose to invest in your well-being.
           </p>
