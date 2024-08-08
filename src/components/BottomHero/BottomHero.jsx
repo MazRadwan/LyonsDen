@@ -41,8 +41,22 @@ const BottomHero = () => {
             Make today the day you choose to invest in your well-being.
           </p>
           <div className={styles.buttonContainer}>
-            <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
-            <Button>BOOK AN APPOINTMENT</Button>
+            <a
+              href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
+            </a>
+            <a
+              href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              <Button>BOOK AN APPOINTMENT</Button>
+            </a>
           </div>
         </div>
       </div>

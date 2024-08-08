@@ -77,10 +77,57 @@
   margin-bottom: 2rem;
 }
 
+/* ... (keep your existing styles) ... */
+
 .buttonContainer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.buttonContainer > a,
+.buttonContainer > button {
+  display: inline-block;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: inherit;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.buttonContainer > a:first-child,
+.buttonContainer > button:first-child {
+  background-color: #8b572a;
+  color: white;
+}
+
+.buttonContainer > a:first-child:hover,
+.buttonContainer > button:first-child:hover {
+  background-color: #6d451e;
+}
+
+.buttonContainer > a:last-child,
+.buttonContainer > button:last-child {
+  background-color: #0c7076;
+  color: white;
+}
+
+.buttonContainer > a:last-child:hover,
+.buttonContainer > button:last-child:hover {
+  background-color: #0a5c60;
+}
+
+.buttonContainer > a:focus,
+.buttonContainer > button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 87, 42, 0.5);
 }
 
 /* Media Queries */

@@ -77,7 +77,7 @@
 
 .appointmentButton {
   font-family: "Inter", sans-serif;
-  background-color: #125b60;
+  background-color: #8b572a;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -85,10 +85,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in;
   margin-left: 1rem;
+  text-decoration: none;
 }
 
 .appointmentButton:hover {
-  background-color: #0a3d41;
+  background-color: #6d451e;
+  text-decoration: none;
 }
 
 .mobileNav {

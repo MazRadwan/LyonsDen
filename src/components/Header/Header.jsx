@@ -77,13 +77,23 @@ const Header = () => {
         </div>
       </Link>
       <div className={styles.desktopNav}>{navLinks}</div>
-      <ConsultationButton className={styles.appointmentButton}>
-        Book an Appointment
+      <ConsultationButton
+        href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.appointmentButton}
+      >
+        Book a Free Consultation
       </ConsultationButton>
       <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ""}`}>
         {navLinks}
-        <ConsultationButton className={styles.appointmentButton}>
-          Book an Appointment
+        <ConsultationButton
+          href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.appointmentButton}
+        >
+          Book a Free Consultation
         </ConsultationButton>
       </div>
       <div className={styles.hamburger} onClick={toggleMenu}>
