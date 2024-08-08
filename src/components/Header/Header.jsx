@@ -57,6 +57,17 @@ const Header = () => {
           >
             Contact
           </a>
+        ) : location.pathname === "/services" ? (
+          <a
+            href="#contact-therapy"
+            className={styles.navLink}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("contact-therapy");
+            }}
+          >
+            Contact
+          </a>
         ) : (
           <Link to="/#contact" className={styles.navLink}>
             Contact
