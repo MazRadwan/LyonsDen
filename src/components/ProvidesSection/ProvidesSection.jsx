@@ -48,9 +48,7 @@ const ProvidesSection = () => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.header}>
-          A Lyon's Den provides therapy that is:
-        </h2>
+        <h2 className={styles.header}>A Lyons Den provides therapy that is:</h2>
         <div className={styles.boxesContainer}>
           {boxes.map((box, index) => (
             <div

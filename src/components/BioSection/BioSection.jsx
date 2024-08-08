@@ -79,7 +79,7 @@ const BioSection = () => {
           <img src={bioImage} alt="Adam Lyons" className={styles.bioImage} />
           <div className={styles.imageCaption}>
             <p>Adam Lyons , LSCW</p>
-            <p>Founder, A Lyon's Den Therapy</p>
+            <p>Founder, A Lyons Den Therapy</p>
           </div>
         </div>
       </div>

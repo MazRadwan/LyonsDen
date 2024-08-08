@@ -9,11 +9,11 @@ const Footer = () => {
         <div className={styles.logoContainer}>
           <img
             src={logo}
-            alt="A Lyon's Den Therapy Logo"
+            alt="A Lyons Den Therapy Logo"
             className={styles.logo}
           />
           <div className={styles.siteNameContainer}>
-            <span className={styles.siteName}>A LYON'S DEN</span>
+            <span className={styles.siteName}>A LYONS DEN</span>
             <hr className={styles.separator} />
             <span className={styles.siteSubName}>THERAPY</span>
           </div>
@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyright}>
-        2024 A Lyon's Den Therapy. All Rights reserved
+        2024 A Lyons Den Therapy. All Rights reserved
       </div>
     </footer>
   );

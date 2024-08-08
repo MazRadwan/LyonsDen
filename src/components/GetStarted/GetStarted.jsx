@@ -9,10 +9,10 @@ const GetStarted = () => {
   return (
     <section className={styles.getStarted}>
       <div className={styles.leftSection}>
-        <h3 className={styles.smallHeader}>A LYON'S DEN THERAPY</h3>
+        <h3 className={styles.smallHeader}>A LYONS DEN THERAPY</h3>
         <h2 className={styles.largeHeader}>How To Get Started</h2>
         <p className={styles.description}>
-          Get started with A Lyon's Den Therapy! I offer free consultations to
+          Get started with A Lyons Den Therapy! I offer free consultations to
           answer your questions and ensure we are a good fit. If you're ready to
           get started, you can also book an appointment using the buttons below,
           call us, or send us a message.
