@@ -17,6 +17,14 @@
   top: 0;
   left: 0;
   z-index: 1;
+  object-position: center; /* Default to center for all screens */
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .heroImage {
+    object-position: right; /* Adjust to ensure the person's face is centered */
+  }
 }
 
 .heroMask {
