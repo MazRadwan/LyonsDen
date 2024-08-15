@@ -23,17 +23,17 @@ const Specialization = () => {
         "Sometimes, it is difficult to know how to navigate life stressors and feel confident in the decisions that we make. It can be difficult to see what options are and are not available to us, and sometimes we need an impartial sounding board. In therapy, I help clients explore the challenges they are facing. In some cases, I support the client in determining a course of action, and supporting them to implement their decision. In other cases, I support the client to better understand the challenge they are facing, and find value or meaning as they accept what is and is not in their control as they navigate their experience.",
     },
     {
-      title: "ADOLESCENTS",
+      title: "THERAPY FOR TEENS",
       content:
         "The teen years can be challenging: figuring out who you are and want to be, balancing being dependent on others and wanting to be independent, navigating family, school, and peer pressures in the age of social media, FOMO, teen culture, and identity. My therapeutic approach for adolescents is tailored to address these unique complexities, providing a supportive space where they can openly explore their feelings and experiences. I work with adolescents to build resilience, enhance self-awareness, and develop coping strategies that foster personal growth and emotional stability. By working collaboratively, we can address challenges such as paper pressure, academic stress, identity development, and more while equipping them with tools to thrive both now and in the future.",
     },
     {
-      title: "ADHD",
+      title: "ADHD & NEURODIVERGENCE",
       content:
         "Many people struggle with ADHD and other Neurodivergence (social anxiety, dyslexia, learning disorders, etc) without knowing it. ADHD and Neurodivergences are more about how someone processes information than about them not having the information or the ability to do so. Living in our modern world with a neurodivergent brain can present unique challenges, impacting various aspects of life, from academic performance to self-esteem. In therapy, we will harness your strengths and help you manage your symptoms by focusing on separating the process of doing something from knowing how, being able to organize and communicate, focus, and not get distracted. Together, we focus on developing effective coping strategies and building self-confidence, whether creating organizational systems, improving focus, or addressing any emotional impacts, empowering you to navigate your daily lives with greater ease and confidence.",
     },
     {
-      title: "TRAUMA",
+      title: "TRAUMA, PTSD & C-PTSD",
       content:
         "Whether someone has experienced one or many traumatic events, traumatic experiences impact how we see the world. Any time we perceive that our life/well-being, or the life/well-being of a loved one, is in jeopardy, can be a traumatic experience. With PTSD, our brain goes into overdrive to protect us from experiencing this event again. EX: jumping and tensing up when we hear car brakes squeaking after we were in a severe car accident. Complex PTSD is about experiencing many events that were either traumatic or made us question our well-being and having to develop purposeful patterns of being around others so that we do not have to depend on others to feel confident about our well-being. Trauma therapy uses both physical/sensory practices and cognitive/emotional practices to re-ground clients in the present to let the brain know they are no longer experiencing an event where their life/well-being is at risk. Once clients have more control over their initial symptoms, they are supported to process their trauma(s) in a supportive and empathetic manner, exploring and, when appropriate, reframing how their experiences have impacted their self and world views.",
     },
