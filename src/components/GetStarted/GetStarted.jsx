@@ -121,7 +121,7 @@ const GetStarted = ({ id }) => {
             <FaXTwitter className={styles.socialIcon} />
           </a>
           <a
-            href="https://www.instagram.com/direct/alyonsdentmt/"
+            href="https://www.instagram.com/alyonsdentmt/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -199,7 +199,7 @@ const GetStarted = ({ id }) => {
             <option value="consultation">Free Consultation</option>
             <option value="appointment">Book an Appointment</option>
             <option value="general">General Inquiry</option>
-            <option value="corporate">Corporate Services</option>
+            <option value="corporate">Professional Services</option>
           </select>
 
           <label htmlFor="message" className={styles.srOnly}>
