@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import styles from "./GetStarted.module.css";
-import { FaPhone, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
+import {
+  FaPhone,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
 
@@ -46,10 +54,9 @@ const GetStarted = ({ id }) => {
         <h2 className={styles.largeHeader}>How To Get Started</h2>
         <h3 className={styles.smallHeader}>A LYONS DEN THERAPY</h3>
         <p className={styles.description}>
-          Get started with A Lyons Den Therapy! I offer free consultations to
-          answer your questions and ensure we are a good fit. If you're ready to
-          get started, you can also book an appointment using the buttons below,
-          call us, or send us a message.
+          If you're ready to get started, you can also book a consultation using
+          the buttons below, call us, or send us a message. Current clients book
+          an appointment using the button below.
         </p>
         <div className={styles.buttonContainer}>
           <ConsultationButton
@@ -95,6 +102,40 @@ const GetStarted = ({ id }) => {
               </p>
             </div>
           </div>
+        </div>
+        <div className={styles.socialLinks}>
+          <a
+            href="https://www.facebook.com/people/A-Lyons-Den-Therapy/61564147023316/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <FaFacebookF className={styles.socialIcon} />
+          </a>
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X (formerly Twitter)"
+          >
+            <FaXTwitter className={styles.socialIcon} />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <FaInstagram className={styles.socialIcon} />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/alyonsdentherapy"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedinIn className={styles.socialIcon} />
+          </a>
         </div>
         <div className={styles.divider} aria-hidden="true"></div>
         <p className={styles.footer}>
