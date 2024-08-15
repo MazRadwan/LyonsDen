@@ -113,7 +113,7 @@ const GetStarted = ({ id }) => {
             <FaFacebookF className={styles.socialIcon} />
           </a>
           <a
-            href="https://x.com"
+            href="https://x.com/alyonsdentmt"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X (formerly Twitter)"
@@ -121,7 +121,7 @@ const GetStarted = ({ id }) => {
             <FaXTwitter className={styles.socialIcon} />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/direct/alyonsdentmt/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
