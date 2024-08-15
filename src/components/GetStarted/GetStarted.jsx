@@ -199,6 +199,7 @@ const GetStarted = ({ id }) => {
             <option value="consultation">Free Consultation</option>
             <option value="appointment">Book an Appointment</option>
             <option value="general">General Inquiry</option>
+            <option value="corporate">Corporate Services</option>
           </select>
 
           <label htmlFor="message" className={styles.srOnly}>
