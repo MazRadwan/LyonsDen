@@ -138,4 +138,9 @@ CLAUDE.md
 tasks/
 .mcp.json
 
+# Playwright QA artifacts (reports/results are generated; baselines are committed)
+/playwright-report/
+/test-results/
+/playwright/.cache/
+
 .DS_Store
