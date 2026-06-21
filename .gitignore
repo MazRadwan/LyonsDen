@@ -129,5 +129,13 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Local research / working notes (not tracked)
+research/
+
+# Local AI orchestration tooling — contractor-only, do NOT push to the client repo
+CLAUDE.md
+.claude/
+tasks/
+.mcp.json
 
 .DS_Store
