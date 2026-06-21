@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Inter:wght@500&display=swap");
 
 .card {
   background-color: #cec7bc;
@@ -37,7 +37,7 @@
 }
 
 .title {
-  font-family: "Reem Kufi Ink", sans-serif;
+  font-family: "Reem Kufi", sans-serif;
   color: black;
   font-size: 1rem;
   margin-bottom: 1rem;

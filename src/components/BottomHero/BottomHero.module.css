@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink:wght@700&family=Inter:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Inter:wght@400&display=swap");
 
 .bottomHero {
   position: relative;
@@ -39,7 +39,7 @@
 }
 
 .header {
-  font-family: "Reem Kufi Ink", sans-serif;
+  font-family: "Reem Kufi", sans-serif;
   font-size: 3rem;
   margin-bottom: 1rem;
 }

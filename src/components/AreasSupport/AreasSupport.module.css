@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink:wght@400;700&family=Inter:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Inter:wght@400&display=swap");
 
 .sectionWrapper {
   background-color: #fffef8;
@@ -14,7 +14,7 @@
 }
 
 .heading {
-  font-family: "Reem Kufi Ink", sans-serif;
+  font-family: "Reem Kufi", sans-serif;
   font-size: 3.5rem;
   color: #0d4448;
   text-align: center;
@@ -55,7 +55,7 @@
 }
 
 .boxTitle {
-  font-family: "Reem Kufi Ink", sans-serif;
+  font-family: "Reem Kufi", sans-serif;
   font-size: 1.2rem;
   color: #0d4448;
   margin-bottom: 1rem;

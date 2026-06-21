@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap");
 
 .section {
@@ -14,7 +14,7 @@
 }
 
 .heading {
-  font-family: "Reem Kufi Ink", sans-serif;
+  font-family: "Reem Kufi", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-align: left;
