@@ -7,9 +7,8 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import HomePage from "./pages/HomePage";
-import TherapyServices from "./pages/TherapyServices"; // Import the new page
-import "./App.css";
+import HomePage from "./cra-pages/HomePage";
+import TherapyServices from "./cra-pages/TherapyServices"; // Import the new page
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
