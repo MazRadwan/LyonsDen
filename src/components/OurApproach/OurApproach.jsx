@@ -14,16 +14,20 @@ const OurApproach = () => {
   };
 
   useEffect(() => {
+    let modalTimer;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           sectionRef.current.classList.add(styles.animateHero);
-          setTimeout(() => {
-            modalRef.current.classList.add(styles.animateModal);
-          }, 2000); // Delay modal animation by 2 seconds
+          // Small stagger so the modal follows the hero scale-in rather than
+          // snapping in at the same instant. Cancellable on unmount below.
+          modalTimer = setTimeout(() => {
+            modalRef.current?.classList.add(styles.animateModal);
+          }, 500);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.25 }
     );
 
     if (sectionRef.current) {
@@ -31,6 +35,7 @@ const OurApproach = () => {
     }
 
     return () => {
+      clearTimeout(modalTimer);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
