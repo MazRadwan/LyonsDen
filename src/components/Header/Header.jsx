@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
@@ -6,11 +6,46 @@ import logo from "../../assets/lyonsdenlogo2.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Smart sticky header: hide on scroll down, reveal on scroll up.
+  // rAF-throttled and ref-based so we only re-render when visibility flips.
+  useEffect(() => {
+    const SHOW_AT_TOP = 80; // always show within this distance from the top
+    const DELTA = 6; // ignore sub-pixel scroll jitter
+
+    const update = () => {
+      const currentY = window.scrollY;
+
+      if (currentY < SHOW_AT_TOP || isMenuOpen) {
+        // Near the top, or the mobile menu is open: keep the header visible
+        setIsHidden(false);
+      } else if (Math.abs(currentY - lastScrollY.current) > DELTA) {
+        // Hide when scrolling down, reveal when scrolling up
+        setIsHidden(currentY > lastScrollY.current);
+      }
+
+      lastScrollY.current = currentY;
+      ticking.current = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking.current) {
+        ticking.current = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isMenuOpen]);
 
   // Integrated scroll function
   const scrollToSection = (id) => {
@@ -78,7 +113,7 @@ const Header = () => {
   );
 
   return (
-    <nav className={styles.navBar}>
+    <nav className={`${styles.navBar} ${isHidden ? styles.navBarHidden : ""}`}>
       <Link to="/" className={styles.logoContainer}>
         <img src={logo} alt="A Lyons Den Therapy" className={styles.logo} />
         <div className={styles.siteNameContainer}>

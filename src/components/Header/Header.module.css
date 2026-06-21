@@ -10,6 +10,24 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Smart sticky: slide the header up out of view when scrolling down */
+.navBarHidden {
+  transform: translateY(-100%);
+}
+
+/* Respect users who prefer reduced motion: never animate or hide the header */
+@media (prefers-reduced-motion: reduce) {
+  .navBar {
+    transition: none;
+  }
+
+  .navBarHidden {
+    transform: none;
+  }
 }
 
 .logoContainer {
