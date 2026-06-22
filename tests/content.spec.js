@@ -25,9 +25,14 @@ test("services page key copy is present", async ({ page }) => {
   ).toBeVisible();
 });
 
-// Baseline of the CURRENT (pre-SEO) head. Expected to change ON PURPOSE when we
-// add per-page titles/meta — update these asserts at that point.
-test("current title baseline (pre-SEO)", async ({ page }) => {
+// Per-page SEO titles (added in the SEO sprint). These are the real, shipped
+// titles — assert them exactly so a future regression to a generic title is caught.
+test("home page has its per-page SEO title", async ({ page }) => {
   await page.goto("/");
-  expect(await page.title()).toBe("Lyons Den");
+  expect(await page.title()).toBe("A Lyons Den Therapy | Online Therapy in NY, NJ & CT");
+});
+
+test("services page has its per-page SEO title", async ({ page }) => {
+  await page.goto("/services");
+  expect(await page.title()).toBe("Therapy Services | A Lyons Den Therapy");
 });

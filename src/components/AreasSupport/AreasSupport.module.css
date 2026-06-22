@@ -15,8 +15,11 @@
 .heading {
   font-family: "Reem Kufi", sans-serif;
   font-size: 3.5rem;
+  font-weight: 400;
   color: #0d4448;
   text-align: center;
+  /* Pin margins to h1 browser defaults so h2 tag renders identically */
+  margin-top: 0.67em;
   margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(50px);

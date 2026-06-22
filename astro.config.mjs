@@ -5,5 +5,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://alyonsdentherapy.com",
   trailingSlash: "never",
+  build: { format: "file" },
   integrations: [react(), sitemap()],
 });

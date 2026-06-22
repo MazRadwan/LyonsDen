@@ -2,6 +2,15 @@
 /**
  * Layout.astro — shared HTML shell for every Astro page.
  *
+ * Props (Sprint 4 — story 1.4.1 + 1.4.2):
+ *   title       (string, required) — unique per-page <title>
+ *   description (string, required) — unique per-page meta description
+ *   canonical   (string, required) — absolute canonical URL
+ *   ogImage     (string, optional) — absolute OG image URL; defaults to site logo
+ *   ogType      (string, optional) — OG type; defaults to "website"
+ *   jsonLd      (object, optional) — JSON-LD graph from siteSchema(); emitted as
+ *                                    <script type="application/ld+json">
+ *
  * Consolidates ALL Google Fonts into one <link> (replaces the 19 scattered
  * @import lines across *.module.css files — those are cleaned up in Sprint 5
  * when CRA is removed; the layout provides fonts globally so Sprint-1 .astro
@@ -28,7 +37,14 @@
  */
 import "../styles/global.css";
 
-const { title = "Lyons Den" } = Astro.props;
+const {
+  title = "Lyons Den",
+  description = "",
+  canonical = "https://alyonsdentherapy.com/",
+  ogImage = "https://alyonsdentherapy.com/lyonsdenlogo2.png",
+  ogType = "website",
+  jsonLd,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -36,7 +52,29 @@ const { title = "Lyons Den" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Per-page SEO meta (story 1.4.1) -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="A Lyons Den Therapy" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD structured data (story 1.4.2) -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <!-- Preconnect to Google Fonts CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,7 +91,7 @@ const { title = "Lyons Den" } = Astro.props;
       rel="stylesheet"
     />
 
-    <!-- Per-page head slot: meta, canonical, OG, JSON-LD (Sprint 4) -->
+    <!-- Per-page head slot: additional meta (Sprint 4 extension point) -->
     <slot name="head" />
   </head>
   <body>

@@ -5,6 +5,11 @@
  * Composes the static .astro sections in the exact order from audit-report §A
  * "Home / stack". The 5 interactive components are mounted as React islands
  * hydrated client:load (Sprint 2, stories 1.2.2–1.2.5).
+ *
+ * Per-page SEO (Sprint 4 — stories 1.4.1 + 1.4.2):
+ *   Passes unique title, description, canonical, OG image, and JSON-LD graph
+ *   to Layout.astro. The OG image is resolved via getImage() so Astro optimises
+ *   it and the absolute URL is always correct.
  */
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header/Header.island.jsx";
@@ -28,8 +33,24 @@ import ourApproachHero from "../assets/lyonsdenhero4.jpeg";
 const ourApproachBg = (await getImage({ src: ourApproachHero, format: "webp", width: 1920 })).src;
 import headerLogoAsset from "../assets/lyonsdenlogo2.png";
 const headerLogo = (await getImage({ src: headerLogoAsset, format: "webp", width: 400 })).src;
+
+// OG image: optimised logo resolved to an absolute URL (story 1.4.1)
+import ogLogoAsset from "../assets/lyonsdenlogo2.png";
+const ogImgSrc = (await getImage({ src: ogLogoAsset, format: "webp", width: 1200 })).src;
+const ogImageAbs = new URL(ogImgSrc, Astro.site).href;
+
+// JSON-LD graph (story 1.4.2)
+import { siteSchema } from "../lib/structured-data.js";
+const canonical = "https://alyonsdentherapy.com/";
+const jsonLd = siteSchema({ canonical, image: ogImageAbs });
 ---
-<Layout>
+<Layout
+  title="A Lyons Den Therapy | Online Therapy in NY, NJ & CT"
+  description="A Lyons Den Therapy — Adam Lyons, LCSW provides online therapy for teens and adults across New York, New Jersey, and Connecticut. Book a free consultation."
+  canonical={canonical}
+  ogImage={ogImageAbs}
+  jsonLd={jsonLd}
+>
   <Header client:load currentPath="/" logoSrc={headerLogo} />
   <Hero />
   <TherapyStrip />
