@@ -148,3 +148,5 @@ tasks/
 /playwright/.cache/
 
 .DS_Store
+# CRA legacy build output (removed; CRA replaced by Astro dist/)
+/build
