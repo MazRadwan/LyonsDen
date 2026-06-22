@@ -85,11 +85,25 @@ const {
       Families: Reem Kufi 400/700 | Inter 400/500/600 | Jomolhari 400
                 IBM Plex Sans KR 400 | Inria Serif 400
       display=swap: matches current per-component @import behavior.
+
+      Loaded ASYNC (media="print" + onload swap to "all") so the stylesheet is
+      NOT render-blocking — on throttled mobile it was blocking first paint for
+      ~1s, delaying the hero-image LCP. With display=swap text paints immediately
+      in fallback then swaps; end-state render is identical. <noscript> fallback
+      keeps fonts working with JS disabled.
     -->
     <link
       href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Inter:wght@400;500;600&family=Jomolhari&family=IBM+Plex+Sans+KR:wght@400&family=Inria+Serif:wght@400&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Inter:wght@400;500;600&family=Jomolhari&family=IBM+Plex+Sans+KR:wght@400&family=Inria+Serif:wght@400&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Per-page head slot: additional meta (Sprint 4 extension point) -->
     <slot name="head" />

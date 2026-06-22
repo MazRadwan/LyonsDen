@@ -4,7 +4,11 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("Home page interactions", () => {
   test("smart-sticky header hides on scroll down, reveals on scroll up", async ({ page }) => {
-    await page.goto("/");
+    // Fonts load async (non-render-blocking) — wait for the swap to settle so the
+    // reflow doesn't race the programmatic scroll-direction sequence below. The
+    // header's hide/reveal behavior itself is unchanged; this only de-flakes timing.
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.evaluate(() => document.fonts.ready.then(() => true));
     const nav = page.locator("nav").first();
     const isHidden = () => nav.evaluate((n) => /navBarHidden/.test(n.className));
 
