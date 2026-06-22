@@ -3,12 +3,14 @@
  * index.astro — Home page (/)
  *
  * Composes the static .astro sections in the exact order from audit-report §A
- * "Home / stack". The 5 interactive components (Header, OurApproach, FaqSection,
- * GetStarted) are React islands deferred to Sprint 2; their mount slots are
- * reserved here with stable placeholder elements so the section order is locked
- * and anchor IDs (#about, #contact) resolve immediately.
+ * "Home / stack". The 5 interactive components are mounted as React islands
+ * hydrated client:load (Sprint 2, stories 1.2.2–1.2.5).
  */
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header/Header.island.jsx";
+import OurApproach from "../components/OurApproach/OurApproach.island.jsx";
+import FaqSection from "../components/FaqSection/FaqSection.jsx";
+import GetStarted from "../components/GetStarted/GetStarted.jsx";
 import Hero from "../components/Hero/Hero.astro";
 import TherapyStrip from "../components/TherapyStrip/TherapyStrip.astro";
 import TherapyServices from "../components/TherapyServices/TherapyServices.astro";
@@ -21,10 +23,9 @@ import BioSection from "../components/BioSection/BioSection.astro";
 import ProvidesSection from "../components/ProvidesSection/ProvidesSection.astro";
 import BottomHero from "../components/BottomHero/BottomHero.astro";
 import Footer from "../components/Footer/Footer.astro";
-// Sprint-2 islands NOT imported yet: Header, OurApproach, FaqSection, GetStarted.
 ---
 <Layout>
-  {/* ISLAND (Sprint 2): <Header client:load currentPath="/" /> */}
+  <Header client:load currentPath="/" />
   <Hero />
   <TherapyStrip />
   <TherapyServices />
@@ -35,9 +36,9 @@ import Footer from "../components/Footer/Footer.astro";
   <GettingStarted />
   <BioSection id="about" />
   <ProvidesSection />
-  {/* ISLAND (Sprint 2): <OurApproach client:load /> */}
-  {/* ISLAND (Sprint 2): <FaqSection client:load /> */}
-  <div id="contact">{/* ISLAND (Sprint 2): <GetStarted client:load id="contact" /> */}</div>
+  <OurApproach client:load />
+  <FaqSection client:load />
+  <GetStarted client:load id="contact" />
   <BottomHero />
   <Footer />
 </Layout>

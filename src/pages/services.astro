@@ -3,28 +3,30 @@
  * services.astro — Therapy Services page (/services)
  *
  * Composes the static .astro sections in the exact order from audit-report §A
- * "Services /services stack". The 4 interactive components (Header, Specialization,
- * OurApproach, FaqSection, GetStarted) are React islands deferred to Sprint 2;
- * their mount slots are reserved here with stable placeholder elements so the
- * section order is locked and the anchor ID (#contact-therapy) resolves immediately.
+ * "Services /services stack". The 5 interactive components are mounted as React
+ * islands hydrated client:load (Sprint 2, stories 1.2.2–1.2.5).
  */
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header/Header.island.jsx";
+import Specialization from "../components/Specialization/Specialization.jsx";
+import OurApproach from "../components/OurApproach/OurApproach.island.jsx";
+import FaqSection from "../components/FaqSection/FaqSection.jsx";
+import GetStarted from "../components/GetStarted/GetStarted.jsx";
 import TherapyHero from "../components/TherapyHero/TherapyHero.astro";
 import TherapyStrip2 from "../components/TherapyStrip2/TherapyStrip2.astro";
 import DenServices from "../components/DenServices/DenServices.astro";
 import BottomHero from "../components/BottomHero/BottomHero.astro";
 import Footer from "../components/Footer/Footer.astro";
-// Sprint-2 islands NOT imported yet: Header, Specialization, OurApproach, FaqSection, GetStarted.
 ---
 <Layout>
-  {/* ISLAND (Sprint 2): <Header client:load currentPath="/services" /> */}
+  <Header client:load currentPath="/services" />
   <TherapyHero />
   <TherapyStrip2 />
   <DenServices />
-  {/* ISLAND (Sprint 2): <Specialization client:load /> */}
-  {/* ISLAND (Sprint 2): <OurApproach client:load /> */}
-  {/* ISLAND (Sprint 2): <FaqSection client:load /> */}
-  <div id="contact-therapy">{/* ISLAND (Sprint 2): <GetStarted client:load id="contact-therapy" /> */}</div>
+  <Specialization client:load />
+  <OurApproach client:load />
+  <FaqSection client:load />
+  <GetStarted client:load id="contact-therapy" />
   <BottomHero />
   <Footer />
 </Layout>

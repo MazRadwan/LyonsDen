@@ -39,4 +39,29 @@
     var target = targetFor(el);
     if (target) target.scrollIntoView({ behavior: "smooth" });
   });
+
+  // On load with a hash (e.g. arriving via a cross-page /#about link from the
+  // services-page Header), smooth-scroll to the target — reproduces CRA's
+  // ScrollToTop post-navigation smooth scroll (old src/App.js). Undo the browser's
+  // native instant jump first so the scroll animates from the top, as CRA did.
+  function scrollToHashOnLoad() {
+    var hash = location.hash;
+    if (!hash || hash === "#") return;
+    var target;
+    try {
+      target = document.querySelector(hash);
+    } catch (e) {
+      return;
+    }
+    if (!target) return;
+    window.scrollTo(0, 0);
+    setTimeout(function () {
+      target.scrollIntoView({ behavior: "smooth" });
+    }, 0);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", scrollToHashOnLoad);
+  } else {
+    scrollToHashOnLoad();
+  }
 })();

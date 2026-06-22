@@ -94,3 +94,27 @@ test.describe("Mobile-only", () => {
     await expect(page.locator('[class*="mobileNav"]')).toHaveClass(/open/);
   });
 });
+
+// Asset integrity — guards against broken <img> srcs that a full-page screenshot
+// can miss under maxDiffPixelRatio (e.g. an Astro/Vite ImageMetadata object passed
+// straight to src renders url([object Object]) → 404 → naturalWidth 0). Also protects
+// the Sprint 3 astro:assets image work. A loaded-but-zero-width image is broken.
+test.describe("Asset integrity", () => {
+  for (const [name, path] of [["home", "/"], ["services", "/services"]]) {
+    test(`no broken images on ${name} page`, async ({ page }) => {
+      await page.goto(path);
+      await page.evaluate(async () => {
+        window.scrollTo(0, document.body.scrollHeight);
+        await new Promise((r) => setTimeout(r, 600));
+        window.scrollTo(0, 0);
+      });
+      await page.waitForLoadState("networkidle").catch(() => {});
+      const broken = await page.evaluate(() =>
+        Array.from(document.querySelectorAll("img"))
+          .filter((i) => i.complete && i.naturalWidth === 0)
+          .map((i) => i.getAttribute("src"))
+      );
+      expect(broken).toEqual([]);
+    });
+  }
+});
