@@ -1,0 +1,25 @@
+---
+import styles from "./TherapyHero.module.css";
+import _heroImage from "../../assets/lyonsdenhero6.png";
+const heroImage: string = (typeof _heroImage === "string" ? _heroImage : (_heroImage as any).src) as string;
+---
+<div
+  class={`${styles.hero} ${styles.hidden}`}
+  data-reveal
+  data-reveal-class={styles.visible}
+  data-reveal-threshold="0.1"
+>
+  <img
+    src={heroImage}
+    alt="Therapy Services Hero"
+    class={styles.heroImage}
+  />
+  <div class={styles.heroMask}></div>
+  <div class={styles.heroContent}>
+    <h1>THERAPY SERVICES</h1>
+    <p>
+      Therapy for Teens and Adults in the New York, New Jersey and
+      Connecticut
+    </p>
+  </div>
+</div>

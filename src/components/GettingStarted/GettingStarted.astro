@@ -1,0 +1,50 @@
+---
+import styles from "./GettingStarted.module.css";
+import Button from "../Button/Button.astro";
+import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
+---
+<section class={styles.section}>
+  <div class={styles.lineWrapper}>
+    <div class={styles.lineContainer}>
+      <div class={styles.line}></div>
+    </div>
+  </div>
+  <div class={styles.container}>
+    <div class={styles.content}>
+      <div class={styles.headerContainer}>
+        <h2 class={styles.heading}>
+          Getting started
+          <br />
+          is simple!
+        </h2>
+      </div>
+      <div
+        class={styles.animatedContent}
+        data-reveal
+        data-reveal-class={styles.animate}
+        data-reveal-threshold="0.1"
+      >
+        <p class={styles.text}>
+          Book online or contact us. Offering online and in-person therapy
+          in New York City and surrounding areas.
+        </p>
+        <div class={styles.buttonContainer}>
+          <ConsultationButton
+            href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BOOK A FREE CONSULTATION
+          </ConsultationButton>
+          <Button
+            href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BOOK AN APPOINTMENT
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

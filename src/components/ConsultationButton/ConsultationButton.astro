@@ -1,0 +1,9 @@
+---
+import styles from "./ConsultationButton.module.css";
+const { href, target, rel, type = "button", class: className = "" } = Astro.props;
+---
+{href ? (
+  <a href={href} target={target} rel={rel} class={`${styles.button} ${className}`}><slot /></a>
+) : (
+  <button type={type} class={`${styles.button} ${className}`}><slot /></button>
+)}

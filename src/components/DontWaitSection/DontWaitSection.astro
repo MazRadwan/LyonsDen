@@ -1,0 +1,60 @@
+---
+import styles from "./DontWaitSection.module.css";
+import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
+import Button from "../Button/Button.astro";
+import _lionLogo from "../../assets/lyonsdenlogo2.png";
+const lionLogo: string = (typeof _lionLogo === "string" ? _lionLogo : (_lionLogo as any).src) as string;
+---
+<div class={styles.section}>
+  <div class={styles.container}>
+    <img src={lionLogo} alt="Logo" class={styles.logo} />
+    <h2
+      class={`${styles.h2} ${styles.animated}`}
+      data-reveal
+      data-reveal-class={styles.visible}
+      data-reveal-threshold="0.5"
+      data-reveal-margin="-50px"
+      data-reveal-delay="300"
+    >
+      Don't wait to get the help you need.
+    </h2>
+    <p
+      class={`${styles.p} ${styles.animated}`}
+      data-reveal
+      data-reveal-class={styles.visible}
+      data-reveal-threshold="0.5"
+      data-reveal-margin="-50px"
+      data-reveal-delay="300"
+    >
+      Who we are is shaped by our experiences, environment, and biology.
+      Sometimes, what once kept us safe and content no longer serves us, and
+      it's time to find a new way.
+    </p>
+    <p
+      class={`${styles.highlight} ${styles.animated}`}
+      data-reveal
+      data-reveal-class={styles.visible}
+      data-reveal-threshold="0.5"
+      data-reveal-margin="-50px"
+      data-reveal-delay="300"
+    >
+      Set forth on a journey of self-discovery and empowerment.
+    </p>
+    <div class={styles.buttons}>
+      <ConsultationButton
+        href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book a Free Consultation
+      </ConsultationButton>
+      <Button
+        href=" https://calendar.app.google/jGxgSzFJxnU2spgP7"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book an Appointment
+      </Button>
+    </div>
+  </div>
+</div>

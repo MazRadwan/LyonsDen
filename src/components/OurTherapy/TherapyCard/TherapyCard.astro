@@ -1,0 +1,18 @@
+---
+import styles from "./TherapyCard.module.css";
+const { title, description, image } = Astro.props;
+---
+<div
+  class={`${styles.card} ${styles.hidden}`}
+  data-reveal
+  data-reveal-class={styles.visible}
+  data-reveal-threshold="0.1"
+>
+  <div class={styles.imageContainer}>
+    <img src={String(image.src ?? image)} alt={title} class={styles.image} />
+  </div>
+  <div class={styles.content}>
+    <h3 class={styles.title}>{title}</h3>
+    <a href="/services" class={styles.button}>{description}</a>
+  </div>
+</div>

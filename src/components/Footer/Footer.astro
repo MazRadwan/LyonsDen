@@ -1,0 +1,71 @@
+---
+import styles from "./Footer.module.css";
+import _logo from "../../assets/lyonsdenlogo2.png";
+const logo: string = (typeof _logo === "string" ? _logo : (_logo as any).src) as string;
+---
+<footer class={styles.footer}>
+  <div class={styles.container}>
+    <div class={styles.logoContainer}>
+      <img
+        src={logo}
+        alt="A Lyons Den Therapy Logo"
+        class={styles.logo}
+      />
+      <div class={styles.siteNameContainer}>
+        <span class={styles.siteName}>A LYONS DEN</span>
+        <hr class={styles.separator} />
+        <span class={styles.siteSubName}>THERAPY</span>
+      </div>
+    </div>
+
+    <div class={styles.linksSection}>
+      <div class={styles.linkColumn}>
+        <h3 class={styles.linkHeader}>GET STARTED</h3>
+        <a
+          href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class={styles.link}
+        >
+          Book a Free Consultation
+        </a>
+        <a
+          href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class={styles.link}
+        >
+          Book an appointment
+        </a>
+        <a href="tel:+16465351262" class={styles.link}>
+          (646) 535-1262
+        </a>
+        <a href="#contact" class={styles.link}>
+          Contact Form
+        </a>
+      </div>
+
+      <div class={styles.linkColumn}>
+        <h3 class={styles.linkHeader}>QUICK LINKS</h3>
+        <a href="#about" class={styles.link}>
+          About Adam
+        </a>
+        <a href="/services" class={styles.link}>
+          Therapy Services
+        </a>
+      </div>
+
+      <div class={styles.linkColumn}>
+        <h3 class={styles.linkHeader}>SERVICING</h3>
+        <p class={styles.address}>
+          New York, New Jersey
+          <br />
+          and Connecticut Area
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class={styles.copyright}>
+    2024 A Lyons Den Therapy. All Rights reserved
+  </div>
+</footer>

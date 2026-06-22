@@ -50,7 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@playwright/test": "^1.61.0"
+    "@playwright/test": "^1.61.0",
+    "typescript": "^5.9.3"
   }
 }

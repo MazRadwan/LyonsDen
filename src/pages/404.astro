@@ -1,0 +1,17 @@
+---
+/**
+ * 404.astro — Page not found stub.
+ *
+ * Minimal 404 page served by Astro for unknown routes in dev/preview.
+ * The production soft-404 fix (removing the Netlify SPA catch-all) lands
+ * in Sprint 5 / Story 1.5.2. SEO meta for this page is deferred to Sprint 4.
+ */
+import Layout from "../layouts/Layout.astro";
+---
+<Layout>
+  <main style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+    <h1>Page not found</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <a href="/">Return home</a>
+  </main>
+</Layout>
