@@ -3,12 +3,10 @@ import styles from "./TherapyHero.module.css";
 import { Image } from "astro:assets";
 import heroImage from "../../assets/lyonsdenhero6.png";
 ---
-<div
-  class={`${styles.hero} ${styles.hidden}`}
-  data-reveal
-  data-reveal-class={styles.visible}
-  data-reveal-threshold="0.1"
->
+<!-- LCP element: render immediately visible (opacity:1), matching home's Hero.
+     The old data-reveal fade (opacity 0→1 over 1s) delayed + destabilized the
+     LCP image paint. Settled appearance is identical (golden master stays green). -->
+<div class={styles.hero} style="opacity:1">
   <Image
     src={heroImage}
     alt="Therapy Services Hero"
