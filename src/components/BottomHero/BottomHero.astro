@@ -1,7 +1,8 @@
 ---
 import styles from "./BottomHero.module.css";
+import { getImage } from "astro:assets";
 import _heroImage from "../../assets/lyonsdenhero5.jpeg";
-const heroImage: string = (typeof _heroImage === "string" ? _heroImage : (_heroImage as any).src) as string;
+const heroImage = (await getImage({ src: _heroImage, format: "webp", width: 1920 })).src;
 import Button from "../Button/Button.astro";
 import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
 ---

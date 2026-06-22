@@ -1,15 +1,18 @@
 ---
 import styles from "./Footer.module.css";
-import _logo from "../../assets/lyonsdenlogo2.png";
-const logo: string = (typeof _logo === "string" ? _logo : (_logo as any).src) as string;
+import { Image } from "astro:assets";
+import logoImg from "../../assets/lyonsdenlogo2.png";
 ---
 <footer class={styles.footer}>
   <div class={styles.container}>
     <div class={styles.logoContainer}>
-      <img
-        src={logo}
+      <Image
+        src={logoImg}
         alt="A Lyons Den Therapy Logo"
         class={styles.logo}
+        format="webp"
+        width={400}
+        loading="lazy"
       />
       <div class={styles.siteNameContainer}>
         <span class={styles.siteName}>A LYONS DEN</span>

@@ -2,12 +2,12 @@
 import styles from "./DontWaitSection.module.css";
 import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
 import Button from "../Button/Button.astro";
-import _lionLogo from "../../assets/lyonsdenlogo2.png";
-const lionLogo: string = (typeof _lionLogo === "string" ? _lionLogo : (_lionLogo as any).src) as string;
+import { Image } from "astro:assets";
+import lionLogo from "../../assets/lyonsdenlogo2.png";
 ---
 <div class={styles.section}>
   <div class={styles.container}>
-    <img src={lionLogo} alt="Logo" class={styles.logo} />
+    <Image src={lionLogo} alt="Logo" class={styles.logo} format="webp" width={400} loading="lazy" />
     <h2
       class={`${styles.h2} ${styles.animated}`}
       data-reveal

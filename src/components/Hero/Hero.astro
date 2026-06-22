@@ -1,5 +1,6 @@
 ---
 import styles from "./Hero.module.css";
+import { Image } from "astro:assets";
 import Button from "../Button/Button.astro";
 import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
 import heroImage from "../../assets/lyonsdenhero1.png";
@@ -22,5 +23,5 @@ import heroImage from "../../assets/lyonsdenhero1.png";
       >Book an Appointment</Button>
     </div>
   </div>
-  <img src={String(heroImage.src ?? heroImage)} alt="Hero" class={styles.heroImage} />
+  <Image src={heroImage} alt="Hero" class={styles.heroImage} format="webp" loading="eager" fetchpriority="high" widths={[768, 1280, 1920]} sizes="100vw" />
 </div>

@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Header.module.css";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
-import logo from "../../assets/lyonsdenlogo2.png";
 
-const Header = ({ currentPath }) => {
+const Header = ({ currentPath, logoSrc }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
@@ -113,7 +112,7 @@ const Header = ({ currentPath }) => {
   return (
     <nav className={`${styles.navBar} ${isHidden ? styles.navBarHidden : ""}`}>
       <a href="/" className={styles.logoContainer}>
-        <img src={logo.src ?? logo} alt="A Lyons Den Therapy" className={styles.logo} />
+        <img src={logoSrc} alt="A Lyons Den Therapy" className={styles.logo} />
         <div className={styles.siteNameContainer}>
           <span className={styles.siteName}>A LYONS DEN</span>
           <hr className={styles.separator} />

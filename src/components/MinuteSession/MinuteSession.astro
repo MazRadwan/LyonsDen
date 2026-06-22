@@ -1,7 +1,8 @@
 ---
 import styles from "./MinuteSession.module.css";
-import heroImage from "../../assets/lyonsdenhero2a.jpeg";
-const bgUrl = String(heroImage.src ?? heroImage);
+import { getImage } from "astro:assets";
+import _heroImage from "../../assets/lyonsdenhero2a.jpeg";
+const bgUrl = (await getImage({ src: _heroImage, format: "webp", width: 1920 })).src;
 ---
 <section class={styles.section}>
   <div

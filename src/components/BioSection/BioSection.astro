@@ -1,5 +1,6 @@
 ---
 import styles from "./BioSection.module.css";
+import { Image } from "astro:assets";
 import bioImage from "../../assets/lyonsdenbio-pic1.jpg";
 const { id } = Astro.props;
 ---
@@ -56,7 +57,7 @@ const { id } = Astro.props;
       </div>
     </div>
     <div class={styles.imageContainer}>
-      <img src={String(bioImage.src ?? bioImage)} alt="Adam Lyons" class={styles.bioImage} />
+      <Image src={bioImage} alt="Adam Lyons" class={styles.bioImage} format="webp" loading="lazy" widths={[700, 1400]} sizes="(max-width: 900px) 95vw, 45vw" />
       <div class={styles.imageCaption}>
         <p>Adam Lyons, LCSW</p>
         <p>Founder, A Lyons Den Therapy</p>

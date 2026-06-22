@@ -10,18 +10,29 @@ const { test, expect } = require("@playwright/test");
 // (Inlined rather than imported — Playwright's transform hook trips over a
 // relative require on Node 22.)
 async function revealAndSettle(page) {
+  // The interactive sections (Header, OurApproach, FaqSection, Specialization,
+  // GetStarted) are React islands hydrated client:load; their reveal
+  // IntersectionObservers attach only AFTER hydration. If we scroll before they
+  // hydrate, the reveal never fires for that section → a non-deterministic
+  // screenshot (esp. on the slower Mobile Safari project). So: wait for the
+  // network to settle + a hydration buffer BEFORE triggering reveals.
+  await page.waitForLoadState("networkidle").catch(() => {});
+  await page.waitForTimeout(1500); // island hydration buffer
+  // Scroll top→bottom in small overlapping steps so every section is observed.
   await page.evaluate(async () => {
     await new Promise((resolve) => {
       let y = 0;
-      const step = Math.round(window.innerHeight * 0.8);
+      const step = Math.round(window.innerHeight * 0.6);
       const tick = () => {
         window.scrollTo(0, y);
         y += step;
         if (y < document.body.scrollHeight) {
-          setTimeout(tick, 80);
+          setTimeout(tick, 100);
         } else {
           window.scrollTo(0, document.body.scrollHeight);
-          setTimeout(resolve, 400);
+          // settle long enough for the slowest staggered reveal (OurApproach
+          // modal applies its class 500ms after intersect) to complete.
+          setTimeout(resolve, 1000);
         }
       };
       tick();
@@ -29,7 +40,7 @@ async function revealAndSettle(page) {
   });
   await page.waitForLoadState("networkidle").catch(() => {});
   await page.evaluate(() => window.scrollTo(0, 0));
-  await page.waitForTimeout(300);
+  await page.waitForTimeout(500);
 }
 
 for (const [name, path] of [

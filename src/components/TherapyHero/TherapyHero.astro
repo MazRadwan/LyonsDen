@@ -1,7 +1,7 @@
 ---
 import styles from "./TherapyHero.module.css";
-import _heroImage from "../../assets/lyonsdenhero6.png";
-const heroImage: string = (typeof _heroImage === "string" ? _heroImage : (_heroImage as any).src) as string;
+import { Image } from "astro:assets";
+import heroImage from "../../assets/lyonsdenhero6.png";
 ---
 <div
   class={`${styles.hero} ${styles.hidden}`}
@@ -9,10 +9,15 @@ const heroImage: string = (typeof _heroImage === "string" ? _heroImage : (_heroI
   data-reveal-class={styles.visible}
   data-reveal-threshold="0.1"
 >
-  <img
+  <Image
     src={heroImage}
     alt="Therapy Services Hero"
     class={styles.heroImage}
+    format="webp"
+    loading="eager"
+    fetchpriority="high"
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
   />
   <div class={styles.heroMask}></div>
   <div class={styles.heroContent}>

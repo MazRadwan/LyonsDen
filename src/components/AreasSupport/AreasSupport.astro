@@ -1,7 +1,7 @@
 ---
 import styles from "./AreasSupport.module.css";
-import _icon from "../../assets/lyonsdenlogo2.png";
-const icon: string = (typeof _icon === "string" ? _icon : (_icon as any).src) as string;
+import { Image } from "astro:assets";
+import iconImg from "../../assets/lyonsdenlogo2.png";
 
 const supportAreas = [
   {
@@ -64,7 +64,7 @@ const supportAreas = [
           data-reveal-threshold="0.1"
           data-reveal-delay={String(index * 100)}
         >
-          <img src={icon} alt="Support icon" class={styles.icon} />
+          <Image src={iconImg} alt="Support icon" class={styles.icon} format="webp" width={160} loading="lazy" />
           <h2 class={styles.boxTitle}>{area.title}</h2>
           <p class={styles.boxDescription}>{area.description}</p>
           <a href="/services" class={styles.button}>Learn More</a>

@@ -23,9 +23,14 @@ import BioSection from "../components/BioSection/BioSection.astro";
 import ProvidesSection from "../components/ProvidesSection/ProvidesSection.astro";
 import BottomHero from "../components/BottomHero/BottomHero.astro";
 import Footer from "../components/Footer/Footer.astro";
+import { getImage } from "astro:assets";
+import ourApproachHero from "../assets/lyonsdenhero4.jpeg";
+const ourApproachBg = (await getImage({ src: ourApproachHero, format: "webp", width: 1920 })).src;
+import headerLogoAsset from "../assets/lyonsdenlogo2.png";
+const headerLogo = (await getImage({ src: headerLogoAsset, format: "webp", width: 400 })).src;
 ---
 <Layout>
-  <Header client:load currentPath="/" />
+  <Header client:load currentPath="/" logoSrc={headerLogo} />
   <Hero />
   <TherapyStrip />
   <TherapyServices />
@@ -36,7 +41,7 @@ import Footer from "../components/Footer/Footer.astro";
   <GettingStarted />
   <BioSection id="about" />
   <ProvidesSection />
-  <OurApproach client:load />
+  <OurApproach client:load heroSrc={ourApproachBg} />
   <FaqSection client:load />
   <GetStarted client:load id="contact" />
   <BottomHero />

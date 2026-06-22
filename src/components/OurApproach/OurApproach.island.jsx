@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./OurApproach.module.css";
-import heroImage from "../../assets/lyonsdenhero4.jpeg";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
 
@@ -8,12 +7,9 @@ import ConsultationButton from "../ConsultationButton/ConsultationButton";
 // pass an optimized URL/srcset once astro:assets processes lyonsdenhero4.jpeg.
 // When absent the imported local asset is used so today's pixels are unchanged.
 const OurApproach = ({ heroSrc }) => {
-  // Coerce to a URL string: a Vite/Astro image import is an ImageMetadata object
-  // ({src,width,...}), so `url(${obj})` emits url([object Object]) and the bg photo
-  // never renders. Sprint 3's heroSrc prop will already be a string; the default
-  // import needs `.src`.
-  const _img = heroSrc || heroImage;
-  const bg = typeof _img === "string" ? _img : _img.src; // prop seam for Sprint 3
+  // heroSrc is an optimized webp URL string passed from the .astro page (Sprint 3,
+  // story 1.3.6). No local image import here → the raw asset never ships in the bundle.
+  const bg = heroSrc;
 
   const [activeMenu, setActiveMenu] = useState(null);
   const sectionRef = useRef(null);
