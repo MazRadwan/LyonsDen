@@ -1,0 +1,19 @@
+---
+import styles from "./TherapyCard.module.css";
+import { Image } from "astro:assets";
+const { title, description, image } = Astro.props;
+---
+<div
+  class={`${styles.card} ${styles.hidden}`}
+  data-reveal
+  data-reveal-class={styles.visible}
+  data-reveal-threshold="0.1"
+>
+  <div class={styles.imageContainer}>
+    <Image src={image} alt={title} class={styles.image} format="webp" loading="lazy" widths={[600, 1200]} sizes="(max-width: 900px) 95vw, 30vw" />
+  </div>
+  <div class={styles.content}>
+    <h3 class={styles.title}>{title}</h3>
+    <a href="/services" class={styles.button}>{description}</a>
+  </div>
+</div>

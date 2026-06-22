@@ -1,0 +1,27 @@
+---
+import styles from "./Hero.module.css";
+import { Image } from "astro:assets";
+import Button from "../Button/Button.astro";
+import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
+import heroImage from "../../assets/lyonsdenhero1.png";
+---
+<div class={styles.hero} style="opacity:1">
+  <div class={styles.heroMask}></div>
+  <div class={styles.heroContent}>
+    <h1>Helping You Live Life To The Fullest</h1>
+    <div class={styles.buttons}>
+      <ConsultationButton
+        href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+        target="_blank"
+        rel="noopener noreferrer"
+        class={styles.appointmentButton}
+      >Book a Free Consultation</ConsultationButton>
+      <Button
+        href="https://calendar.app.google/jGxgSzFJxnU2spgP7 "
+        target="_blank"
+        rel="noopener noreferrer"
+      >Book an Appointment</Button>
+    </div>
+  </div>
+  <Image src={heroImage} alt="Hero" class={styles.heroImage} format="webp" loading="eager" fetchpriority="high" widths={[768, 1280, 1920]} sizes="100vw" />
+</div>

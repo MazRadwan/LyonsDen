@@ -91,6 +91,10 @@ out
 .nuxt
 dist
 
+# Astro build output + cache
+dist/
+.astro/
+
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
@@ -129,5 +133,20 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Local research / working notes (not tracked)
+research/
+
+# Local AI orchestration tooling — contractor-only, do NOT push to the client repo
+CLAUDE.md
+.claude/
+tasks/
+.mcp.json
+
+# Playwright QA artifacts (reports/results are generated; baselines are committed)
+/playwright-report/
+/test-results/
+/playwright/.cache/
 
 .DS_Store
+# CRA legacy build output (removed; CRA replaced by Astro dist/)
+/build

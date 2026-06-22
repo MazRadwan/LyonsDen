@@ -1,0 +1,58 @@
+---
+/**
+ * services.astro — Therapy Services page (/services)
+ *
+ * Composes the static .astro sections in the exact order from audit-report §A
+ * "Services /services stack". The 5 interactive components are mounted as React
+ * islands hydrated client:load (Sprint 2, stories 1.2.2–1.2.5).
+ *
+ * Per-page SEO (Sprint 4 — stories 1.4.1 + 1.4.2):
+ *   Passes unique title, description, canonical, OG image, and JSON-LD graph
+ *   to Layout.astro. Canonical = no trailing slash (trailingSlash:"never" in
+ *   astro.config.mjs — story 1.4.3 coordination).
+ */
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header/Header.island.jsx";
+import Specialization from "../components/Specialization/Specialization.jsx";
+import OurApproach from "../components/OurApproach/OurApproach.island.jsx";
+import FaqSection from "../components/FaqSection/FaqSection.jsx";
+import GetStarted from "../components/GetStarted/GetStarted.jsx";
+import TherapyHero from "../components/TherapyHero/TherapyHero.astro";
+import TherapyStrip2 from "../components/TherapyStrip2/TherapyStrip2.astro";
+import DenServices from "../components/DenServices/DenServices.astro";
+import BottomHero from "../components/BottomHero/BottomHero.astro";
+import Footer from "../components/Footer/Footer.astro";
+import { getImage } from "astro:assets";
+import ourApproachHero from "../assets/lyonsdenhero4.jpeg";
+const ourApproachBg = (await getImage({ src: ourApproachHero, format: "webp", width: 1920 })).src;
+import headerLogoAsset from "../assets/lyonsdenlogo2.png";
+const headerLogo = (await getImage({ src: headerLogoAsset, format: "webp", width: 400 })).src;
+
+// OG image: optimised logo resolved to an absolute URL (story 1.4.1)
+import ogLogoAsset from "../assets/lyonsdenlogo2.png";
+const ogImgSrc = (await getImage({ src: ogLogoAsset, format: "webp", width: 1200 })).src;
+const ogImageAbs = new URL(ogImgSrc, Astro.site).href;
+
+// JSON-LD graph (story 1.4.2)
+import { siteSchema } from "../lib/structured-data.js";
+const canonical = "https://alyonsdentherapy.com/services";
+const jsonLd = siteSchema({ canonical, image: ogImageAbs });
+---
+<Layout
+  title="Therapy Services | A Lyons Den Therapy"
+  description="Therapy services for teens and adults — anxiety, depression, ADHD, trauma, and life transitions. Online therapy across New York, New Jersey, and Connecticut with Adam Lyons, LCSW."
+  canonical={canonical}
+  ogImage={ogImageAbs}
+  jsonLd={jsonLd}
+>
+  <Header client:load currentPath="/services" logoSrc={headerLogo} />
+  <TherapyHero />
+  <TherapyStrip2 />
+  <DenServices />
+  <Specialization client:load />
+  <OurApproach client:load heroSrc={ourApproachBg} />
+  <FaqSection client:load />
+  <GetStarted client:load id="contact-therapy" />
+  <BottomHero />
+  <Footer />
+</Layout>

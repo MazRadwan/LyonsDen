@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout
+  title="Page Not Found | A Lyons Den Therapy"
+  description="The page you were looking for could not be found."
+  canonical="https://alyonsdentherapy.com/404"
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+  </Fragment>
+  <main class="notFound">
+    <h1>Page not found</h1>
+    <p>Sorry — the page you were looking for doesn't exist or has moved.</p>
+    <p>
+      <a href="/">Return to the home page</a> ·
+      <a href="/services">View therapy services</a>
+    </p>
+  </main>
+</Layout>
+
+<style>
+  .notFound {
+    max-width: 640px;
+    margin: 6rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .notFound h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: "Reem Kufi", sans-serif;
+    color: #0d4448;
+  }
+  .notFound p {
+    font-family: "Inter", sans-serif;
+    color: #0d4448;
+    margin-bottom: 1rem;
+  }
+  .notFound a {
+    color: #0d4448;
+    text-decoration: underline;
+  }
+</style>

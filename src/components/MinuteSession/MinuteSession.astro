@@ -1,0 +1,30 @@
+---
+import styles from "./MinuteSession.module.css";
+import { getImage } from "astro:assets";
+import _heroImage from "../../assets/lyonsdenhero2a.jpeg";
+const bgUrl = (await getImage({ src: _heroImage, format: "webp", width: 1920 })).src;
+---
+<section class={styles.section}>
+  <div
+    class={styles.heroImage}
+    style={`background-image: url(${bgUrl})`}
+  >
+    <div class={styles.overlay}></div>
+    <div
+      class={`${styles.modal} ${styles.hidden}`}
+      data-reveal
+      data-reveal-class={styles.visible}
+      data-reveal-threshold="0.1"
+    >
+      <h2 class={styles.heading}>Looking for short-term support?</h2>
+      <p class={styles.description}>
+        I offer a six week program that might be just what you need. I can
+        help you address immediate concerns and develop practical strategies
+        moving forward. Whether you are dealing with a particular issue or
+        seeking guidance through a short-term transition, this program
+        provides targeted, effective suppport in a condensed timeframe.
+      </p>
+      <button class={styles.button} data-scroll-to="#contact">CONTACT US</button>
+    </div>
+  </div>
+</section>

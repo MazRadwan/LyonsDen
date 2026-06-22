@@ -1,0 +1,45 @@
+---
+import styles from "./BottomHero.module.css";
+import { getImage } from "astro:assets";
+import _heroImage from "../../assets/lyonsdenhero5.jpeg";
+const heroImage = (await getImage({ src: _heroImage, format: "webp", width: 1920 })).src;
+import Button from "../Button/Button.astro";
+import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
+---
+<section class={styles.bottomHero}>
+  <div
+    class={styles.heroImage}
+    style={`background-image: url(${heroImage})`}
+  >
+    <div class={styles.overlay}></div>
+    <div
+      class={styles.content}
+      data-reveal
+      data-reveal-class={styles.animate}
+      data-reveal-threshold="0.1"
+    >
+      <h2 class={styles.header}>A LYONS DEN THERAPY</h2>
+      <p class={styles.subtext}>
+        Make today the day you choose to invest in your well-being.
+      </p>
+      <div class={styles.buttonContainer}>
+        <a
+          href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="text-decoration:none"
+        >
+          <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
+        </a>
+        <a
+          href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="text-decoration:none"
+        >
+          <Button>BOOK AN APPOINTMENT</Button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

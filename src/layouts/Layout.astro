@@ -1,0 +1,124 @@
+---
+/**
+ * Layout.astro — shared HTML shell for every Astro page.
+ *
+ * Props (Sprint 4 — story 1.4.1 + 1.4.2):
+ *   title       (string, required) — unique per-page <title>
+ *   description (string, required) — unique per-page meta description
+ *   canonical   (string, required) — absolute canonical URL
+ *   ogImage     (string, optional) — absolute OG image URL; defaults to site logo
+ *   ogType      (string, optional) — OG type; defaults to "website"
+ *   jsonLd      (object, optional) — JSON-LD graph from siteSchema(); emitted as
+ *                                    <script type="application/ld+json">
+ *
+ * Consolidates ALL Google Fonts into one <link> (replaces the 19 scattered
+ * @import lines across *.module.css files — those are cleaned up in Sprint 5
+ * when CRA is removed; the layout provides fonts globally so Sprint-1 .astro
+ * components inherit them via the cascade).
+ *
+ * Fonts included (audit-report §D):
+ *   Reem Kufi 400, 700 — used in 13 component files
+ *   Inter 400, 500, 600 — used in 12 component files
+ *   Jomolhari 400      — Header, Footer
+ *   IBM Plex Sans KR 400 — Hero, TherapyHero
+ *   Inria Serif 400    — OurTherapy, DenServices
+ * EXCLUDED: "Reem Kufi Ink" (wrong family name, never actually used — dead link
+ * removed from public/index.html in Sprint 0 / story 1.0.6).
+ *
+ * Slots:
+ *   <slot name="head" /> — per-page meta/canonical/OG/JSON-LD (Sprint 4)
+ *   <slot />            — page body content
+ *
+ * Reveal script:
+ *   src/scripts/reveal.js is loaded once per page via Astro's <script> tag
+ *   (Astro bundles it as a module; it runs on DOMContentLoaded / at end of body).
+ *   This is the shared scroll-reveal for static .astro components (Sprint 1).
+ *   React island components keep their own observers (Sprint 2).
+ */
+import "../styles/global.css";
+
+const {
+  title = "Lyons Den",
+  description = "",
+  canonical = "https://alyonsdentherapy.com/",
+  ogImage = "https://alyonsdentherapy.com/lyonsdenlogo2.png",
+  ogType = "website",
+  jsonLd,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Per-page SEO meta (story 1.4.1) -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="A Lyons Den Therapy" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD structured data (story 1.4.2) -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <!-- Preconnect to Google Fonts CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!--
+      Single consolidated Google Fonts link (audit-report §D).
+      Families: Reem Kufi 400/700 | Inter 400/500/600 | Jomolhari 400
+                IBM Plex Sans KR 400 | Inria Serif 400
+      display=swap: matches current per-component @import behavior.
+
+      Loaded ASYNC (media="print" + onload swap to "all") so the stylesheet is
+      NOT render-blocking — on throttled mobile it was blocking first paint for
+      ~1s, delaying the hero-image LCP. With display=swap text paints immediately
+      in fallback then swaps; end-state render is identical. <noscript> fallback
+      keeps fonts working with JS disabled.
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Inter:wght@400;500;600&family=Jomolhari&family=IBM+Plex+Sans+KR:wght@400&family=Inria+Serif:wght@400&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Inter:wght@400;500;600&family=Jomolhari&family=IBM+Plex+Sans+KR:wght@400&family=Inria+Serif:wght@400&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Per-page head slot: additional meta (Sprint 4 extension point) -->
+    <slot name="head" />
+  </head>
+  <body>
+    <!-- Page content -->
+    <slot />
+
+    <!--
+      Shared scroll-reveal script (story 1.0.6) — IMPORTED so Astro/Vite bundles
+      + hashes it into dist/ (a bare src="../scripts/reveal.js" would NOT be emitted).
+      Handles all [data-reveal] elements in static .astro components. React islands
+      (OurApproach, FaqSection, Specialization) keep their own observers.
+    -->
+    <script>import "../scripts/reveal.js";</script>
+    <script>import "../scripts/smoothscroll.js";</script>
+  </body>
+</html>
