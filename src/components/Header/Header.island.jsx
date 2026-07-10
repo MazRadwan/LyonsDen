@@ -78,6 +78,31 @@ const Header = ({ currentPath, logoSrc }) => {
         </a>
       </li>
       <li>
+        <a href="/adhd-coaching" className={styles.navLink}>
+          ADHD Coaching
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://alyonsdentherapy.blogspot.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.navLink}
+        >
+          ADHD Blog
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.therapyportal.com/p/alyonsden/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.navLink}
+        >
+          Client Portal
+        </a>
+      </li>
+      <li>
         {currentPath === "/" ? (
           <a
             href="#contact"
@@ -96,6 +121,17 @@ const Header = ({ currentPath, logoSrc }) => {
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("contact-therapy");
+            }}
+          >
+            Contact
+          </a>
+        ) : currentPath === "/adhd-coaching" ? (
+          <a
+            href="#contact-coaching"
+            className={styles.navLink}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("contact-coaching");
             }}
           >
             Contact
@@ -121,7 +157,7 @@ const Header = ({ currentPath, logoSrc }) => {
       </a>
       <div className={styles.desktopNav}>{navLinks}</div>
       <ConsultationButton
-        href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+        href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
         target="_blank"
         rel="noopener noreferrer"
         className={styles.appointmentButton}
@@ -131,7 +167,7 @@ const Header = ({ currentPath, logoSrc }) => {
       <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ""}`}>
         {navLinks}
         <ConsultationButton
-          href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+          href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.appointmentButton}

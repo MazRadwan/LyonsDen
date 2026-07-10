@@ -1,15 +1,21 @@
 ---
 import styles from "./TherapyHero.module.css";
 import { Image } from "astro:assets";
-import heroImage from "../../assets/lyonsdenhero6.png";
+import defaultHeroImage from "../../assets/lyonsdenhero6.png";
+const {
+  title = "THERAPY SERVICES",
+  subtitle = "Therapy and Coaching for Teens and Adults in the New York/New Jersey Metropolitan Area",
+  image = defaultHeroImage,
+  alt = "Therapy Services Hero",
+} = Astro.props;
 ---
 <!-- LCP element: render immediately visible (opacity:1), matching home's Hero.
      The old data-reveal fade (opacity 0→1 over 1s) delayed + destabilized the
      LCP image paint. Settled appearance is identical (golden master stays green). -->
 <div class={styles.hero} style="opacity:1">
   <Image
-    src={heroImage}
-    alt="Therapy Services Hero"
+    src={image}
+    alt={alt}
     class={styles.heroImage}
     format="webp"
     loading="eager"
@@ -19,10 +25,7 @@ import heroImage from "../../assets/lyonsdenhero6.png";
   />
   <div class={styles.heroMask}></div>
   <div class={styles.heroContent}>
-    <h1>THERAPY SERVICES</h1>
-    <p>
-      Therapy for Teens and Adults in the New York, New Jersey and
-      Connecticut
-    </p>
+    <h1>{title}</h1>
+    <p>{subtitle}</p>
   </div>
 </div>

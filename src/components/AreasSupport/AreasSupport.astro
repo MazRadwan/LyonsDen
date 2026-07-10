@@ -8,31 +8,43 @@ const supportAreas = [
     title: "ANXIETY",
     description:
       "Discover strategies to manage and reduce anxiety, finding relief from persistent worry and stress.",
+    linkText: "Learn about anxiety therapy",
+    href: "/services",
   },
   {
     title: "DEPRESSION",
     description:
       "Explore ways to address feelings of sadness and hopelessness with supportive, effective techniques.",
+    linkText: "Learn about depression therapy",
+    href: "/services",
   },
   {
     title: "THERAPY FOR TEENS",
     description:
       "Tailored therapy designed to support adolescents through the unique challenges of their teenage years.",
+    linkText: "Learn about therapy for teens",
+    href: "/services",
   },
   {
     title: "STRESS & LIFE TRANSITIONS",
     description:
       "Gain guidance for managing life's changes and stressors with practical, solution-focused support.",
+    linkText: "Learn about life-transition support",
+    href: "/services",
   },
   {
     title: "ADHD & NEURODIVERGENCE",
     description:
-      "Receive specialized support for managing ADHD and other neurodivergent conditions, leveraging personal insights and strategies.",
+      "Receive specialized support for understanding and processing how your mental health and personal experiences are and have been influenced by your ADHD & Neurodivergence.",
+    linkText: "Explore ADHD therapy & coaching",
+    href: "/adhd-coaching",
   },
   {
     title: "TRAUMA, PTSD & C-PTSD",
     description:
       "Find healing from past traumatic experiences, and lessen the impact on your current life.",
+    linkText: "Learn about trauma therapy",
+    href: "/services",
   },
 ];
 ---
@@ -44,7 +56,7 @@ const supportAreas = [
       data-reveal-class={styles.animateHeading}
       data-reveal-threshold="0.1"
     >
-      Areas of Support
+      Mental Health Specialties
     </h2>
     <p
       class={styles.subtext}
@@ -67,7 +79,7 @@ const supportAreas = [
           <Image src={iconImg} alt="Support icon" class={styles.icon} format="webp" width={160} loading="lazy" />
           <h2 class={styles.boxTitle}>{area.title}</h2>
           <p class={styles.boxDescription}>{area.description}</p>
-          <a href="/services" class={styles.button}>Learn More</a>
+          <a href={area.href} class={styles.button}>{area.linkText}</a>
         </div>
       ))}
     </div>

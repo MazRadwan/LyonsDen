@@ -1,0 +1,119 @@
+---
+/**
+ * adhd-coaching.astro — ADHD & Executive Function Coaching page (/adhd-coaching)
+ *
+ * New page for the practice's ADHD-coaching service line (client update,
+ * July 2026). Mirrors the services-page composition: parametrized TherapyHero,
+ * strip, DenServices prose sections, Specialization accordion (coaching
+ * services), FaqSection (coaching FAQ), GetStarted, BottomHero, Footer.
+ *
+ * Copy source: Adam's "Website Updates" doc — "Add New Page: ADHD & Executive
+ * Function Coaching for Adults and Teens" (lightly edited for grammar/flow).
+ */
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header/Header.island.jsx";
+import FaqSection from "../components/FaqSection/FaqSection.jsx";
+import GetStarted from "../components/GetStarted/GetStarted.jsx";
+import Specialization from "../components/Specialization/Specialization.jsx";
+import TherapyHero from "../components/TherapyHero/TherapyHero.astro";
+import TherapyStrip2 from "../components/TherapyStrip2/TherapyStrip2.astro";
+import DenServices from "../components/DenServices/DenServices.astro";
+import BottomHero from "../components/BottomHero/BottomHero.astro";
+import Footer from "../components/Footer/Footer.astro";
+import { getImage } from "astro:assets";
+import coachingHero from "../assets/lyonsdenhero5.jpeg";
+import headerLogoAsset from "../assets/lyonsdenlogo2.png";
+const headerLogo = (await getImage({ src: headerLogoAsset, format: "webp", width: 400 })).src;
+
+// OG image: optimised logo resolved to an absolute URL
+import ogLogoAsset from "../assets/lyonsdenlogo2.png";
+const ogImgSrc = (await getImage({ src: ogLogoAsset, format: "webp", width: 1200 })).src;
+const ogImageAbs = new URL(ogImgSrc, Astro.site).href;
+
+// JSON-LD graph
+import { siteSchema } from "../lib/structured-data.js";
+const canonical = "https://alyonsdentherapy.com/adhd-coaching";
+const jsonLd = siteSchema({ canonical, image: ogImageAbs });
+
+const understandingAdhd = [
+  "ADHD (Attention-Deficit/Hyperactivity Disorder) is a neurodevelopmental condition that affects attention, impulse control, and activity levels. While it first develops in childhood, many people are diagnosed — and identify with having ADHD — in adulthood, because their childhood experiences overshadowed the symptoms. People with ADHD can struggle with organization, time management, focus, and emotional regulation. While ADHD can bring challenges, it also comes with strengths like creativity, hyperfocus, and high energy when well-supported or focused on something they value.",
+];
+
+const whatIsCoaching = [
+  "ADHD & Executive Functioning Coaching focuses on the coach and client working together to understand how the individual experiences their ADHD, and to develop new skills, patterns, habits, and systems that decrease the client's challenges while maximizing their strengths. ADHD and Executive Functioning Coaching uses a growth mindset to develop new skills for achieving future goals.",
+  "ADHD-informed mental health therapy, by contrast, focuses on supporting the client to better understand how their ADHD has impacted their past and current experiences and their sense of self. ADHD does not directly cause anxiety, depression, low self-esteem, or relationship and professional difficulties — but a lifetime of navigating ADHD, and reconciling your internal experience with the demands of your world, absolutely can lead to these experiences. While there is some overlap with executive-function skill building, ADHD-informed mental health treatment focuses on how your experience with ADHD contributed to these challenges, as you process your experiences and build healthier mental and emotional patterns.",
+];
+
+const coachingServices = [
+  {
+    title: "INDIVIDUAL SKILL DEVELOPMENT COACHING",
+    content:
+      "Clients are supported in clearly understanding how they experience ADHD-related challenges and in learning the skills necessary to navigate them more effectively. Adam works with clients to develop better habits, create systems, and learn techniques to be better organized and more confident.",
+  },
+  {
+    title: "GOAL-FOCUSED COACHING",
+    content:
+      "Using a lens that maximizes one's ADHD strengths and minimizes the impact of one's ADHD challenges, clients are coached and supported to work towards achieving their specific individual goal.",
+  },
+  {
+    title: "INDIVIDUAL & GROUP EDUCATION WORKSHOPS",
+    content:
+      "Workshops help participants understand how ADHD may impact their lives and how to navigate it. Workshops are tailored to the participants. Common workshops have been for parents of children with ADHD, newly diagnosed individuals, partners of someone diagnosed with ADHD, and professional organizations, just to name a few.",
+  },
+];
+
+const coachingFaq = [
+  {
+    question: "DOES MY HEALTH INSURANCE COVER ADHD & EXECUTIVE FUNCTION COACHING?",
+    answer:
+      "Unfortunately, no. Most, if not all, major health insurances do not cover ADHD & Executive Function Coaching. Mental health insurance does cover ADHD-informed mental health therapy, depending on your plan.",
+  },
+  {
+    question: "HOW MUCH DOES ADHD & EXECUTIVE FUNCTION COACHING COST?",
+    answer:
+      "The cost for ADHD & Executive Function Coaching can vary based on multiple factors. Please schedule a consultation to discuss your specific circumstances. Sliding scale, payment plans, and third-party options (e.g., a company covering employee coaching) are available.",
+  },
+  {
+    question: "WHAT SKILLS COULD I LEARN THROUGH COACHING?",
+    answer:
+      "While coaching is individualized based on the client's needs, common skills include time management, personal and professional organization, communication, planning and problem-solving, and habit building.",
+  },
+  {
+    question: "HOW FREQUENT ARE THE COACHING SESSIONS?",
+    answer:
+      "This depends on the needs of the client. While coaching sessions are generally once a week, the coach and client can meet more or less frequently based on the client's needs and any specific deadlines they are working towards.",
+  },
+];
+---
+<Layout
+  title="ADHD & Executive Function Coaching | A Lyons Den Therapy"
+  description="ADHD & Executive Function coaching for adults and teens with Adam Lyons, LCSW. Build skills, systems, and habits that work with your brain — individual and group coaching, virtual and in-person, across New York and New Jersey."
+  canonical={canonical}
+  ogImage={ogImageAbs}
+  jsonLd={jsonLd}
+>
+  <Header client:load currentPath="/adhd-coaching" logoSrc={headerLogo} />
+  <TherapyHero
+    title="ADHD & EXECUTIVE FUNCTION COACHING"
+    subtitle="Individual and Group Coaching for Adults and Teens — Virtual and In-Person"
+    image={coachingHero}
+    alt="ADHD and Executive Function Coaching Hero"
+  />
+  <TherapyStrip2
+    items={[
+      "INDIVIDUAL & GROUP COACHING",
+      "SKILLS, SYSTEMS & HABITS THAT STICK",
+      "WORK WITH YOUR ADHD STRENGTHS, NOT AGAINST THEM",
+    ]}
+  />
+  <DenServices title="Understanding ADHD" paragraphs={understandingAdhd} />
+  <DenServices
+    title="What is ADHD & Executive Function Coaching?"
+    paragraphs={whatIsCoaching}
+  />
+  <Specialization client:load title="Coaching Services" items={coachingServices} />
+  <FaqSection client:load title="FAQ About Coaching" items={coachingFaq} />
+  <GetStarted client:load id="contact-coaching" />
+  <BottomHero />
+  <Footer />
+</Layout>

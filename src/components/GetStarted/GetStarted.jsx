@@ -8,7 +8,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
 
@@ -60,14 +59,14 @@ const GetStarted = ({ id }) => {
         </p>
         <div className={styles.buttonContainer}>
           <ConsultationButton
-            href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+            href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
             target="_blank"
             rel="noopener noreferrer"
           >
             BOOK A FREE CONSULTATION
           </ConsultationButton>
           <Button
-            href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+            href="https://www.therapyportal.com/p/alyonsden/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -88,7 +87,7 @@ const GetStarted = ({ id }) => {
             <FaMapMarkerAlt className={styles.icon} aria-hidden="true" />
             <div>
               <h4 className={styles.contactHeader}>SERVICING</h4>
-              <p>New York, New Jersey and Connecticut Area</p>
+              <p>New York and New Jersey — virtual and in-person</p>
             </div>
           </div>
           <div className={styles.contactItem}>
@@ -113,14 +112,6 @@ const GetStarted = ({ id }) => {
             <FaFacebookF className={styles.socialIcon} />
           </a>
           <a
-            href="https://x.com/alyonsdentmt"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X (formerly Twitter)"
-          >
-            <FaXTwitter className={styles.socialIcon} />
-          </a>
-          <a
             href="https://www.instagram.com/alyonsdentmt/"
             target="_blank"
             rel="noopener noreferrer"
@@ -139,7 +130,8 @@ const GetStarted = ({ id }) => {
         </div>
         <div className={styles.divider} aria-hidden="true"></div>
         <p className={styles.footer}>
-          ONLINE THERAPY SESSIONS ACROSS NEW YORK, NEW JERSEY AND CONNECTICUT
+          THERAPY & COACHING — VIRTUAL AND IN-PERSON — ACROSS NEW YORK AND NEW
+          JERSEY
         </p>
       </div>
       <div className={styles.rightSection}>

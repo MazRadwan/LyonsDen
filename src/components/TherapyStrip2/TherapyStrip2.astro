@@ -1,14 +1,18 @@
 ---
 import styles from "./TherapyStrip2.module.css";
+const {
+  items = [
+    "VIRTUAL AND IN-PERSON SESSIONS",
+    "SPECIALIZING IN ANXIETY, DEPRESSION & LIFE STRESSORS",
+    "NAVIGATING ADHD AND ITS IMPACT ON YOUR LIFE AND RELATIONSHIPS",
+  ],
+} = Astro.props;
 ---
 <div class={styles.strip}>
-  <div class={styles.stripItem}>VIRTUAL THERAPY SESSIONS</div>
-  <div class={styles.divider}></div>
-  <div class={styles.stripItem}>
-    FLEXIBLE HOURS FOR YOUR BUSY SCHEDULE
-  </div>
-  <div class={styles.divider}></div>
-  <div class={styles.stripItem}>
-    SPECIALIZING IN ANXIETY, DEPRESSION & LIFE STRESSORS
-  </div>
+  {items.map((item, i) => (
+    <>
+      {i > 0 && <div class={styles.divider}></div>}
+      <div class={styles.stripItem}>{item}</div>
+    </>
+  ))}
 </div>

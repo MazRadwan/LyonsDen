@@ -1,12 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Specialization.module.css";
 
-const Specialization = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const headerRef = useRef(null);
-  const menuRef = useRef(null);
-
-  const specializations = [
+const defaultSpecializations = [
     {
       title: "ANXIETY",
       content:
@@ -30,19 +25,24 @@ const Specialization = () => {
     {
       title: "ADHD & NEURODIVERGENCE",
       content:
-        "Many people struggle with ADHD and other Neurodivergence (social anxiety, dyslexia, learning disorders, etc) without knowing it. ADHD and Neurodivergences are more about how someone processes information than about them not having the information or the ability to do so. Living in our modern world with a neurodivergent brain can present unique challenges, impacting various aspects of life, from academic performance to self-esteem. In therapy, we will harness your strengths and help you manage your symptoms by focusing on separating the process of doing something from knowing how, being able to organize and communicate, focus, and not get distracted. Together, we focus on developing effective coping strategies and building self-confidence, whether creating organizational systems, improving focus, or addressing any emotional impacts, empowering you to navigate your daily lives with greater ease and confidence.",
+        "Many people struggling with ADHD and Neurodivergence (autism spectrum disorder, dyslexia, learning disorders, etc.) also struggle with other mental health challenges. People with ADHD and Neurodivergence can have a different way of processing information and expressing their experiences, which can lead to anxieties, low self-esteem, feeling othered, and difficulty navigating situations and relationships, as they try to navigate expectations based on the neuro-majority. ADHD and Neurodivergent informed therapy allows clients to better connect with the strengths they have because of their ADHD or Neurodivergence, while helping them better understand past experiences and build their confidence and coping abilities to live the life they choose.",
     },
     {
       title: "TRAUMA, PTSD & C-PTSD",
       content:
         "Whether someone has experienced one or many traumatic events, traumatic experiences impact how we see the world. Any time we perceive that our life/well-being, or the life/well-being of a loved one, is in jeopardy, can be a traumatic experience. With PTSD, our brain goes into overdrive to protect us from experiencing this event again. EX: jumping and tensing up when we hear car brakes squeaking after we were in a severe car accident. Complex PTSD is about experiencing many events that were either traumatic or made us question our well-being and having to develop purposeful patterns of being around others so that we do not have to depend on others to feel confident about our well-being. Trauma therapy uses both physical/sensory practices and cognitive/emotional practices to re-ground clients in the present to let the brain know they are no longer experiencing an event where their life/well-being is at risk. Once clients have more control over their initial symptoms, they are supported to process their trauma(s) in a supportive and empathetic manner, exploring and, when appropriate, reframing how their experiences have impacted their self and world views.",
     },
-    {
-      title: "CLINICAL & ORGANIZATIONAL CONSULTING",
-      content:
-        "Over the last decade, as a therapist, supervisor, and program leader in various clinical sessions and social service organizations, I have learned how effective coaching and supervision facilitate staff becoming their best professional selves and how integrated systems and effective processes allow organizations to operate efficiently. I offer single-case consultations to explore or address a specific case challenge and ongoing clinical supervision/support, helping therapists develop their skills and clinical perspectives. I also offer broader organizational operation consultation services. Each consulting partnership is indvidualized to the organization and their needs. Most consultation processes include an assessment of current systems and structures, and a review of data, followed by a combination of developing and implementing integrated structure and operational systems.",
-    },
-  ];
+];
+
+const Specialization = ({
+  items = defaultSpecializations,
+  title = "Areas Of Specialization",
+}) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+
+  const specializations = items;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,7 +74,7 @@ const Specialization = () => {
     <section className={styles.specializationSection}>
       <div className={styles.container}>
         <h2 ref={headerRef} className={styles.header}>
-          Areas Of Specialization
+          {title}
         </h2>
         <ul ref={menuRef} className={styles.specializationList}>
           {specializations.map((item, index) => (

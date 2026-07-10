@@ -47,12 +47,12 @@ test.describe("Home page interactions", () => {
     await expect(answer).toHaveCount(0); // answer is unmounted when collapsed
   });
 
-  test('header "Book a Free Consultation" points to the booking calendar', async ({ page }) => {
+  test('header "Book a Free Consultation" points to TherapyPortal availability', async ({ page }) => {
     await page.goto("/");
     const cta = page.getByRole("link", { name: /book a free consultation/i }).first();
     await expect(cta).toHaveAttribute(
       "href",
-      "https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+      "https://www.therapyportal.com/p/alyonsden/appointments/availability/"
     );
   });
 
@@ -87,6 +87,28 @@ test.describe("Services page interactions", () => {
   });
 });
 
+test.describe("ADHD coaching page interactions", () => {
+  test("Coaching Services accordion opens", async ({ page }) => {
+    await page.goto("/adhd-coaching");
+    const q = page.getByRole("button", { name: /INDIVIDUAL SKILL DEVELOPMENT COACHING/i });
+    await q.scrollIntoViewIfNeeded();
+    await q.click();
+    await expect(page.getByText(/develop better habits, create systems/i)).toBeVisible();
+  });
+
+  test("Coaching FAQ accordion opens", async ({ page }) => {
+    await page.goto("/adhd-coaching");
+    const q = page.getByRole("button", {
+      name: /DOES MY HEALTH INSURANCE COVER ADHD & EXECUTIVE FUNCTION COACHING/i,
+    });
+    await q.scrollIntoViewIfNeeded();
+    await q.click();
+    await expect(
+      page.getByText(/major health insurances do not cover/i)
+    ).toBeVisible();
+  });
+});
+
 test.describe("Mobile-only", () => {
   test("hamburger opens the mobile menu", async ({ page }, testInfo) => {
     test.skip(
@@ -104,7 +126,7 @@ test.describe("Mobile-only", () => {
 // straight to src renders url([object Object]) → 404 → naturalWidth 0). Also protects
 // the Sprint 3 astro:assets image work. A loaded-but-zero-width image is broken.
 test.describe("Asset integrity", () => {
-  for (const [name, path] of [["home", "/"], ["services", "/services"]]) {
+  for (const [name, path] of [["home", "/"], ["services", "/services"], ["adhd-coaching", "/adhd-coaching"]]) {
     test(`no broken images on ${name} page`, async ({ page }) => {
       await page.goto(path);
       await page.evaluate(async () => {

@@ -99,7 +99,7 @@ const OurApproach = ({ heroSrc }) => {
         </div>
         <div className={styles.buttonContainer}>
           <a
-            href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+            href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
@@ -107,7 +107,7 @@ const OurApproach = ({ heroSrc }) => {
             <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
           </a>
           <a
-            href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+            href="https://www.therapyportal.com/p/alyonsden/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}

@@ -1,7 +1,7 @@
 ---
 import styles from "./TherapyCard.module.css";
 import { Image } from "astro:assets";
-const { title, description, image } = Astro.props;
+const { title, description, image, href = "/services" } = Astro.props;
 ---
 <div
   class={`${styles.card} ${styles.hidden}`}
@@ -14,6 +14,6 @@ const { title, description, image } = Astro.props;
   </div>
   <div class={styles.content}>
     <h3 class={styles.title}>{title}</h3>
-    <a href="/services" class={styles.button}>{description}</a>
+    <a href={href} class={styles.button}>{description}</a>
   </div>
 </div>
