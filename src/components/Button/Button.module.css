@@ -1,16 +1,44 @@
+/* Secondary CTA — teal. Same base box as ConsultationButton so paired
+   CTAs always match height; teal-tinted shadow + hover lift + focus ring. */
 .button {
-  background-color: #125b60;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-family: "Inter", sans-serif;
-  padding: 12px 24px; /* Increased padding */
-  border: none;
-  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background-color: #125b60;
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in;
   text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  box-shadow: 0 4px 14px rgba(18, 91, 96, 0.26);
+  transition: background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover {
   background-color: #0a3d41;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(18, 91, 96, 0.32);
   text-decoration: none;
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(18, 91, 96, 0.24);
+}
+
+.button:focus-visible {
+  outline: 3px solid rgba(18, 91, 96, 0.5);
+  outline-offset: 3px;
 }
