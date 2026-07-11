@@ -1,9 +1,15 @@
+/* Tagline band — compact: display serif, tighter padding, constrained
+   measure. Sits directly above the chips band (same gradient family); the
+   hairline keeps the two bands readable as separate rows. */
 .strip {
   background: var(--panel-teal);
-  color: white;
-  font-family: var(--font-ui);
-  font-size: 1.5rem; /* Increased font size */
-  font-weight: 600; /* Semi-bold */
+  color: var(--on-teal);
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: clamp(1.1rem, 0.8vw + 1rem, 1.35rem);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
   text-align: center;
-  padding: 2rem 0; /* Increased padding for more space */
+  padding: 1.4rem var(--gutter);
+  border-bottom: 1px solid rgba(253, 241, 219, 0.16);
 }
