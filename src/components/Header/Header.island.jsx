@@ -5,31 +5,68 @@ import ConsultationButton from "../ConsultationButton/ConsultationButton";
 const Header = ({ currentPath, logoSrc }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const navRef = useRef(null);
   const lastScrollY = useRef(0);
+  const offsetRef = useRef(0);
   const ticking = useRef(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Smart sticky header: hide on scroll down, reveal on scroll up.
-  // rAF-throttled and ref-based so we only re-render when visibility flips.
+  // Smart sticky header — DYNAMIC tracking (iOS-Safari-toolbar style):
+  // the header slides out/in pixel-for-pixel with the scroll delta rather
+  // than snapping after a direction change. When scrolling stops mid-way it
+  // settles (animated) to fully shown or fully hidden, whichever is nearer.
+  // rAF-throttled; transform is applied directly to the DOM node so there is
+  // no React re-render per frame (state only flips for the hidden marker).
   useEffect(() => {
-    const SHOW_AT_TOP = 80; // always show within this distance from the top
-    const DELTA = 6; // ignore sub-pixel scroll jitter
+    const nav = navRef.current;
+    if (!nav) return;
+    // Respect reduced motion: keep the header permanently visible.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const SHOW_AT_TOP = 80; // always fully show within this distance from the top
+    let settleTimer;
+    lastScrollY.current = window.scrollY;
+
+    // Menu just opened (effect re-runs on isMenuOpen): snap fully visible
+    if (isMenuOpen && offsetRef.current > 0) {
+      offsetRef.current = 0;
+      nav.style.transition = "transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)";
+      nav.style.transform = "translateY(0px)";
+      setIsHidden(false);
+    }
+
+    const apply = (animated) => {
+      nav.style.transition = animated
+        ? "transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)"
+        : "none";
+      nav.style.transform = `translateY(${-offsetRef.current}px)`;
+      setIsHidden(offsetRef.current >= nav.offsetHeight - 1);
+    };
 
     const update = () => {
-      const currentY = window.scrollY;
+      const y = window.scrollY;
+      const delta = y - lastScrollY.current;
+      lastScrollY.current = y;
 
-      if (currentY < SHOW_AT_TOP || isMenuOpen) {
+      if (y < SHOW_AT_TOP || isMenuOpen) {
         // Near the top, or the mobile menu is open: keep the header visible
-        setIsHidden(false);
-      } else if (Math.abs(currentY - lastScrollY.current) > DELTA) {
-        // Hide when scrolling down, reveal when scrolling up
-        setIsHidden(currentY > lastScrollY.current);
+        offsetRef.current = 0;
+        apply(true);
+      } else {
+        // Track the scroll 1:1, clamped between fully shown and fully hidden
+        const h = nav.offsetHeight;
+        offsetRef.current = Math.min(Math.max(offsetRef.current + delta, 0), h);
+        apply(false);
+        // When scrolling pauses mid-way, settle to the nearest edge
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(() => {
+          offsetRef.current = offsetRef.current > h / 2 ? h : 0;
+          apply(true);
+        }, 150);
       }
-
-      lastScrollY.current = currentY;
       ticking.current = false;
     };
 
@@ -41,7 +78,10 @@ const Header = ({ currentPath, logoSrc }) => {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      clearTimeout(settleTimer);
+    };
   }, [isMenuOpen]);
 
   // Integrated scroll function
@@ -146,7 +186,7 @@ const Header = ({ currentPath, logoSrc }) => {
   );
 
   return (
-    <nav className={`${styles.navBar} ${isHidden ? styles.navBarHidden : ""}`}>
+    <nav ref={navRef} className={`${styles.navBar} ${isHidden ? styles.navBarHidden : ""}`}>
       <a href="/" className={styles.logoContainer}>
         <img src={logoSrc} alt="A Lyons Den Therapy" className={styles.logo} />
         <div className={styles.siteNameContainer}>
