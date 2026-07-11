@@ -112,21 +112,25 @@
   background-color: var(--terracotta-600);
 }
 
+/* Secondary = teal, per the site's brown/green CTA pair. This band is the
+   dark teal gradient, so a soft cream outline keeps the button legible. */
 .buttonContainer > a:last-child,
 .buttonContainer > button:last-child {
-  background-color: var(--terracotta);
+  background-color: var(--teal);
+  border: 1.5px solid rgba(253, 241, 219, 0.4);
   color: white;
 }
 
 .buttonContainer > a:last-child:hover,
 .buttonContainer > button:last-child:hover {
-  background-color: var(--terracotta-600);
+  background-color: var(--teal-700);
+  border-color: rgba(253, 241, 219, 0.65);
 }
 
-.buttonContainer > a:focus,
-.buttonContainer > button:focus {
+.buttonContainer > a:focus-visible,
+.buttonContainer > button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(139, 87, 42, 0.5);
+  box-shadow: 0 0 0 3px rgba(253, 241, 219, 0.5);
 }
 
 /* Media Queries */
