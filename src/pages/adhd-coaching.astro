@@ -44,7 +44,10 @@ const whatIsCoaching = [
   "ADHD-informed mental health therapy, by contrast, focuses on supporting the client to better understand how their ADHD has impacted their past and current experiences and their sense of self. ADHD does not directly cause anxiety, depression, low self-esteem, or relationship and professional difficulties — but a lifetime of navigating ADHD, and reconciling your internal experience with the demands of your world, absolutely can lead to these experiences. While there is some overlap with executive-function skill building, ADHD-informed mental health treatment focuses on how your experience with ADHD contributed to these challenges, as you process your experiences and build healthier mental and emotional patterns.",
 ];
 
-const coachingServices = [
+// Restructured per client feedback (7/2026): Individual Coaching (two
+// one-on-one tracks + the FAQs) and Group Coaching & Workshops as its own
+// section — the home-page coaching tiles anchor to each.
+const individualCoaching = [
   {
     title: "INDIVIDUAL SKILL DEVELOPMENT COACHING",
     content:
@@ -55,11 +58,16 @@ const coachingServices = [
     content:
       "Using a lens that maximizes one's ADHD strengths and minimizes the impact of one's ADHD challenges, clients are coached and supported to work towards achieving their specific individual goal.",
   },
-  {
-    title: "INDIVIDUAL & GROUP EDUCATION WORKSHOPS",
-    content:
-      "Workshops help participants understand how ADHD may impact their lives and how to navigate it. Workshops are tailored to the participants. Common workshops have been for parents of children with ADHD, newly diagnosed individuals, partners of someone diagnosed with ADHD, and professional organizations, just to name a few.",
-  },
+];
+
+const individualIntro = [
+  "One-on-one coaching with Adam takes two forms: skill-development coaching for building the day-to-day systems and habits that make life with ADHD more manageable, and goal-focused coaching aimed at a specific outcome you want to reach. Both start from how you experience your ADHD — and build on your strengths.",
+];
+
+// PLACEHOLDER: current workshops copy — Adam is drafting a dedicated
+// group-coaching paragraph to replace this.
+const groupCoaching = [
+  "Workshops help participants understand how ADHD may impact their lives and how to navigate it. Workshops are tailored to the participants. Common workshops have been for parents of children with ADHD, newly diagnosed individuals, partners of someone diagnosed with ADHD, and professional organizations, just to name a few.",
 ];
 
 const coachingFaq = [
@@ -111,8 +119,22 @@ const coachingFaq = [
     title="What is ADHD & Executive Function Coaching?"
     paragraphs={whatIsCoaching}
   />
-  <Specialization client:load title="Coaching Services" items={coachingServices} />
+  <DenServices
+    id="individual-coaching"
+    title="Individual Coaching"
+    paragraphs={individualIntro}
+  />
+  <Specialization
+    client:load
+    title="Individual Coaching Services"
+    items={individualCoaching}
+  />
   <FaqSection client:load title="FAQ About Coaching" items={coachingFaq} />
+  <DenServices
+    id="group-coaching"
+    title="Group Coaching & Workshops"
+    paragraphs={groupCoaching}
+  />
   <GetStarted client:load id="contact-coaching" />
   <BottomHero />
   <Footer />

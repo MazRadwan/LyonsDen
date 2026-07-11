@@ -147,7 +147,7 @@ const Header = ({ currentPath, logoSrc }) => {
           rel="noopener noreferrer"
           className={styles.navLink}
         >
-          ADHD Blog
+          Blog
         </a>
       </li>
       <li>

@@ -1,13 +1,14 @@
 ---
 import styles from "./DenServices.module.css";
 const {
+  id,
   title = "A Lyons Den Services",
   paragraphs = [
     "Adam Lyons provides dedicated therapy & coaching services for teens and adults. With a compassionate and professional approach, Adam offers personalized support and guidance to help you navigate life's challenges and achieve meaningful growth.",
   ],
 } = Astro.props;
 ---
-<section class={styles.denServices}>
+<section id={id} class={styles.denServices}>
   <div class={styles.content}>
     <h2 class={styles.title}>{title}</h2>
     {paragraphs.map((p) => (

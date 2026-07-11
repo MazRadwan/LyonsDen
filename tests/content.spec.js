@@ -38,7 +38,10 @@ test("adhd-coaching page key copy is present", async ({ page }) => {
     page.getByRole("heading", { name: /Understanding ADHD/i })
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: /Coaching Services/i })
+    page.getByRole("heading", { name: /^Individual Coaching$/i })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Group Coaching & Workshops/i })
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: /FAQ About Coaching/i })

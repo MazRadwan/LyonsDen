@@ -1,5 +1,6 @@
 
 .denServices {
+  scroll-margin-top: 1rem;
   background-color: var(--cream-2);
   color: var(--teal);
   padding: var(--section) 1rem;

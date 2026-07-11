@@ -59,7 +59,7 @@ export function siteSchema({ canonical, image }) {
     jobTitle: "Licensed Clinical Social Worker",
     honorificSuffix: "LCSW",
     description:
-      "Licensed Clinical Social Worker and ADHD specialist providing therapy and ADHD & Executive Function coaching for teens and adults.",
+      "Licensed Clinical Social Worker, psychotherapist, and ADHD specialist providing therapy and ADHD & Executive Function coaching for teens and adults.",
     identifier: {
       "@type": "PropertyValue",
       propertyID: "NPI",
