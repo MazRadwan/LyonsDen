@@ -27,21 +27,38 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Frosted cream card over the photo — same family as the bio caption
+   (cream glass + camel hairline) so it contrasts with the image while
+   staying on-theme (flat white matched nothing else on the site). Enters
+   with a soft 28px rise on the expo-out curve instead of a bare fade. */
 .modal {
   position: absolute;
   top: 50%;
   right: 10%;
-  transform: translate(0, -50%);
-  background-color: white;
+  transform: translate(0, calc(-50% + 28px));
+  background: rgba(253, 241, 219, 0.94);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--camel-line);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: var(--r);
+  box-shadow: var(--shadow-lg);
   max-width: 500px;
   opacity: 0;
-  transition: opacity 0.5s ease-out;
+  transition: opacity var(--dur-slow) ease,
+    transform 700ms var(--ease-entrance);
 }
 
 .animateModal {
   opacity: 1;
+  transform: translate(0, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal {
+    transition: opacity 200ms ease;
+    transform: translate(0, -50%);
+  }
 }
 
 .modalTitle {

@@ -22,22 +22,28 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Frosted cream card over the photo — matches the OurApproach modal and
+   bio caption family; slides in from the right on the expo-out curve. */
 .modal {
   position: absolute;
   top: 50%;
   right: 10%;
   transform: translate(0, -50%);
-  background-color: white;
+  background: rgba(253, 241, 219, 0.94);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--camel-line);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: var(--r);
+  box-shadow: var(--shadow-lg);
   max-width: 400px;
   opacity: 0;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition: opacity var(--dur-slow) ease, transform 700ms var(--ease-entrance);
 }
 
 .modal.hidden {
   opacity: 0;
-  transform: translate(100%, -50%);
+  transform: translate(48px, -50%);
 }
 
 .modal.visible {
@@ -45,10 +51,18 @@
   transform: translate(0, -50%);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal.hidden {
+    transition: opacity 200ms ease;
+    transform: translate(0, -50%);
+  }
+}
+
 .heading {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  color: #333;
+  color: var(--teal);
   margin-bottom: 1rem;
 }
 
@@ -56,7 +70,7 @@
   font-family: var(--font-ui);
   font-weight: 400;
   font-size: 1rem;
-  color: #666;
+  color: var(--ink-soft);
   margin-bottom: 1.5rem;
 }
 
