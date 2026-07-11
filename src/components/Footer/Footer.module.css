@@ -1,6 +1,6 @@
 
 .footer {
-  background-color: #0d4448;
+  background: var(--panel-teal);
   color: white;
   padding: 3rem 0 1rem;
 }
@@ -35,7 +35,7 @@
 
 .siteName,
 .siteSubName {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   font-size: 1.2rem;
   line-height: 1.2;
 }
@@ -59,7 +59,7 @@
 }
 
 .linkHeader {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   margin-bottom: 1rem;
   font-size: 1rem;
@@ -67,7 +67,7 @@
 
 .link,
 .address {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   display: block;
   margin-bottom: 0.5rem;
@@ -84,7 +84,7 @@
 .copyright {
   text-align: center;
   margin-top: 2rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.8rem;
 }
 

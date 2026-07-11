@@ -1,6 +1,6 @@
 
 .section {
-  background-color: #0d4448;
+  background: var(--panel-teal);
   padding: 4rem 0;
   color: white;
   position: relative; /* Add this */
@@ -49,7 +49,7 @@
 }
 
 .heading {
-  font-family: "Reem Kufi", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 3rem;
   margin-bottom: 2rem;
@@ -71,7 +71,7 @@
 }
 
 .text {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-size: 1rem;
   margin-bottom: 2rem;
 }
@@ -88,7 +88,7 @@
 .buttonContainer > button {
   display: inline-block;
   width: 100%;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-size: inherit;
   padding: 12px 24px;
   border: none;
@@ -103,24 +103,24 @@
 
 .buttonContainer > a:first-child,
 .buttonContainer > button:first-child {
-  background-color: #8b572a;
+  background-color: var(--terracotta);
   color: white;
 }
 
 .buttonContainer > a:first-child:hover,
 .buttonContainer > button:first-child:hover {
-  background-color: #6d451e;
+  background-color: var(--terracotta-600);
 }
 
 .buttonContainer > a:last-child,
 .buttonContainer > button:last-child {
-  background-color: #0c7076;
+  background-color: var(--terracotta);
   color: white;
 }
 
 .buttonContainer > a:last-child:hover,
 .buttonContainer > button:last-child:hover {
-  background-color: #0a5c60;
+  background-color: var(--terracotta-600);
 }
 
 .buttonContainer > a:focus,

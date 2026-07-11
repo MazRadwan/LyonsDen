@@ -1,23 +1,37 @@
-
+/* Service card — Den `.svc-card` treatment: cream fill, hairline camel
+   border, 20px radius, aspect-ratio image with hover zoom, −6px lift, and a
+   terracotta arrow-link (no boxed button). */
 .card {
-  background-color: #cec7bc;
+  background-color: var(--cream);
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border: 1px solid var(--camel-line);
+  border-radius: var(--r);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.7s ease, transform 0.9s ease;
+  transform: translateY(var(--reveal-shift));
+  transition: opacity var(--dur-slow) var(--ease-entrance),
+    transform var(--dur-slow) var(--ease-entrance);
 }
 
 .card.visible {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity var(--dur-slow) var(--ease-entrance),
+    transform 0.35s var(--ease-standard),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card.visible:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--camel);
 }
 
 .imageContainer {
-  height: 200px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -25,74 +39,68 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s var(--ease-standard);
+}
+
+.card.visible:hover .image {
+  transform: scale(1.05);
 }
 
 .content {
-  padding: 1rem;
+  padding: 1.2rem 1.3rem 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.9rem;
   flex-grow: 1;
 }
 
 .title {
-  font-family: "Reem Kufi", sans-serif;
-  color: black;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  color: var(--teal);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
   text-align: left;
-  padding-bottom: 40px;
 }
 
+/* Terracotta label + sliding arrow — the Den action affordance */
 .button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1.1;
-  letter-spacing: 0.01em;
-  color: #0d4448;
-  background-color: transparent;
-  border: 1.5px solid rgba(13, 68, 72, 0.45);
-  padding: 0.6rem 1.1rem;
-  cursor: pointer;
-  align-self: end;
-  border-radius: 9px;
+  gap: 0.45rem;
+  font-family: var(--font-ui);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  color: var(--terracotta-600);
   text-decoration: none;
+  align-self: start;
+  padding: 0.15rem 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   white-space: nowrap;
-  transition: background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button::after {
+  content: "\2192";
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+
+.card.visible:hover .button::after,
+.button:hover::after {
+  transform: translateX(4px);
 }
 
 .button:hover {
-  background-color: #0d4448;
-  border-color: #0d4448;
-  color: #fdf1db;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(13, 68, 72, 0.22);
+  color: var(--terracotta);
 }
 
 .button:focus-visible {
-  outline: 3px solid rgba(13, 68, 72, 0.45);
+  outline: 3px solid var(--teal);
   outline-offset: 3px;
-}
-
-@media (max-width: 480px) {
-  .imageContainer {
-    height: 150px; /* Further reduce image height */
-  }
-
-  .title {
-    font-size: 1.2rem;
-  }
-
-  .button {
-    font-size: 0.8rem;
-    text-decoration: none;
-  }
+  border-radius: 4px;
 }

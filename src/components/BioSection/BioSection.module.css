@@ -1,6 +1,6 @@
 
 .section {
-  background-color: #fffcf3;
+  background-color: var(--cream);
   padding: 4rem 0;
 }
 
@@ -20,18 +20,18 @@
 }
 
 .sectionTitle {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
-  color: #0d4448;
+  color: var(--teal);
   margin-bottom: 1rem;
   font-size: 1rem;
 }
 
 .header {
-  font-family: "Reem Kufi", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 3rem;
-  color: #0d4448;
+  color: var(--teal);
   margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(30px);
@@ -44,9 +44,9 @@
 }
 
 .subheader {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
-  color: #0d4448;
+  color: var(--teal);
   margin-bottom: 1rem;
   font-size: 1rem;
   line-height: 1.4;
@@ -54,9 +54,9 @@
 
 .paragraph,
 .clientMessage {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
-  color: #0d4448;
+  color: var(--teal);
   margin-bottom: 1rem;
   line-height: 1.6;
   font-size: 0.9rem;
@@ -88,10 +88,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #624110;
+  background: var(--panel-teal);
   color: white;
   padding: 1.5rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   text-align: center;
 }
 

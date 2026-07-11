@@ -1,20 +1,23 @@
-
+/* FAQ accordion — Den treatment: card-shaped items (cream, hairline camel
+   border, 12px radius), grid-template-rows 0fr→1fr height animation (opens
+   AND closes smoothly — the panel stays mounted), and a plus→minus icon
+   built from two terracotta bars. */
 .faqSection {
-  background-color: #fffcf3;
-  padding: 4rem 0;
+  background-color: var(--cream);
+  padding: var(--section) 0;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--wrap);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--gutter);
 }
 
 .header {
-  font-family: "Reem Kufi", sans-serif;
-  font-weight: 700;
-  color: #0d4448;
-  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  color: var(--teal);
+  font-size: var(--text-2xl);
   margin-bottom: 2rem;
   opacity: 0;
   transform: translateY(30px);
@@ -29,6 +32,10 @@
 .faqList {
   opacity: 0;
   transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 52rem;
 }
 
 .animateMenu {
@@ -37,56 +44,121 @@
 }
 
 .faqItem {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #0d4448;
+  background: var(--cream-3);
+  border: 1px solid var(--camel-line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  transition: border-color var(--dur-base) var(--ease-standard),
+    box-shadow var(--dur-base) var(--ease-standard);
+}
+
+.faqItemOpen {
+  border-color: var(--camel);
+  box-shadow: var(--shadow-sm);
 }
 
 .faqQuestion {
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #0d4448;
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: 1.05rem;
+  color: var(--teal);
   background: none;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   width: 100%;
   text-align: left;
-  padding: 1rem 0;
+  padding: 1.1rem 1.25rem;
 }
 
-.plus::after,
-.minus::after {
-  content: "+";
-  font-size: 1.5rem;
-  line-height: 1;
+.faqQuestion:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: -3px;
+  border-radius: var(--r-sm);
 }
 
-.minus::after {
-  content: "-";
+/* plus/minus icon: two terracotta bars; vertical bar collapses when open */
+.accIcon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.accIcon::before,
+.accIcon::after {
+  content: "";
+  position: absolute;
+  background: var(--terracotta-600);
+  border-radius: 2px;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+
+.accIcon::before {
+  top: 8px;
+  left: 0;
+  width: 18px;
+  height: 2px;
+}
+
+.accIcon::after {
+  top: 0;
+  left: 8px;
+  width: 2px;
+  height: 18px;
+}
+
+.accIconOpen::after {
+  transform: scaleY(0);
+}
+
+/* the open/close animation — animates BOTH ways, panel stays mounted.
+   visibility flips AFTER the collapse finishes (delay) so closed content is
+   untabbable/hidden to AT + testable, while the height animation still shows. */
+.answerWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows var(--dur-base) var(--ease-standard),
+    visibility 0s linear var(--dur-base);
+}
+
+.answerOpen {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows var(--dur-base) var(--ease-standard),
+    visibility 0s;
+}
+
+.answerInner {
+  overflow: hidden;
 }
 
 .faqAnswer {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  color: #0d4448;
-  padding: 1rem 0;
-  line-height: 1.6;
+  font-family: var(--font-ui);
+  font-weight: var(--weight-regular);
+  color: var(--ink-soft);
+  padding: 0 1.25rem 1.25rem;
+  line-height: 1.65;
+  max-width: 62ch;
 }
 
-@keyframes fadeSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.faqAnswer p {
+  margin: 0 0 0.8em;
 }
 
-.faqAnswer {
-  animation: fadeSlideDown 0.3s ease-out;
+.faqAnswer p:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .answerWrap,
+  .accIcon::before,
+  .accIcon::after,
+  .faqItem {
+    transition: none;
+  }
 }

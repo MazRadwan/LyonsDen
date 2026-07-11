@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #fffcf3;
+  background-color: var(--cream);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -31,7 +31,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #4b2f04;
+  color: var(--teal);
 }
 
 .logo {
@@ -47,25 +47,25 @@
 }
 
 .siteName {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: bold;
-  color: #4b2f04;
+  color: var(--teal);
   text-align: center;
 }
 
 .separator {
   width: 100%;
   border: 0;
-  border-top: 1px solid #4b2f04;
+  border-top: 1px solid var(--teal);
   margin: 0.2rem 0;
 }
 
 .siteSubName {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: bold;
-  color: #4b2f04;
+  color: var(--teal);
   text-align: center;
 }
 
@@ -84,9 +84,9 @@
 }
 
 .navLink {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   text-decoration: none;
-  color: #4b2f04;
+  color: var(--teal);
   margin: 0 1rem;
   position: relative;
   padding-bottom: 3px;
@@ -102,14 +102,14 @@
   right: 0;
   bottom: 0;
   height: 1.5px;
-  background-color: #8b572a;
+  background-color: var(--terracotta);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navLink:hover {
-  color: #8b572a;
+  color: var(--terracotta);
 }
 
 .desktopNav .navLink:hover::after {
@@ -122,7 +122,7 @@
 }
 
 .navLink:focus-visible {
-  outline: 2px solid rgba(139, 87, 42, 0.55);
+  outline: 2px solid rgba(181, 87, 47, 0.55);
   outline-offset: 4px;
   border-radius: 2px;
 }
@@ -131,18 +131,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   font-size: 0.9rem;
   line-height: 1.1;
   letter-spacing: 0.01em;
-  background-color: #8b572a;
+  background-color: var(--terracotta);
   color: white;
   padding: 0.6rem 1.1rem;
   border: 1.5px solid transparent;
-  border-radius: 9px;
+  border-radius: var(--r-sm);
   cursor: pointer;
-  box-shadow: 0 3px 10px rgba(139, 87, 42, 0.24);
+  box-shadow: 0 3px 10px rgba(181, 87, 47, 0.24);
   transition: background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -152,14 +152,14 @@
 }
 
 .appointmentButton:hover {
-  background-color: #6d451e;
+  background-color: var(--terracotta-600);
   transform: translateY(-1px);
-  box-shadow: 0 7px 16px rgba(139, 87, 42, 0.3);
+  box-shadow: 0 7px 16px rgba(181, 87, 47, 0.3);
   text-decoration: none;
 }
 
 .appointmentButton:focus-visible {
-  outline: 3px solid rgba(139, 87, 42, 0.55);
+  outline: 3px solid rgba(181, 87, 47, 0.55);
   outline-offset: 2px;
 }
 
@@ -176,7 +176,7 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: #4b2f04;
+  background-color: var(--teal);
   margin: 2px 0;
   transition: 0.4s;
 }
@@ -186,7 +186,7 @@
      the smart-sticky reveal covered a third of a phone screen mid-scroll. */
   .navBar {
     padding: 0.55rem 1rem;
-    border-bottom: 1px solid rgba(75, 47, 4, 0.08);
+    border-bottom: 1px solid var(--hairline);
   }
 
   .logo {
@@ -219,13 +219,13 @@
     left: 0.75rem;
     right: 0.75rem;
     margin-top: 0.6rem;
-    background-color: #fffcf3;
+    background-color: var(--cream);
     flex-direction: column;
     align-items: center;
     padding: 0.9rem 1rem 1.15rem;
     border-radius: 14px;
-    border: 1px solid rgba(75, 47, 4, 0.1);
-    box-shadow: 0 18px 40px -12px rgba(75, 47, 4, 0.3);
+    border: 1px solid var(--camel-line);
+    box-shadow: 0 18px 40px -12px rgba(6, 41, 44, 0.3);
     z-index: -1;
     transform: translateY(calc(-100% - 90px));
     opacity: 0;
@@ -265,7 +265,7 @@
   }
 
   .mobileNav .navLinks li {
-    border-bottom: 1px solid rgba(75, 47, 4, 0.08);
+    border-bottom: 1px solid var(--hairline);
     /* staggered entrance (riding the card's drop) */
     opacity: 0;
     transform: translateY(-8px);
@@ -303,9 +303,9 @@
      (space-between would center the label when the active dot is present) */
   .mobileNav .navLink::after {
     content: "›";
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-ui);
     font-size: 1.1rem;
-    color: rgba(75, 47, 4, 0.4);
+    color: var(--ink-faint);
     margin-left: auto;
     padding-left: 1rem;
   }
@@ -321,7 +321,7 @@
 
   /* current page: terracotta + small leading dot */
   .mobileNav .navLink[aria-current="page"] {
-    color: #8b572a;
+    color: var(--terracotta);
     font-weight: bold;
   }
 
@@ -330,7 +330,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #8b572a;
+    background-color: var(--terracotta);
     margin-right: 0.6rem;
   }
 

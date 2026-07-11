@@ -5,16 +5,16 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   font-size: 0.95rem;
   line-height: 1.1;
   letter-spacing: 0.01em;
   color: #fff;
-  background-color: #125b60;
+  background-color: var(--teal);
   padding: 0.85rem 1.5rem;
   border: 1.5px solid transparent;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -27,7 +27,7 @@
 }
 
 .button:hover {
-  background-color: #0a3d41;
+  background-color: var(--teal-700);
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(18, 91, 96, 0.32);
   text-decoration: none;

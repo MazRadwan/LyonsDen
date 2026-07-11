@@ -77,26 +77,40 @@ const FaqSection = ({ items = defaultFaqItems, title = "Frequently Asked Questio
           {title}
         </h2>
         <div ref={menuRef} className={styles.faqList}>
-          {faqItems.map((item, index) => (
-            <div key={index} className={styles.faqItem}>
-              <button
-                className={styles.faqQuestion}
-                onClick={() => toggleItem(index)}
+          {faqItems.map((item, index) => {
+            const isOpen = activeItem === index;
+            return (
+              <div
+                key={index}
+                className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ""}`}
               >
-                {item.question}
-                <span
-                  className={activeItem === index ? styles.minus : styles.plus}
-                ></span>
-              </button>
-              {activeItem === index && (
-                <div className={styles.faqAnswer}>
-                  {Array.isArray(item.answer)
-                    ? item.answer.map((para, i) => <p key={i}>{para}</p>)
-                    : item.answer}
+                <button
+                  className={styles.faqQuestion}
+                  onClick={() => toggleItem(index)}
+                  aria-expanded={isOpen}
+                >
+                  {item.question}
+                  <span
+                    className={`${styles.accIcon} ${isOpen ? styles.accIconOpen : ""}`}
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                {/* Panel stays mounted; grid-template-rows 0fr→1fr animates
+                    open AND closed (the old mount/unmount was jarring). */}
+                <div
+                  className={`${styles.answerWrap} ${isOpen ? styles.answerOpen : ""}`}
+                >
+                  <div className={styles.answerInner}>
+                    <div className={styles.faqAnswer}>
+                      {Array.isArray(item.answer)
+                        ? item.answer.map((para, i) => <p key={i}>{para}</p>)
+                        : item.answer}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

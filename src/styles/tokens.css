@@ -1,0 +1,86 @@
+/* ============================================================
+   Design tokens — ported from the "Den" design exploration
+   (redesign/den worktree, src/styles/tokens.css) and adapted to
+   this branch's CSS-Modules architecture. Single source of truth
+   for color, type, radius, shadow, and motion. Components consume
+   these vars; no raw hex in component modules.
+   ============================================================ */
+
+:root {
+  /* ---- Surfaces (cream family) ---- */
+  --cream: #fdf1db; /* primary surface */
+  --cream-2: #f7e6c9; /* deeper cream — alt sections / inputs */
+  --cream-3: #fbead0; /* soft cream — cards on cream */
+
+  /* ---- Teal ink + depth ---- */
+  --teal: #0d4448; /* body text + headings */
+  --teal-700: #0a373b; /* mid depth */
+  --teal-900: #06292c; /* deepest — footer */
+  --ink-soft: rgba(13, 68, 72, 0.82);
+  --ink-faint: rgba(13, 68, 72, 0.6);
+  --hairline: rgba(13, 68, 72, 0.12);
+
+  /* ---- Terracotta — CTA + warm accents ---- */
+  --terracotta: #b5572f; /* CTA fill (white label passes 4.6:1) */
+  --terracotta-600: #9e4a28; /* hover + warm text on cream (5.4:1) */
+  --terracotta-bright: #c0623a; /* decorative fills only */
+
+  /* ---- Camel / warm sand — secondary ---- */
+  --camel: #cba378;
+  --camel-2: #e6cfad; /* soft hover fill */
+  --camel-line: rgba(203, 163, 120, 0.5);
+
+  /* ---- On-teal text ---- */
+  --on-teal: #fdf1db;
+  --on-teal-soft: rgba(253, 241, 219, 0.8);
+
+  /* ---- Status ---- */
+  --error: #9a2f1c;
+  --error-bg: rgba(154, 47, 28, 0.08);
+  --success: #1c6b56;
+  --success-bg: #ecf5ef;
+
+  /* ---- Type ---- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-ui: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Fluid modular type scale */
+  --text-xs: 0.78rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-md: 1.15rem;
+  --text-lg: clamp(1.25rem, 0.6vw + 1.1rem, 1.5rem);
+  --text-xl: clamp(1.6rem, 1.4vw + 1.2rem, 2rem);
+  --text-2xl: clamp(1.95rem, 2.6vw + 1rem, 2.9rem);
+  --text-display: clamp(2.6rem, 5.2vw + 1rem, 4.4rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Shape + shadow (teal-tinted, never gray) ---- */
+  --r-sm: 12px;
+  --r: 20px;
+  --r-lg: 30px;
+  --shadow-sm: 0 1px 2px rgba(6, 41, 44, 0.06), 0 3px 10px rgba(6, 41, 44, 0.05);
+  --shadow-md: 0 10px 34px rgba(6, 41, 44, 0.1);
+  --shadow-lg: 0 26px 60px rgba(6, 41, 44, 0.16);
+  --focus-ring: 0 0 0 4px rgba(13, 68, 72, 0.18);
+
+  /* ---- Rhythm ---- */
+  --wrap: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section: clamp(4rem, 9vw, 7rem);
+
+  /* ---- Motion ---- */
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 600ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-shift: 12px;
+
+  /* ---- Teal feature-panel gradient (never a flat slab) ---- */
+  --panel-teal: linear-gradient(160deg, var(--teal-700) 0%, var(--teal-900) 100%);
+}

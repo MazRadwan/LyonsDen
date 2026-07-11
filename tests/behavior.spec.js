@@ -44,7 +44,8 @@ test.describe("Home page interactions", () => {
     await q.click();
     await expect(answer).toBeVisible();
     await q.click();
-    await expect(answer).toHaveCount(0); // answer is unmounted when collapsed
+    // Panel stays mounted (grid-rows 0fr animation) — collapsed = zero height
+    await expect(answer).not.toBeVisible();
   });
 
   test('header "Book a Free Consultation" points to TherapyPortal availability', async ({ page }) => {

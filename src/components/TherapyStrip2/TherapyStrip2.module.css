@@ -1,7 +1,7 @@
 .strip {
-  background-color: #0d4448;
+  background: var(--panel-teal);
   color: white;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600; /* Semi-bold */
   display: flex;
   justify-content: space-around;

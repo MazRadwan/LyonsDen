@@ -1,8 +1,8 @@
 
 .sectionWrapper {
-  background-color: #fffef8;
+  background-color: var(--cream);
   width: 100%;
-  padding: 4rem 0;
+  padding: var(--section) 0;
 }
 
 .section {
@@ -13,10 +13,10 @@
 }
 
 .heading {
-  font-family: "Reem Kufi", sans-serif;
-  font-size: 3.5rem;
-  font-weight: 400;
-  color: #0d4448;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-medium);
+  color: var(--teal);
   text-align: center;
   /* Pin margins to h1 browser defaults so h2 tag renders identically */
   margin-top: 0.67em;
@@ -26,9 +26,9 @@
 }
 
 .subtext {
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  color: #0d4448;
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  color: var(--ink-soft);
   text-align: center;
   max-width: 800px;
   margin: 0 auto 3rem;
@@ -43,11 +43,23 @@
 }
 
 .box {
-  background-color: #f5f5f5;
+  background-color: var(--cream-3);
   padding: 2rem;
-  border-radius: 8px;
+  border: 1px solid var(--camel-line);
+  border-radius: var(--r);
   text-align: center;
   opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.35s var(--ease-standard), box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--camel);
 }
 
 .icon {
@@ -57,61 +69,56 @@
 }
 
 .boxTitle {
-  font-family: "Reem Kufi", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.2rem;
-  color: #0d4448;
+  color: var(--teal);
   margin-bottom: 1rem;
 }
 
 .boxDescription {
-  font-family: "Inter", sans-serif;
-  font-size: 0.9rem;
-  color: #0d4448;
-  margin-bottom: 1rem;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+  flex-grow: 1;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1.1;
-  letter-spacing: 0.01em;
-  color: #0d4448;
+  gap: 0.45rem;
+  font-family: var(--font-ui);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  color: var(--terracotta-600);
   background-color: transparent;
-  border-radius: 9px;
-  border: 1.5px solid rgba(13, 68, 72, 0.45);
-  padding: 0.6rem 1.1rem;
+  border: 0;
+  padding: 0.15rem 0;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button::after {
+  content: "\2192";
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+
+.box:hover .button::after,
+.button:hover::after {
+  transform: translateX(4px);
 }
 
 .button:hover {
-  background-color: #0d4448;
-  border-color: #0d4448;
-  color: #fdf1db;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(13, 68, 72, 0.22);
+  color: var(--terracotta);
 }
 
 .button:focus-visible {
-  outline: 3px solid rgba(13, 68, 72, 0.45);
+  outline: 3px solid var(--teal);
   outline-offset: 3px;
-}
-
-@media (max-width: 480px) {
-  .button {
-    font-size: 0.84rem;
-    padding: 0.55rem 0.9rem;
-  }
+  border-radius: 4px;
 }
 
 /* Animations */

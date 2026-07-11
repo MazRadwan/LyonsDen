@@ -77,26 +77,37 @@ const Specialization = ({
           {title}
         </h2>
         <ul ref={menuRef} className={styles.specializationList}>
-          {specializations.map((item, index) => (
-            <li key={index} className={styles.specializationItem}>
-              <button
-                className={`${styles.specializationQuestion} ${
-                  activeIndex === index ? styles.active : ""
-                }`}
-                onClick={() => toggleItem(index)}
+          {specializations.map((item, index) => {
+            const isOpen = activeIndex === index;
+            return (
+              <li
+                key={index}
+                className={`${styles.specializationItem} ${isOpen ? styles.specializationItemOpen : ""}`}
               >
-                {item.title}
-                <span
-                  className={activeIndex === index ? styles.minus : styles.plus}
-                ></span>
-              </button>
-              {activeIndex === index && (
-                <div className={styles.specializationAnswer}>
-                  {item.content}
+                <button
+                  className={styles.specializationQuestion}
+                  onClick={() => toggleItem(index)}
+                  aria-expanded={isOpen}
+                >
+                  {item.title}
+                  <span
+                    className={`${styles.accIcon} ${isOpen ? styles.accIconOpen : ""}`}
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                {/* Panel stays mounted; grid-template-rows animates both ways */}
+                <div
+                  className={`${styles.answerWrap} ${isOpen ? styles.answerOpen : ""}`}
+                >
+                  <div className={styles.answerInner}>
+                    <div className={styles.specializationAnswer}>
+                      {item.content}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

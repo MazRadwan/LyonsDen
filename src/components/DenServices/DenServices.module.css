@@ -1,8 +1,8 @@
 
 .denServices {
-  background-color: #915905;
-  color: white;
-  padding: 3rem 1rem;
+  background-color: var(--cream-2);
+  color: var(--teal);
+  padding: var(--section) 1rem;
   text-align: left;
 }
 
@@ -12,13 +12,13 @@
 }
 
 .title {
-  font-family: "Reem Kufi", sans-serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .description {
-  font-family: "Inria Serif", serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   line-height: 1.6;
 }

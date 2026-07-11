@@ -45,15 +45,15 @@
 }
 
 .modalTitle {
-  font-family: "Reem Kufi", sans-serif;
-  color: #0d4448;
+  font-family: var(--font-display);
+  color: var(--teal);
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .modalHeader {
-  font-family: "Reem Kufi", sans-serif;
-  color: #0d4448;
+  font-family: var(--font-display);
+  color: var(--teal);
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -67,8 +67,8 @@
 }
 
 .menuButton {
-  font-family: "Reem Kufi", sans-serif;
-  color: #0d4448;
+  font-family: var(--font-display);
+  color: var(--teal);
   background: none;
   border: none;
   cursor: pointer;
@@ -78,7 +78,7 @@
   width: 100%;
   text-align: left;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #0d4448;
+  border-bottom: 1px solid var(--teal);
   font-size: 1.2rem;
 }
 
@@ -93,8 +93,8 @@
 }
 
 .menuContent {
-  font-family: "Inter", sans-serif;
-  color: #0d4448;
+  font-family: var(--font-ui);
+  color: var(--teal);
   padding: 1rem 0;
   line-height: 1.6;
 }
