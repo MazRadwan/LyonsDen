@@ -93,6 +93,7 @@
 
 /* ---- shadcn-style form card ---- */
 .formCard {
+  scroll-margin-top: 0.9rem;
   background-color: var(--cream);
   border: 1px solid rgba(13, 68, 72, 0.14);
   border-radius: var(--r);

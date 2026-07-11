@@ -135,7 +135,7 @@ const GetStarted = ({ id }) => {
         </p>
       </div>
       <div className={styles.rightSection}>
-        <div className={styles.formCard}>
+        <div className={styles.formCard} data-contact-form>
           <h3 className={styles.formHeader}>Send us a Message</h3>
           <p className={styles.formSubtext}>
             We usually respond within one business day.

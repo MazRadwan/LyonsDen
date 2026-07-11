@@ -90,12 +90,16 @@ const Header = ({ currentPath, logoSrc }) => {
     };
   }, [isMenuOpen]);
 
-  // Integrated scroll function
+  // Integrated scroll function. On phones the contact section stacks (info
+  // panel above the form), so a contact anchor retargets to the form card;
+  // on desktop the columns sit side by side and the section top is correct.
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (!element) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const target =
+      (isMobile && element.querySelector("[data-contact-form]")) || element;
+    target.scrollIntoView({ behavior: "smooth" });
   };
 
   const navLinks = (
