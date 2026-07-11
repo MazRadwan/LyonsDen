@@ -78,24 +78,32 @@ const OurApproach = ({ heroSrc }) => {
         <h3 className={styles.modalTitle}>MY APPROACH</h3>
         <h2 className={styles.modalHeader}>What You Can Expect</h2>
         <div className={styles.foldingMenu}>
-          {menuItems.map((item, index) => (
-            <div key={index} className={styles.menuItem}>
-              <button
-                className={styles.menuButton}
-                onClick={() => toggleMenu(index)}
-              >
-                {item.title}
-                <span
-                  className={
-                    activeMenu === index ? styles.arrowUp : styles.arrowDown
-                  }
-                ></span>
-              </button>
-              {activeMenu === index && (
-                <p className={styles.menuContent}>{item.content}</p>
-              )}
-            </div>
-          ))}
+          {menuItems.map((item, index) => {
+            const isOpen = activeMenu === index;
+            return (
+              <div key={index} className={styles.menuItem}>
+                <button
+                  className={styles.menuButton}
+                  onClick={() => toggleMenu(index)}
+                  aria-expanded={isOpen}
+                >
+                  {item.title}
+                  <span
+                    className={`${styles.accIcon} ${isOpen ? styles.accIconOpen : ""}`}
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                {/* Panel stays mounted; grid-rows animates open AND closed */}
+                <div
+                  className={`${styles.menuContentWrap} ${isOpen ? styles.menuContentOpen : ""}`}
+                >
+                  <div className={styles.menuContentInner}>
+                    <p className={styles.menuContent}>{item.content}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
         {/* The components render their own <a> when given href — wrapper
             anchors around them defeated the equal-width rule (the inner
