@@ -227,7 +227,16 @@ const Header = ({ currentPath, logoSrc }) => {
       >
         Book a Free Consultation
       </ConsultationButton>
-      <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ""}`}>
+      <div
+        className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ""}`}
+        onClick={(e) => {
+          // Any link tapped in the menu (nav rows or the CTA) dismisses it —
+          // the card slides back up behind the bar via the existing closed-
+          // state transition. Same-page hash links especially need this, as
+          // they scroll without a page load.
+          if (e.target.closest("a")) setIsMenuOpen(false);
+        }}
+      >
         {navLinks}
         <ConsultationButton
           href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
