@@ -119,12 +119,20 @@ const Header = ({ currentPath, logoSrc }) => {
         )}
       </li>
       <li>
-        <a href="/services" className={styles.navLink}>
+        <a
+          href="/services"
+          className={styles.navLink}
+          aria-current={currentPath === "/services" ? "page" : undefined}
+        >
           Therapy Services
         </a>
       </li>
       <li>
-        <a href="/adhd-coaching" className={styles.navLink}>
+        <a
+          href="/adhd-coaching"
+          className={styles.navLink}
+          aria-current={currentPath === "/adhd-coaching" ? "page" : undefined}
+        >
           ADHD Coaching
         </a>
       </li>
@@ -192,6 +200,15 @@ const Header = ({ currentPath, logoSrc }) => {
   );
 
   return (
+    <>
+      {/* Scrim behind the open mobile menu — sibling of nav (fixed positioning
+          inside the transformed nav would resolve against the nav, not the
+          viewport). Tap to close. */}
+      <div
+        className={`${styles.scrim} ${isMenuOpen ? styles.scrimVisible : ""}`}
+        onClick={() => setIsMenuOpen(false)}
+        aria-hidden="true"
+      />
     <nav ref={navRef} className={`${styles.navBar} ${isHidden ? styles.navBarHidden : ""}`}>
       <a href="/" className={styles.logoContainer}>
         <img src={logoSrc} alt="A Lyons Den Therapy" className={styles.logo} />
@@ -221,12 +238,19 @@ const Header = ({ currentPath, logoSrc }) => {
           Book a Free Consultation
         </ConsultationButton>
       </div>
-      <div className={styles.hamburger} onClick={toggleMenu}>
+      <div
+        className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerOpen : ""}`}
+        onClick={toggleMenu}
+        role="button"
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={isMenuOpen}
+      >
         <span></span>
         <span></span>
         <span></span>
       </div>
     </nav>
+    </>
   );
 };
 

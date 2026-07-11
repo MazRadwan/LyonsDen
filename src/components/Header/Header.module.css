@@ -93,8 +93,9 @@
   transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Underline slides in from the left on hover */
-.navLink::after {
+/* Underline slides in from the left on hover (desktop only — the mobile
+   menu uses ::after for its chevron/external marker) */
+.desktopNav .navLink::after {
   content: "";
   position: absolute;
   left: 0;
@@ -111,8 +112,13 @@
   color: #8b572a;
 }
 
-.navLink:hover::after {
+.desktopNav .navLink:hover::after {
   transform: scaleX(1);
+}
+
+/* Scrim behind the open mobile menu (mobile only — see media query) */
+.scrim {
+  display: none;
 }
 
 .navLink:focus-visible {
@@ -216,7 +222,7 @@
     background-color: #fffcf3;
     flex-direction: column;
     align-items: center;
-    padding: 1.25rem 1rem 1.5rem;
+    padding: 0.9rem 1rem 1.15rem;
     border-radius: 14px;
     border: 1px solid rgba(75, 47, 4, 0.1);
     box-shadow: 0 18px 40px -12px rgba(75, 47, 4, 0.3);
@@ -251,25 +257,134 @@
     }
   }
 
+  /* --- Menu content: structured rows, not floating links --- */
   .mobileNav .navLinks {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    width: 100%;
   }
+
+  .mobileNav .navLinks li {
+    border-bottom: 1px solid rgba(75, 47, 4, 0.08);
+    /* staggered entrance (riding the card's drop) */
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 260ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobileNav .navLinks li:last-child {
+    border-bottom: none;
+  }
+
+  .open .navLinks li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .open .navLinks li:nth-child(1) { transition-delay: 70ms; }
+  .open .navLinks li:nth-child(2) { transition-delay: 105ms; }
+  .open .navLinks li:nth-child(3) { transition-delay: 140ms; }
+  .open .navLinks li:nth-child(4) { transition-delay: 175ms; }
+  .open .navLinks li:nth-child(5) { transition-delay: 210ms; }
+  .open .navLinks li:nth-child(6) { transition-delay: 245ms; }
 
   .mobileNav .navLink {
-    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.7rem 0.35rem;
+    font-size: 1rem;
+    line-height: 1.25; /* Jomolhari's default metrics are very tall */
+    border-radius: 8px;
   }
 
+  /* chevron for internal pages, ↗ for external (blog / portal).
+     margin-left:auto pins it right while the label stays left-aligned
+     (space-between would center the label when the active dot is present) */
+  .mobileNav .navLink::after {
+    content: "›";
+    font-family: "Inter", sans-serif;
+    font-size: 1.1rem;
+    color: rgba(75, 47, 4, 0.4);
+    margin-left: auto;
+    padding-left: 1rem;
+  }
+
+  .mobileNav .navLink[target="_blank"]::after {
+    content: "↗";
+    font-size: 0.9rem;
+  }
+
+  .mobileNav .navLink:active {
+    background-color: rgba(139, 87, 42, 0.07);
+  }
+
+  /* current page: terracotta + small leading dot */
+  .mobileNav .navLink[aria-current="page"] {
+    color: #8b572a;
+    font-weight: bold;
+  }
+
+  .mobileNav .navLink[aria-current="page"]::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #8b572a;
+    margin-right: 0.6rem;
+  }
+
+  /* booking CTA lives INSIDE the menu card on mobile */
   .mobileNav .appointmentButton {
-    margin-top: 1rem;
-    margin-left: 0;
+    display: inline-flex;
+    width: 100%;
+    margin: 1.1rem 0 0;
+    padding: 0.85rem 1.5rem;
   }
 
   .hamburger {
     display: flex;
+    padding: 8px 4px; /* bigger tap target */
   }
 
-  .navBar .appointmentButton {
+  /* hamburger → X morph */
+  .hamburger span {
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 200ms ease;
+  }
+
+  .hamburgerOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburgerOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburgerOpen span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* hide only the BAR-level CTA on mobile (the menu's stays) */
+  .navBar > .appointmentButton {
     display: none;
+  }
+
+  /* dimmed backdrop behind the open menu */
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(35, 25, 10, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease, visibility 0s linear 300ms;
+    z-index: 999; /* just under the navBar (1000) */
+  }
+
+  .scrimVisible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms ease, visibility 0s;
   }
 }
