@@ -178,6 +178,28 @@
 }
 
 @media (max-width: 768px) {
+  /* Compact header: at full size (75px logo + stacked wordmark ≈ 115px tall)
+     the smart-sticky reveal covered a third of a phone screen mid-scroll. */
+  .navBar {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid rgba(75, 47, 4, 0.08);
+  }
+
+  .logo {
+    width: 46px;
+    height: 46px;
+    margin-right: 8px;
+  }
+
+  .siteName,
+  .siteSubName {
+    font-size: 1rem;
+  }
+
+  .separator {
+    margin: 0.1rem 0;
+  }
+
   .desktopNav {
     display: none;
   }

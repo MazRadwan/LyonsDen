@@ -69,3 +69,11 @@
 .highlight.visible {
   transition-delay: 0.5s;
 }
+
+/* Stack the CTA pair on phones — side by side they exceed the viewport */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
