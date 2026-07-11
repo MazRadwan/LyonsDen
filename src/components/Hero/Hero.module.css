@@ -69,4 +69,10 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .buttons > a,
+  .buttons > button {
+    width: 100%;
+    max-width: 20rem;
+  }
 }

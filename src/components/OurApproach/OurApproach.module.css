@@ -114,4 +114,10 @@
   .buttonContainer {
     flex-direction: column;
   }
+
+  .buttonContainer > a,
+  .buttonContainer > button {
+    width: 100%;
+    max-width: 20rem;
+  }
 }

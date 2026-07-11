@@ -45,14 +45,24 @@
   display: none;
 }
 
+/* Mobile: borderless trust-list — centered pills with ragged widths read
+   poorly stacked; left-aligned dot rows share one clean edge instead. */
 @media (max-width: 768px) {
   .services {
-    padding: 1.25rem var(--gutter);
-    gap: 0.6rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.4rem var(--gutter);
+    gap: 0.65rem;
   }
 
   .serviceItem {
-    font-size: 0.78rem;
-    padding: 0.5rem 0.95rem;
+    font-size: 0.8rem;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    width: 100%;
+    max-width: 24rem;
+    justify-content: flex-start;
   }
 }
