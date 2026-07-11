@@ -18,14 +18,12 @@
   transform: translateY(-100%);
 }
 
-/* Respect users who prefer reduced motion: never animate or hide the header */
+/* Reduced motion: the JS slide still tracks scroll 1:1 (direct manipulation);
+   only the decorative settle tween is dropped (handled in Header.island.jsx).
+   No transform neutralization here — it would fight the JS-driven position. */
 @media (prefers-reduced-motion: reduce) {
   .navBar {
     transition: none;
-  }
-
-  .navBarHidden {
-    transform: none;
   }
 }
 

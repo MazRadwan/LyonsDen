@@ -23,8 +23,11 @@ const Header = ({ currentPath, logoSrc }) => {
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
-    // Respect reduced motion: keep the header permanently visible.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Reduced motion: the slide still tracks scroll 1:1 (direct manipulation,
+    // not autonomous animation) — only the decorative settle tween is dropped.
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     const SHOW_AT_TOP = 80; // always fully show within this distance from the top
     let settleTimer;
@@ -33,15 +36,18 @@ const Header = ({ currentPath, logoSrc }) => {
     // Menu just opened (effect re-runs on isMenuOpen): snap fully visible
     if (isMenuOpen && offsetRef.current > 0) {
       offsetRef.current = 0;
-      nav.style.transition = "transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)";
+      nav.style.transition = reducedMotion
+        ? "none"
+        : "transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)";
       nav.style.transform = "translateY(0px)";
       setIsHidden(false);
     }
 
     const apply = (animated) => {
-      nav.style.transition = animated
-        ? "transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)"
-        : "none";
+      nav.style.transition =
+        animated && !reducedMotion
+          ? "transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)"
+          : "none";
       nav.style.transform = `translateY(${-offsetRef.current}px)`;
       setIsHidden(offsetRef.current >= nav.offsetHeight - 1);
     };

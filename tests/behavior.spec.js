@@ -88,12 +88,30 @@ test.describe("Services page interactions", () => {
 });
 
 test.describe("ADHD coaching page interactions", () => {
+  // The accordions are React islands (client:load). On slower WebKit runs a
+  // click can land on the SSR'd button BEFORE hydration attaches the handler —
+  // the click silently does nothing. expect.poll(click-until-open) makes the
+  // assertion hydration-proof without a fixed sleep.
+  const clickUntilOpen = async (page, button, answer) => {
+    await page.waitForLoadState("networkidle").catch(() => {});
+    await button.scrollIntoViewIfNeeded();
+    await expect
+      .poll(
+        async () => {
+          if (await answer.isVisible()) return true;
+          await button.click();
+          return answer.isVisible();
+        },
+        { timeout: 8000 }
+      )
+      .toBe(true);
+  };
+
   test("Coaching Services accordion opens", async ({ page }) => {
     await page.goto("/adhd-coaching");
     const q = page.getByRole("button", { name: /INDIVIDUAL SKILL DEVELOPMENT COACHING/i });
-    await q.scrollIntoViewIfNeeded();
-    await q.click();
-    await expect(page.getByText(/develop better habits, create systems/i)).toBeVisible();
+    const answer = page.getByText(/develop better habits, create systems/i);
+    await clickUntilOpen(page, q, answer);
   });
 
   test("Coaching FAQ accordion opens", async ({ page }) => {
@@ -101,11 +119,8 @@ test.describe("ADHD coaching page interactions", () => {
     const q = page.getByRole("button", {
       name: /DOES MY HEALTH INSURANCE COVER ADHD & EXECUTIVE FUNCTION COACHING/i,
     });
-    await q.scrollIntoViewIfNeeded();
-    await q.click();
-    await expect(
-      page.getByText(/major health insurances do not cover/i)
-    ).toBeVisible();
+    const answer = page.getByText(/major health insurances do not cover/i);
+    await clickUntilOpen(page, q, answer);
   });
 });
 
