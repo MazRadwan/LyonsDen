@@ -22,10 +22,22 @@
     }
     if (!sel || sel === "#") return null;
     try {
-      return document.querySelector(sel);
+      return refineTarget(document.querySelector(sel));
     } catch (e) {
       return null;
     }
+  }
+
+  // On phones the contact section's columns stack (info panel first, form a
+  // full screen below) — a contact anchor should land on the FORM there. On
+  // desktop the two sit side by side, so the section top is correct.
+  function refineTarget(el) {
+    if (!el) return el;
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      var form = el.querySelector("[data-contact-form]");
+      if (form) return form;
+    }
+    return el;
   }
 
   document.addEventListener("click", function (e) {
@@ -49,7 +61,7 @@
     if (!hash || hash === "#") return;
     var target;
     try {
-      target = document.querySelector(hash);
+      target = refineTarget(document.querySelector(hash));
     } catch (e) {
       return;
     }

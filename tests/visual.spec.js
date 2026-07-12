@@ -46,6 +46,7 @@ async function revealAndSettle(page) {
 for (const [name, path] of [
   ["home", "/"],
   ["services", "/services"],
+  ["adhd-coaching", "/adhd-coaching"],
 ]) {
   test(`${name} page — full-page visual`, async ({ page }) => {
     await page.goto(path);

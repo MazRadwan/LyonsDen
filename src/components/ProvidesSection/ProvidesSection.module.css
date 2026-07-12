@@ -1,6 +1,6 @@
 
 .section {
-  background-color: #f5f5f5;
+  background-color: var(--cream-3);
   padding: 4rem 0;
 }
 
@@ -11,16 +11,16 @@
 }
 
 .header {
-  font-family: "Reem Kufi", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 2.5rem;
-  color: #0d4448;
+  color: var(--teal);
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .boxesContainer {
-  background-color: #0d4448;
+  background-color: var(--teal);
   display: flex;
   justify-content: space-between;
   padding: 2rem;
@@ -45,14 +45,14 @@
 }
 
 .boxTitle {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
 .boxContent {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 1.6;

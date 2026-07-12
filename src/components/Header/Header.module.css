@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #fffcf3;
+  background-color: var(--cream);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -18,14 +18,12 @@
   transform: translateY(-100%);
 }
 
-/* Respect users who prefer reduced motion: never animate or hide the header */
+/* Reduced motion: the JS slide still tracks scroll 1:1 (direct manipulation);
+   only the decorative settle tween is dropped (handled in Header.island.jsx).
+   No transform neutralization here — it would fight the JS-driven position. */
 @media (prefers-reduced-motion: reduce) {
   .navBar {
     transition: none;
-  }
-
-  .navBarHidden {
-    transform: none;
   }
 }
 
@@ -33,7 +31,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #4b2f04;
+  color: var(--teal);
 }
 
 .logo {
@@ -49,25 +47,25 @@
 }
 
 .siteName {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: bold;
-  color: #4b2f04;
+  color: var(--teal);
   text-align: center;
 }
 
 .separator {
   width: 100%;
   border: 0;
-  border-top: 1px solid #4b2f04;
+  border-top: 1px solid var(--teal);
   margin: 0.2rem 0;
 }
 
 .siteSubName {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: bold;
-  color: #4b2f04;
+  color: var(--teal);
   text-align: center;
 }
 
@@ -86,28 +84,83 @@
 }
 
 .navLink {
-  font-family: "Jomolhari", serif;
+  font-family: var(--font-display);
   text-decoration: none;
-  color: #4b2f04;
+  color: var(--teal);
   margin: 0 1rem;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Underline slides in from the left on hover (desktop only — the mobile
+   menu uses ::after for its chevron/external marker) */
+.desktopNav .navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: var(--terracotta);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLink:hover {
+  color: var(--terracotta);
+}
+
+.desktopNav .navLink:hover::after {
+  transform: scaleX(1);
+}
+
+/* Scrim behind the open mobile menu (mobile only — see media query) */
+.scrim {
+  display: none;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid rgba(181, 87, 47, 0.55);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .appointmentButton {
-  font-family: "Inter", sans-serif;
-  background-color: #8b572a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  background-color: var(--terracotta);
   color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--r-sm);
   cursor: pointer;
-  transition: background-color 0.3s ease-in;
+  box-shadow: 0 3px 10px rgba(181, 87, 47, 0.24);
+  transition: background-color 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
   margin-left: 1rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .appointmentButton:hover {
-  background-color: #6d451e;
+  background-color: var(--terracotta-600);
+  transform: translateY(-1px);
+  box-shadow: 0 7px 16px rgba(181, 87, 47, 0.3);
   text-decoration: none;
+}
+
+.appointmentButton:focus-visible {
+  outline: 3px solid rgba(181, 87, 47, 0.55);
+  outline-offset: 2px;
 }
 
 .mobileNav {
@@ -123,51 +176,215 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: #4b2f04;
+  background-color: var(--teal);
   margin: 2px 0;
   transition: 0.4s;
 }
 
 @media (max-width: 768px) {
+  /* Compact header: at full size (75px logo + stacked wordmark ≈ 115px tall)
+     the smart-sticky reveal covered a third of a phone screen mid-scroll. */
+  .navBar {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .logo {
+    width: 46px;
+    height: 46px;
+    margin-right: 8px;
+  }
+
+  .siteName,
+  .siteSubName {
+    font-size: 1rem;
+  }
+
+  .separator {
+    margin: 0.1rem 0;
+  }
+
   .desktopNav {
     display: none;
   }
 
+  /* Modal-esque dropdown: a detached card that slides down FROM BEHIND the
+     top bar (z-index -1 keeps it under the opaque bar while tucked) with a
+     tasteful bounce (overshoot cubic-bezier). Always rendered; open/closed
+     is transform + opacity + visibility so it animates both ways. */
   .mobileNav {
-    display: none;
+    display: flex;
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #fffcf3;
+    left: 0.75rem;
+    right: 0.75rem;
+    margin-top: 0.6rem;
+    background-color: var(--cream);
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 0.9rem 1rem 1.15rem;
+    border-radius: 14px;
+    border: 1px solid var(--camel-line);
+    box-shadow: 0 18px 40px -12px rgba(6, 41, 44, 0.3);
+    z-index: -1;
+    transform: translateY(calc(-100% - 90px));
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 240ms ease, visibility 0s linear 420ms;
+    will-change: transform;
   }
 
   .mobileNav.open {
-    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 180ms ease, visibility 0s;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .mobileNav,
+    .mobileNav.open {
+      transition: opacity 150ms ease, visibility 0s;
+      transform: translateY(0);
+    }
+    .mobileNav {
+      visibility: hidden;
+    }
+    .mobileNav.open {
+      visibility: visible;
+    }
+  }
+
+  /* --- Menu content: structured rows, not floating links --- */
   .mobileNav .navLinks {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    width: 100%;
   }
+
+  .mobileNav .navLinks li {
+    border-bottom: 1px solid var(--hairline);
+    /* staggered entrance (riding the card's drop) */
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 260ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobileNav .navLinks li:last-child {
+    border-bottom: none;
+  }
+
+  .open .navLinks li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .open .navLinks li:nth-child(1) { transition-delay: 70ms; }
+  .open .navLinks li:nth-child(2) { transition-delay: 105ms; }
+  .open .navLinks li:nth-child(3) { transition-delay: 140ms; }
+  .open .navLinks li:nth-child(4) { transition-delay: 175ms; }
+  .open .navLinks li:nth-child(5) { transition-delay: 210ms; }
+  .open .navLinks li:nth-child(6) { transition-delay: 245ms; }
 
   .mobileNav .navLink {
-    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.7rem 0.35rem;
+    font-size: 1rem;
+    line-height: 1.25; /* Jomolhari's default metrics are very tall */
+    border-radius: 8px;
   }
 
+  /* chevron for internal pages, ↗ for external (blog / portal).
+     margin-left:auto pins it right while the label stays left-aligned
+     (space-between would center the label when the active dot is present) */
+  .mobileNav .navLink::after {
+    content: "›";
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    color: var(--ink-faint);
+    margin-left: auto;
+    padding-left: 1rem;
+  }
+
+  .mobileNav .navLink[target="_blank"]::after {
+    content: "↗";
+    font-size: 0.9rem;
+  }
+
+  .mobileNav .navLink:active {
+    background-color: rgba(139, 87, 42, 0.07);
+  }
+
+  /* current page: terracotta + small leading dot */
+  .mobileNav .navLink[aria-current="page"] {
+    color: var(--terracotta);
+    font-weight: bold;
+  }
+
+  .mobileNav .navLink[aria-current="page"]::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--terracotta);
+    margin-right: 0.6rem;
+  }
+
+  /* booking CTA lives INSIDE the menu card on mobile */
   .mobileNav .appointmentButton {
-    margin-top: 1rem;
-    margin-left: 0;
+    display: inline-flex;
+    width: 100%;
+    margin: 1.1rem 0 0;
+    padding: 0.85rem 1.5rem;
   }
 
   .hamburger {
     display: flex;
+    padding: 8px 4px; /* bigger tap target */
   }
 
-  .navBar .appointmentButton {
+  /* hamburger → X morph */
+  .hamburger span {
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 200ms ease;
+  }
+
+  .hamburgerOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburgerOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburgerOpen span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* hide only the BAR-level CTA on mobile (the menu's stays) */
+  .navBar > .appointmentButton {
     display: none;
+  }
+
+  /* dimmed backdrop behind the open menu */
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(35, 25, 10, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease, visibility 0s linear 300ms;
+    z-index: 999; /* just under the navBar (1000) */
+  }
+
+  .scrimVisible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms ease, visibility 0s;
   }
 }

@@ -44,15 +44,16 @@ test.describe("Home page interactions", () => {
     await q.click();
     await expect(answer).toBeVisible();
     await q.click();
-    await expect(answer).toHaveCount(0); // answer is unmounted when collapsed
+    // Panel stays mounted (grid-rows 0fr animation) — collapsed = zero height
+    await expect(answer).not.toBeVisible();
   });
 
-  test('header "Book a Free Consultation" points to the booking calendar', async ({ page }) => {
+  test('header "Book a Free Consultation" points to TherapyPortal availability', async ({ page }) => {
     await page.goto("/");
     const cta = page.getByRole("link", { name: /book a free consultation/i }).first();
     await expect(cta).toHaveAttribute(
       "href",
-      "https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+      "https://www.therapyportal.com/p/alyonsden/appointments/availability/"
     );
   });
 
@@ -87,6 +88,43 @@ test.describe("Services page interactions", () => {
   });
 });
 
+test.describe("ADHD coaching page interactions", () => {
+  // The accordions are React islands (client:load). On slower WebKit runs a
+  // click can land on the SSR'd button BEFORE hydration attaches the handler —
+  // the click silently does nothing. expect.poll(click-until-open) makes the
+  // assertion hydration-proof without a fixed sleep.
+  const clickUntilOpen = async (page, button, answer) => {
+    await page.waitForLoadState("networkidle").catch(() => {});
+    await button.scrollIntoViewIfNeeded();
+    await expect
+      .poll(
+        async () => {
+          if (await answer.isVisible()) return true;
+          await button.click();
+          return answer.isVisible();
+        },
+        { timeout: 8000 }
+      )
+      .toBe(true);
+  };
+
+  test("Coaching Services accordion opens", async ({ page }) => {
+    await page.goto("/adhd-coaching");
+    const q = page.getByRole("button", { name: /INDIVIDUAL SKILL DEVELOPMENT COACHING/i });
+    const answer = page.getByText(/develop better habits, create systems/i);
+    await clickUntilOpen(page, q, answer);
+  });
+
+  test("Coaching FAQ accordion opens", async ({ page }) => {
+    await page.goto("/adhd-coaching");
+    const q = page.getByRole("button", {
+      name: /DOES MY HEALTH INSURANCE COVER ADHD & EXECUTIVE FUNCTION COACHING/i,
+    });
+    const answer = page.getByText(/major health insurances do not cover/i);
+    await clickUntilOpen(page, q, answer);
+  });
+});
+
 test.describe("Mobile-only", () => {
   test("hamburger opens the mobile menu", async ({ page }, testInfo) => {
     test.skip(
@@ -104,7 +142,7 @@ test.describe("Mobile-only", () => {
 // straight to src renders url([object Object]) → 404 → naturalWidth 0). Also protects
 // the Sprint 3 astro:assets image work. A loaded-but-zero-width image is broken.
 test.describe("Asset integrity", () => {
-  for (const [name, path] of [["home", "/"], ["services", "/services"]]) {
+  for (const [name, path] of [["home", "/"], ["services", "/services"], ["adhd-coaching", "/adhd-coaching"]]) {
     test(`no broken images on ${name} page`, async ({ page }) => {
       await page.goto(path);
       await page.evaluate(async () => {

@@ -8,7 +8,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
 
@@ -60,14 +59,14 @@ const GetStarted = ({ id }) => {
         </p>
         <div className={styles.buttonContainer}>
           <ConsultationButton
-            href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+            href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
             target="_blank"
             rel="noopener noreferrer"
           >
             BOOK A FREE CONSULTATION
           </ConsultationButton>
           <Button
-            href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+            href="https://www.therapyportal.com/p/alyonsden/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -88,7 +87,7 @@ const GetStarted = ({ id }) => {
             <FaMapMarkerAlt className={styles.icon} aria-hidden="true" />
             <div>
               <h4 className={styles.contactHeader}>SERVICING</h4>
-              <p>New York, New Jersey and Connecticut Area</p>
+              <p>New York and New Jersey — virtual and in-person</p>
             </div>
           </div>
           <div className={styles.contactItem}>
@@ -113,14 +112,6 @@ const GetStarted = ({ id }) => {
             <FaFacebookF className={styles.socialIcon} />
           </a>
           <a
-            href="https://x.com/alyonsdentmt"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X (formerly Twitter)"
-          >
-            <FaXTwitter className={styles.socialIcon} />
-          </a>
-          <a
             href="https://www.instagram.com/alyonsdentmt/"
             target="_blank"
             rel="noopener noreferrer"
@@ -139,91 +130,112 @@ const GetStarted = ({ id }) => {
         </div>
         <div className={styles.divider} aria-hidden="true"></div>
         <p className={styles.footer}>
-          ONLINE THERAPY SESSIONS ACROSS NEW YORK, NEW JERSEY AND CONNECTICUT
+          THERAPY & COACHING — VIRTUAL AND IN-PERSON — ACROSS NEW YORK AND NEW
+          JERSEY
         </p>
       </div>
       <div className={styles.rightSection}>
-        <h3 className={styles.formHeader}>Send us a Message</h3>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <label htmlFor="name" className={styles.srOnly}>
-            Your Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            className={styles.input}
-            required
-          />
+        <div className={styles.formCard} data-contact-form>
+          <h3 className={styles.formHeader}>Send us a Message</h3>
+          <p className={styles.formSubtext}>
+            We usually respond within one business day.
+          </p>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.field}>
+              <label htmlFor="name" className={styles.label}>
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                className={styles.input}
+                required
+              />
+            </div>
 
-          <label htmlFor="email" className={styles.srOnly}>
-            Your Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Your Email Address"
-            className={styles.input}
-            required
-          />
+            <div className={styles.fieldRow}>
+              <div className={styles.field}>
+                <label htmlFor="email" className={styles.label}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  className={styles.input}
+                  required
+                />
+              </div>
 
-          <label htmlFor="phone" className={styles.srOnly}>
-            Your Phone Number
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Your Phone Number"
-            className={styles.input}
-          />
+              <div className={styles.field}>
+                <label htmlFor="phone" className={styles.label}>
+                  Phone <span className={styles.optional}>(optional)</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="(555) 555-5555"
+                  className={styles.input}
+                />
+              </div>
+            </div>
 
-          <label htmlFor="inquiry" className={styles.srOnly}>
-            Reason for Inquiry
-          </label>
-          <select
-            id="inquiry"
-            value={formData.inquiry}
-            onChange={handleChange}
-            className={styles.select}
-            required
-          >
-            <option value="" disabled>
-              What is the reason for your inquiry?
-            </option>
-            <option value="consultation">Free Consultation</option>
-            <option value="appointment">Book an Appointment</option>
-            <option value="general">General Inquiry</option>
-            <option value="corporate">Professional Services</option>
-          </select>
+            <div className={styles.field}>
+              <label htmlFor="inquiry" className={styles.label}>
+                Reason for inquiry
+              </label>
+              <select
+                id="inquiry"
+                value={formData.inquiry}
+                onChange={handleChange}
+                className={styles.select}
+                required
+              >
+                <option value="" disabled>
+                  Select a reason…
+                </option>
+                <option value="consultation">Free Consultation</option>
+                <option value="appointment">Book an Appointment</option>
+                <option value="general">General Inquiry</option>
+                <option value="corporate">Professional Services</option>
+              </select>
+            </div>
 
-          <label htmlFor="message" className={styles.srOnly}>
-            Your Message
-          </label>
-          <textarea
-            id="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="How can we help you?"
-            className={styles.textarea}
-            required
-          ></textarea>
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
-          </button>
-        </form>
-        {submitMessage && (
-          <p className={styles.submitMessage}>{submitMessage}</p>
-        )}
+            <div className={styles.field}>
+              <label htmlFor="message" className={styles.label}>
+                Message
+              </label>
+              <textarea
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="How can we help you?"
+                className={styles.textarea}
+                required
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending…" : "Send Message"}
+            </button>
+          </form>
+          {submitMessage && (
+            <p className={styles.submitMessage} role="status">
+              {submitMessage}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

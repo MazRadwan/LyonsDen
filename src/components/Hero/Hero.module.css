@@ -45,7 +45,7 @@
   justify-content: center;
   height: 100%;
   color: white;
-  font-family: "IBM Plex Sans KR", sans-serif;
+  font-family: var(--font-display);
   text-align: left; /* Align text to the left */
   padding: 2rem;
   margin-left: 5%;
@@ -61,4 +61,18 @@
   display: flex;
   gap: 1rem;
   text-decoration: none;
+}
+
+/* Stack the CTA pair on phones — side by side they exceed the viewport */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .buttons > a,
+  .buttons > button {
+    width: 100%;
+    max-width: 20rem;
+  }
 }

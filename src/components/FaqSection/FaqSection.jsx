@@ -1,43 +1,48 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./FaqSection.module.css";
 
-const FaqSection = () => {
+const defaultFaqItems = [
+  {
+    question: "DO YOU ACCEPT MY HEALTH INSURANCE?",
+    answer:
+      "Yes, Adam accepts most major health insurance plans, including Aetna, Optum, United Health, Blue Cross Blue Shield, Northwell Direct, and many others. However, accepted insurance plans can vary state by state, so please inquire about your specific plan.",
+  },
+  {
+    question: "WHAT ABOUT PRIVATE PAY OR USING OUT-OF-NETWORK BENEFITS?",
+    answer:
+      "Yes, private pay rates are comparable to other providers in this space and are discussed during your initial consultation. Statements of services can be provided to all clients wishing to submit out-of-network claims for reimbursement for plans not covered. A sliding scale rate can be offered based on your income for those who qualify. A Good Faith Estimate can be provided at the client's request.",
+  },
+  {
+    question: "WHAT TYPE OF THERAPY DO YOU PRACTICE?",
+    answer:
+      "I practice person-centered integrative therapy that draws on Cognitive Behavioral Therapy, Dialectal Behavioral Therapy, Mindfulness, and Psychodynamic therapy. There is no one “correct” type of therapy. The therapeutic approach should be tailored to the individual client and their needs. I believe all therapy is about helping clients understand their challenges and learn how best to navigate them moving forward.",
+  },
+  {
+    question: "WHAT IS THE DIFFERENCE BETWEEN THERAPY AND COACHING?",
+    answer:
+      "Therapy focuses on exploring past and present patterns and experiences to heal emotional pain, trauma, mental health challenges, and dysfunction. Coaching focuses on clients' understanding of current patterns and on learning the skills necessary to achieve future goals and develop healthier, more consistent patterns.",
+  },
+  {
+    question: "WHAT CAN I EXPECT FROM WORKING WITH ADAM?",
+    answer:
+      "All clients will receive trauma-informed and affirming care, focusing on exploring and understanding the challenges they face while learning new skills to better cope with and navigate these experiences.",
+  },
+  {
+    question: "HOW FREQUENTLY WILL WE MEET?",
+    answer: [
+      "All clients will have a free 15-minute initial consultation call to answer questions and determine if we might be a good fit.",
+      "For mental health therapy, Adam meets with clients weekly for at least the first two months.",
+      "For ADHD & Executive Functioning Coaching, Adam and the client determine the frequency of the meetings based on the identified goals.",
+    ],
+  },
+];
+
+const FaqSection = ({ items = defaultFaqItems, title = "Frequently Asked Questions" }) => {
   const [activeItem, setActiveItem] = useState(null);
   const headerRef = useRef(null);
   const menuRef = useRef(null);
 
-  const faqItems = [
-    {
-      question: "DO YOU ACCEPT MY HEALTH INSURANCE?",
-      answer:
-        "Yes, Adam accepts most major health insurance plans, including Aetna, Optum, United Health, Blue Cross Blue Shield, and many others. However, accepted insurance plans can vary state by state, so please inquire about your specific plan.",
-    },
-    {
-      question: "WHAT ABOUT PRIVATE PAY OR USING OUT-OF-NETWORK BENEFITS?",
-      answer:
-        "Yes, private pay sessions are $175 per 45 min. session. Statements of services can be provided to all clients wishing to submit out-of-network claims for reimbursement for plans not covered.  A sliding scale rate can be offered based on your income for those who qualify. A Good Fit estimate can be provided at the client's request.",
-    },
-    {
-      question: "WHAT TYPE OF THERAPY DO YOU PRACTICE?",
-      answer:
-        "I practice person-centered integrative therapy that draws on Cognitive Behavioral Therapy, Dialectal Behavioral Therapy, Mindfulness, and Psychodynamic therapy. There is no one “correct” type of therapy. The therapeutic approach should be tailored to the individual client and their needs. I believe all therapy is about helping clients understand their challenges and learn how best to navigate them moving forward.",
-    },
-    {
-      question: "WHAT CHALLENGES DO YOU SPECIALIZE IN TREATING?",
-      answer:
-        " I specialize in treating adults and adolescents struggling with challenges related to anxiety, depression, trauma (and complex trauma), ADHD, and anyone who needs support navigating life's challenges.",
-    },
-    {
-      question: "WHAT CAN I EXPECT FROM THERAPY?",
-      answer:
-        "All clients will receive trauma-informed and affirming care, focusing on exploring and understating the challenges they face while learning new skills to better cope with and navigate these experiences.",
-    },
-    {
-      question: "HOW FREQUENT ARE THE THERAPY SESSIONS?",
-      answer:
-        "All clients will have a free 15-minute initial consultation call to answer questions and determine if we might be a good fit. After the consultation and completion of some history and enrollment forms, clients meet with Adam for an initial intake assessment to start focusing on the treatment. All clients meet for sessions at least once a week for the first two months. After two months, that may change to every other week, based on how things are going.",
-    },
-  ];
+  const faqItems = items;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,25 +74,43 @@ const FaqSection = () => {
     <section className={styles.faqSection}>
       <div className={styles.container}>
         <h2 ref={headerRef} className={styles.header}>
-          Frequently Asked Questions
+          {title}
         </h2>
         <div ref={menuRef} className={styles.faqList}>
-          {faqItems.map((item, index) => (
-            <div key={index} className={styles.faqItem}>
-              <button
-                className={styles.faqQuestion}
-                onClick={() => toggleItem(index)}
+          {faqItems.map((item, index) => {
+            const isOpen = activeItem === index;
+            return (
+              <div
+                key={index}
+                className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ""}`}
               >
-                {item.question}
-                <span
-                  className={activeItem === index ? styles.minus : styles.plus}
-                ></span>
-              </button>
-              {activeItem === index && (
-                <div className={styles.faqAnswer}>{item.answer}</div>
-              )}
-            </div>
-          ))}
+                <button
+                  className={styles.faqQuestion}
+                  onClick={() => toggleItem(index)}
+                  aria-expanded={isOpen}
+                >
+                  {item.question}
+                  <span
+                    className={`${styles.accIcon} ${isOpen ? styles.accIconOpen : ""}`}
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                {/* Panel stays mounted; grid-template-rows 0fr→1fr animates
+                    open AND closed (the old mount/unmount was jarring). */}
+                <div
+                  className={`${styles.answerWrap} ${isOpen ? styles.answerOpen : ""}`}
+                >
+                  <div className={styles.answerInner}>
+                    <div className={styles.faqAnswer}>
+                      {Array.isArray(item.answer)
+                        ? item.answer.map((para, i) => <p key={i}>{para}</p>)
+                        : item.answer}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

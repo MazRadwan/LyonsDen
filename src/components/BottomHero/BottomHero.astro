@@ -22,23 +22,23 @@ import ConsultationButton from "../ConsultationButton/ConsultationButton.astro";
       <p class={styles.subtext}>
         Make today the day you choose to invest in your well-being.
       </p>
+      <!-- Components render their own <a> when given href — wrapper anchors
+           left the inner pill content-sized, defeating equal widths. -->
       <div class={styles.buttonContainer}>
-        <a
-          href="https://calendar.app.google/A3EpoEFdFNr8KvNE8"
+        <ConsultationButton
+          href="https://www.therapyportal.com/p/alyonsden/appointments/availability/"
           target="_blank"
           rel="noopener noreferrer"
-          style="text-decoration:none"
         >
-          <ConsultationButton>BOOK A FREE CONSULTATION</ConsultationButton>
-        </a>
-        <a
-          href="https://calendar.app.google/jGxgSzFJxnU2spgP7"
+          BOOK A FREE CONSULTATION
+        </ConsultationButton>
+        <Button
+          href="https://www.therapyportal.com/p/alyonsden/"
           target="_blank"
           rel="noopener noreferrer"
-          style="text-decoration:none"
         >
-          <Button>BOOK AN APPOINTMENT</Button>
-        </a>
+          BOOK AN APPOINTMENT
+        </Button>
       </div>
     </div>
   </div>

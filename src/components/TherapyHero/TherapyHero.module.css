@@ -45,7 +45,7 @@
   justify-content: center;
   height: 100%;
   color: white;
-  font-family: "IBM Plex Sans KR", sans-serif;
+  font-family: var(--font-display);
   text-align: left;
   padding: 2rem;
   margin-left: 5%;

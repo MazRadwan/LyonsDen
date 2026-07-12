@@ -1,11 +1,11 @@
 .section {
-  background-color: #fffcf3;
+  background-color: var(--cream);
   padding: 4rem 0;
 }
 
 .container {
-  color: #125b60;
-  font-family: "Inter", sans-serif;
+  color: var(--teal);
+  font-family: var(--font-ui);
   text-align: center;
   padding: 4rem 2rem;
   margin: 4rem auto;
@@ -68,4 +68,18 @@
 
 .highlight.visible {
   transition-delay: 0.5s;
+}
+
+/* Stack the CTA pair on phones — side by side they exceed the viewport */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons > a,
+  .buttons > button {
+    width: 100%;
+    max-width: 20rem;
+  }
 }

@@ -1,44 +1,68 @@
+/* Highlights band — compact chip presentation. The old version gave each
+   item a fifth of the viewport (5rem padding + 200px dividers); on phones the
+   three items stacked into ~3 screens of empty teal. Now: a slim gradient
+   band with pill badges that wrap. */
 .services {
-  background-color: #0d4448;
-  color: white;
-  font-family: "Inter", sans-serif;
-  font-weight: 600; /* Semi-bold */
+  background: var(--panel-teal);
+  color: var(--on-teal);
+  font-family: var(--font-ui);
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 5rem 0; /* Increased padding for more space */
+  gap: 0.75rem 1rem;
+  padding: 1.6rem var(--gutter);
 }
 
 .serviceItem {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  text-align: center;
-  flex: 1;
-  height: 100%; /* Ensure the item takes full height */
-  margin: 0 1rem;
-  font-size: 1.5rem;
+  gap: 0.55rem;
+  text-align: left;
+  font-size: 0.82rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: var(--on-teal);
+  border: 1px solid rgba(253, 241, 219, 0.28);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  background: rgba(253, 241, 219, 0.06);
 }
 
+/* terracotta dot lead-in */
+.serviceItem::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--terracotta-bright);
+}
+
+/* dividers retired — the chips carry the separation */
 .divider {
-  width: 1px;
-  height: 200px; /* Increased height for more vertical space */
-  background-color: white;
-  margin: 0 2rem;
+  display: none;
 }
 
-/* Responsive Design */
+/* Mobile: borderless trust-list — centered pills with ragged widths read
+   poorly stacked; left-aligned dot rows share one clean edge instead. */
 @media (max-width: 768px) {
   .services {
     flex-direction: column;
+    align-items: center;
+    padding: 1.4rem var(--gutter);
+    gap: 0.65rem;
   }
-  .divider {
-    width: 100%;
-    height: 1px;
-    margin: 2rem 0; /* Adjusted margin for space between items */
-  }
+
   .serviceItem {
-    margin: 2rem 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    width: 100%;
+    max-width: 24rem;
+    justify-content: flex-start;
   }
 }
