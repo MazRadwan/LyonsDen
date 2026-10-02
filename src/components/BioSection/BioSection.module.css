@@ -81,6 +81,10 @@
   border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  /* Line the photo's top edge up with the cap-height of the "MEET ADAM
+     LYONS" h2 beside it: the h2's default top margin (~0.83em) plus its
+     half-leading put the glyphs exactly 1em (3rem) below the column top. */
+  margin-top: 3rem;
 }
 
 .bioImage {
@@ -136,5 +140,6 @@
 
   .imageContainer {
     width: 100%;
+    margin-top: 0; /* stacked under the text — no side-by-side alignment */
   }
 }
