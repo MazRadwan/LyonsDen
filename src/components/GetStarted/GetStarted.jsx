@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import Button from "../Button/Button";
 import ConsultationButton from "../ConsultationButton/ConsultationButton";
+import OfficesCard from "./OfficesCard/OfficesCard";
 
 const GetStarted = ({ id }) => {
   const [formData, setFormData] = useState({
@@ -87,7 +88,9 @@ const GetStarted = ({ id }) => {
             <FaMapMarkerAlt className={styles.icon} aria-hidden="true" />
             <div>
               <h4 className={styles.contactHeader}>SERVICING</h4>
-              <p>New York and New Jersey — virtual and in-person</p>
+              <p>
+                New York, New Jersey and Connecticut — virtual and in-person
+              </p>
             </div>
           </div>
           <div className={styles.contactItem}>
@@ -130,8 +133,8 @@ const GetStarted = ({ id }) => {
         </div>
         <div className={styles.divider} aria-hidden="true"></div>
         <p className={styles.footer}>
-          THERAPY & COACHING — VIRTUAL AND IN-PERSON — ACROSS NEW YORK AND NEW
-          JERSEY
+          THERAPY & COACHING — VIRTUAL AND IN-PERSON — ACROSS NEW YORK, NEW
+          JERSEY AND CONNECTICUT
         </p>
       </div>
       <div className={styles.rightSection}>
@@ -236,6 +239,7 @@ const GetStarted = ({ id }) => {
             </p>
           )}
         </div>
+        <OfficesCard />
       </div>
     </section>
   );

@@ -137,6 +137,45 @@ test.describe("Mobile-only", () => {
   });
 });
 
+// Header layout at laptop widths — Adam's MacBook report (10/2026): between
+// 769px and ~1290px the logo wordmark and nav links wrapped into a jumble.
+// Each width must either show a single-row desktop nav or the hamburger.
+test.describe("Header layout across laptop widths", () => {
+  for (const width of [1440, 1280, 1200, 1151, 1150, 1024, 900]) {
+    test(`header does not wrap at ${width}px`, async ({ page }, testInfo) => {
+      test.skip(
+        testInfo.project.name.toLowerCase().includes("mobile"),
+        "desktop engines only"
+      );
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.evaluate(() => document.fonts.ready.then(() => true));
+      const result = await page.evaluate(() => {
+        const nav = document.querySelector("nav");
+        const singleLine = (el) => el.getClientRects().length === 1 &&
+          el.getBoundingClientRect().height < parseFloat(getComputedStyle(el).fontSize) * 2;
+        const words = [...nav.querySelectorAll('[class*="siteName"] > span')];
+        const links = [...nav.querySelectorAll('[class*="desktopNav"] a')].filter((a) => a.offsetParent);
+        const burger = getComputedStyle(nav.querySelector('[class*="hamburger"]')).display !== "none";
+        return {
+          burger,
+          linkCount: links.length,
+          wrappedWords: words.filter((w) => !singleLine(w)).map((w) => w.textContent),
+          wrappedLinks: links.filter((a) => !singleLine(a)).map((a) => a.textContent.trim()),
+        };
+      });
+      expect(result.wrappedWords).toEqual([]);
+      expect(result.wrappedLinks).toEqual([]);
+      if (width > 1150) {
+        expect(result.burger).toBe(false);
+        expect(result.linkCount).toBe(6);
+      } else {
+        expect(result.burger).toBe(true);
+      }
+    });
+  }
+});
+
 // Asset integrity — guards against broken <img> srcs that a full-page screenshot
 // can miss under maxDiffPixelRatio (e.g. an Astro/Vite ImageMetadata object passed
 // straight to src renders url([object Object]) → 404 → naturalWidth 0). Also protects

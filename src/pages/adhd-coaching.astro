@@ -21,7 +21,9 @@ import DenServices from "../components/DenServices/DenServices.astro";
 import BottomHero from "../components/BottomHero/BottomHero.astro";
 import Footer from "../components/Footer/Footer.astro";
 import { getImage } from "astro:assets";
-import coachingHero from "../assets/lyonsdenhero5.jpeg";
+// Coaching hero: two adults collaborating in an office (client request,
+// 10/2026). hero5 stays in use by BottomHero on every page.
+import coachingHero from "../assets/lyonsdenhero7.jpeg";
 import headerLogoAsset from "../assets/lyonsdenlogo2.png";
 const headerLogo = (await getImage({ src: headerLogoAsset, format: "webp", width: 400 })).src;
 
@@ -95,7 +97,7 @@ const coachingFaq = [
 ---
 <Layout
   title="ADHD & Executive Function Coaching | A Lyons Den Therapy"
-  description="ADHD & Executive Function coaching for adults and teens with Adam Lyons, LCSW. Build skills, systems, and habits that work with your brain — individual and group coaching, virtual and in-person, across New York and New Jersey."
+  description="ADHD & Executive Function coaching for adults and teens with Adam Lyons, LCSW. Build skills, systems, and habits that work with your brain — individual and group coaching, virtual and in-person, across New York, New Jersey, and Connecticut."
   canonical={canonical}
   ogImage={ogImageAbs}
   jsonLd={jsonLd}
@@ -105,7 +107,7 @@ const coachingFaq = [
     title="ADHD & EXECUTIVE FUNCTION COACHING"
     subtitle="Individual and Group Coaching for Adults and Teens — Virtual and In-Person"
     image={coachingHero}
-    alt="ADHD and Executive Function Coaching Hero"
+    alt="A man and a woman working together over a planner at a table in a bright office"
   />
   <TherapyStrip2
     items={[

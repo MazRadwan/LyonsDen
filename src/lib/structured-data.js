@@ -3,17 +3,20 @@
  *
  * Emits four connected schema.org nodes:
  *   - Organization + ProfessionalService (A Lyons Den Therapy; Group NPI)
- *   - Person (Adam Lyons, LCSW — licensed NY + NJ, personal NPI)
- *   - Service (Psychotherapy — NY/NJ, virtual & in-person)
+ *   - Person (Adam Lyons, LCSW — licensed NY + NJ + CT, personal NPI)
+ *   - Service (Psychotherapy — NY/NJ/CT, virtual & in-person)
  *   - Service (ADHD & Executive Function Coaching)
  *
  * GUARDRAILS (PRD §8 + client update July 2026):
  *   - NO "@type": "Psychologist" — Adam is an LCSW
- *   - NO streetAddress / PostalAddress — service-area model, no public storefront
- *   - NO Connecticut until the CT license renewal is confirmed (removed 7/2026;
- *     re-add areaServed + license in the August phase-2 update)
+ *   - NO streetAddress / PostalAddress — service-area model, no public storefront.
+ *     In-person offices are sublet; client wants landmark descriptions only
+ *     (10/2026), so they appear as areaServed places, never as addresses.
+ *   - Connecticut re-added 10/2026 (client confirmed CT license is current).
  *   - License numbers verified by client 7/2026:
  *       NY LCSW #084681-01 · NJ LCSW #44SC06328000
+ *     CT license number NOT yet provided — the CT credential carries no
+ *     identifier until the client supplies it.
  *   - sameAs = ONLY live profiles (X/Twitter removed per client, 7/2026)
  */
 
@@ -41,6 +44,9 @@ export function siteSchema({ canonical, image }) {
     areaServed: [
       { "@type": "AdministrativeArea", name: "New York" },
       { "@type": "AdministrativeArea", name: "New Jersey" },
+      { "@type": "AdministrativeArea", name: "Connecticut" },
+      { "@type": "Place", name: "Scarsdale, Westchester County, NY" },
+      { "@type": "Place", name: "Washington Heights, New York, NY" },
     ],
     // Verified social URLs (X/Twitter removed per client update, 7/2026)
     sameAs: [
@@ -90,6 +96,12 @@ export function siteSchema({ canonical, image }) {
         identifier: "44SC06328000",
         recognizedBy: { "@type": "Organization", name: "New Jersey Division of Consumer Affairs" },
       },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "license",
+        name: "Licensed Clinical Social Worker (LCSW) — Connecticut",
+        recognizedBy: { "@type": "Organization", name: "Connecticut Department of Public Health" },
+      },
     ],
   };
 
@@ -98,7 +110,7 @@ export function siteSchema({ canonical, image }) {
     "@id": "https://alyonsdentherapy.com/#service",
     serviceType: "Psychotherapy",
     provider: { "@id": "https://alyonsdentherapy.com/#organization" },
-    areaServed: ["New York", "New Jersey"],
+    areaServed: ["New York", "New Jersey", "Connecticut"],
     audience: { "@type": "PeopleAudience", suggestedMinAge: 13 },
     availableChannel: {
       "@type": "ServiceChannel",
@@ -113,7 +125,7 @@ export function siteSchema({ canonical, image }) {
     serviceType: "ADHD & Executive Function Coaching",
     name: "ADHD & Executive Function Coaching for Adults and Teens",
     provider: { "@id": "https://alyonsdentherapy.com/#organization" },
-    areaServed: ["New York", "New Jersey"],
+    areaServed: ["New York", "New Jersey", "Connecticut"],
     audience: { "@type": "PeopleAudience", suggestedMinAge: 13 },
     availableChannel: {
       "@type": "ServiceChannel",

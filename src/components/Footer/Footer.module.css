@@ -65,6 +65,10 @@
   font-size: 1rem;
 }
 
+.linkHeaderSpaced {
+  margin-top: 1.5rem;
+}
+
 .link,
 .address {
   font-family: var(--font-ui);
